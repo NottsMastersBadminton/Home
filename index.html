@@ -52,14 +52,17 @@
 
     /* Responsive Facebook box */
     .fb-container {
-      max-width: 100%;
+      width: 100%;
       display: flex;
       justify-content: center;
     }
 
     .fb-container iframe {
       width: 100%;
-      max-width: 500px;
+      max-width: 400px; /* perfect for mobile */
+      height: 800px;
+      border: none;
+      overflow: hidden;
       border-radius: 8px;
     }
 
@@ -98,10 +101,15 @@
 
   <div class="fb-container">
     <iframe 
-      src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100077877812929&tabs=timeline&width=500&height=900&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true"
-      width="500"
-      height="900"
-      style="border:none;overflow:hidden"
+      src="https://www.facebook.com/plugins/page.php?
+      href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100077877812929
+      &tabs=timeline
+      &width=400
+      &height=800
+      &small_header=true
+      &adapt_container_width=true
+      &hide_cover=true
+      &show_facepile=true"
       scrolling="no"
       frameborder="0"
       allowfullscreen="true"
@@ -117,3 +125,4 @@
 
 </body>
 </html>
+
