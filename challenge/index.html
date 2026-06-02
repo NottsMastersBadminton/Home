@@ -85,13 +85,18 @@
 </head>
 <body>
 
-<!-- Shared header include -->
-<div id="header"></div>
+<header>
+  <h1>Notts Masters Badminton</h1>
+  <p>Challenge Weekend</p>
+</header>
+
+<!-- Shared nav include -->
+<div id="nav"></div>
 <script>
-  fetch("/Home/header.html")
+  fetch("/Home/nav.html")
     .then(response => response.text())
     .then(data => {
-      document.getElementById("header").innerHTML = data;
+      document.getElementById("nav").innerHTML = data;
     });
 </script>
 
