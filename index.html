@@ -74,17 +74,24 @@
       display: none;
     }
     .success a {
-      color: #1a73e8;
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      background: #1a73e8;
+      color: white;
+      border-radius: 6px;
       text-decoration: none;
       font-weight: 600;
-      word-break: break-all;
+    }
+    .success a:hover {
+      background: #1558b4;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Secure Document</h1>
-    <p>Enter the access password to view the Notts Masters Players list for Season 2026-27.</p>
+    <p>Enter the access password to view the documents.</p>
 
     <label for="password">Password</label>
     <input type="password" id="password" autocomplete="off" />
@@ -92,32 +99,36 @@
     <button id="submitBtn">Unlock</button>
 
     <div id="error" class="error">Incorrect password. Please try again.</div>
+
     <div id="success" class="success">
-      Access granted.  
-      <br />
-      <a id="docLink" href="#" target="_blank" rel="noopener noreferrer">Click here to open the document</a>
+      Access granted.
+      <a id="docLink1" href="#" target="_blank" rel="noopener noreferrer">Open Spreadsheet 1</a>
+      <a id="docLink2" href="#" target="_blank" rel="noopener noreferrer">Open Spreadsheet 2</a>
     </div>
   </div>
 
   <script>
-    // 1. Set your password here
+    // Password
     const PASSWORD = "YourStrongPassword123";
 
-    // 2. Set your Google Sheets link here
-    const DOC_URL = "https://docs.google.com/spreadsheets/d/14KBz9GBGR7p48cdM8p34FPGbhoaRUHX3OUhXRh9deNs/edit?gid=1020199153#gid=1020199153";
+    // Spreadsheet links
+    const DOC_URL_1 = "https://docs.google.com/spreadsheets/d/14KBz9GBGR7p48cdM8p34FPGbhoaRUHX3OUhXRh9deNs/edit?gid=540443398#gid=540443398";
+    const DOC_URL_2 = "https://docs.google.com/spreadsheets/d/1MomVFN0gpfM_bYldQ5Df9CjwOkYRGOMSGtmv2PWyMiw/edit?gid=0#gid=0";
 
     const passwordInput = document.getElementById("password");
     const submitBtn = document.getElementById("submitBtn");
     const errorEl = document.getElementById("error");
     const successEl = document.getElementById("success");
-    const docLink = document.getElementById("docLink");
+    const docLink1 = document.getElementById("docLink1");
+    const docLink2 = document.getElementById("docLink2");
 
     submitBtn.addEventListener("click", () => {
       const value = passwordInput.value.trim();
       if (value === PASSWORD) {
         errorEl.style.display = "none";
         successEl.style.display = "block";
-        docLink.href = DOC_URL;
+        docLink1.href = DOC_URL_1;
+        docLink2.href = DOC_URL_2;
       } else {
         successEl.style.display = "none";
         errorEl.style.display = "block";
