@@ -7,18 +7,16 @@
   <style>
     body {
       margin: 0;
-      font-family: system-ui, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #f5f5f5;
       color: #222;
     }
-
     header {
       background: #0a1a33;
       color: white;
       padding: 20px;
       text-align: center;
     }
-
     nav {
       background: #13294b;
       display: flex;
@@ -26,46 +24,41 @@
       flex-wrap: wrap;
       padding: 10px 0;
     }
-
     nav a {
       color: white;
       text-decoration: none;
       margin: 8px 15px;
       font-weight: 600;
     }
-
     nav a:hover {
       text-decoration: underline;
     }
-
     .container {
-      max-width: 600px;
+      max-width: 500px;
       margin: 40px auto;
-      padding: 0 20px;
-      text-align: center;
-    }
-
-    .auth-box {
+      padding: 30px;
       background: white;
-      padding: 25px;
       border-radius: 12px;
       box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-      margin-bottom: 40px;
+      text-align: center;
     }
-
+    h2 {
+      margin-bottom: 15px;
+      color: #0a1a33;
+    }
     .password-wrapper {
       position: relative;
+      width: 100%;
       margin-bottom: 15px;
     }
-
     .password-wrapper input {
       width: 100%;
       padding: 10px 40px 10px 10px;
       border-radius: 6px;
       border: 1px solid #ccc;
       font-size: 1rem;
+      box-sizing: border-box;
     }
-
     .toggle-password {
       position: absolute;
       right: 10px;
@@ -74,8 +67,8 @@
       cursor: pointer;
       font-size: 1.2rem;
       color: #555;
+      user-select: none;
     }
-
     button {
       width: 100%;
       padding: 12px;
@@ -85,49 +78,42 @@
       color: #fff;
       font-size: 1rem;
       font-weight: 600;
+      cursor: pointer;
     }
-
     button:hover {
       background: #1558b4;
     }
-
     .error {
       margin-top: 12px;
       color: #c62828;
       font-size: 0.9rem;
       display: none;
     }
-
-    .links-box {
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    .success {
+      margin-top: 20px;
+      font-size: 1rem;
+      display: none;
     }
-
-    .link-button {
+    .success a {
       display: block;
-      background: #13294b;
+      margin: 12px 0;
+      padding: 12px;
+      background: #0a1a33;
       color: white;
-      padding: 12px 15px;
-      margin: 10px 0;
-      border-radius: 8px;
+      border-radius: 6px;
       text-decoration: none;
       font-weight: 600;
-      transition: 0.2s;
     }
-
-    .link-button:hover {
-      background: #0a1a33;
-      transform: translateY(-2px);
+    .success a:hover {
+      background: #1a73e8;
     }
-
     footer {
       margin-top: 40px;
       padding: 20px;
       text-align: center;
       background: #0a1a33;
       color: white;
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -135,85 +121,100 @@
 
 <header>
   <h1>Notts Masters Badminton</h1>
-  <p>Captains & Selectors Area</p>
+  <p>Captains Area — Secure Access</p>
+  <p>Captains & Selectors Area — Secure Access</p>
 </header>
 
 <div id="nav"></div>
 <script>
   fetch("/Home/nav.html")
-    .then(r => r.text())
-    .then(html => document.getElementById("nav").innerHTML = html);
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("nav").innerHTML = data;
+    });
 </script>
 
 <div class="container">
+  <h2>Enter Password</h2>
+  <p>This section is restricted to Captains & Selectors only.</p>
 
-  <!-- PASSWORD BOX -->
-  <div id="authBox" class="auth-box">
-    <h2>Enter Password</h2>
-    <p>Restricted to Captains & Selectors.</p>
-
-    <div class="password-wrapper">
-      <input type="password" id="password" placeholder="Enter password" autocomplete="off" />
-      <span class="toggle-password" id="togglePassword">👁️</span>
-    </div>
-
-    <button id="submitBtn">Unlock Area</button>
-    <div id="error" class="error">❌ Incorrect password. Please try again.</div>
+  <div class="password-wrapper">
+    <input type="password" id="password" placeholder="Enter password" autocomplete="off" />
+    <span class="toggle-password" id="togglePassword">👁️</span>
   </div>
 
-  <!-- LINKS AFTER LOGIN -->
-  <div id="linksBox" class="links-box" style="display:none;">
-    <h2>Welcome</h2>
-    <p>Select an option below:</p>
+  <button id="submitBtn">Unlock</button>
 
-    <a class="link-button" href="/Home/captains/calendar.html">📅 Captains Calendar</a>
-    <a class="link-button" href="/Home/captains/documents.html">📄 Documents</a>
-    <a class="link-button" href="/Home/captains/contact.html">📞 Contact</a>
+  <div id="error" class="error">❌ Incorrect password. Please try again.</div>
+
+  <div id="success" class="success">
+    ✅ Access granted.<br><br>
+    <a id="docLink1" href="#">Notts Masters Players</a>
+    <a id="docLink2" href="#">Notts Masters Matches</a>
+    <a id="docLink3" href="#">Captains & Selectors Match Calendar</a>
   </div>
-
 </div>
 
 <footer>
-  © Notts Masters Badminton — Captains Area
+  © Notts Masters Badminton — Captains & Selectors Area
 </footer>
 
 <script>
   const PASSWORD = "YourStrongPassword123";
   const SESSION_KEY = "captainsAuth";
 
+  const DOC_URL_1 = "/Home/captains/players.html";
+  const DOC_URL_2 = "/Home/captains/matches.html";
+  const DOC_URL_3 = "/Home/captains/calendar.html";
+
   const passwordInput = document.getElementById("password");
   const togglePassword = document.getElementById("togglePassword");
   const submitBtn = document.getElementById("submitBtn");
   const errorEl = document.getElementById("error");
-  const authBox = document.getElementById("authBox");
-  const linksBox = document.getElementById("linksBox");
+  const successEl = document.getElementById("success");
+  const docLink1 = document.getElementById("docLink1");
+  const docLink2 = document.getElementById("docLink2");
+  const docLink3 = document.getElementById("docLink3");
 
-  function showLinks() {
-    authBox.style.display = "none";
-    linksBox.style.display = "block";
-  }
-
+  // If already authenticated this session, show links immediately
   if (sessionStorage.getItem(SESSION_KEY) === PASSWORD) {
-    showLinks();
+    successEl.style.display = "block";
+    docLink1.href = DOC_URL_1;
+    docLink2.href = DOC_URL_2;
+    docLink3.href = DOC_URL_3;
   }
 
   togglePassword.addEventListener("click", () => {
-    passwordInput.type = passwordInput.type === "password" ? "text" : "password";
-    togglePassword.textContent = passwordInput.type === "password" ? "👁️" : "🙈";
+    const type = passwordInput.type === "password" ? "text" : "password";
+    passwordInput.type = type;
+    togglePassword.textContent = type === "password" ? "👁️" : "🙈";
   });
 
   function unlock() {
-    if (passwordInput.value.trim() === PASSWORD) {
+    const value = passwordInput.value.trim();
+    if (value === PASSWORD) {
       errorEl.style.display = "none";
+      successEl.style.display = "block";
+
+      // store in session so other pages auto-unlock
       sessionStorage.setItem(SESSION_KEY, PASSWORD);
-      showLinks();
+
+      docLink1.href = DOC_URL_1;
+      docLink2.href = DOC_URL_2;
+      docLink3.href = DOC_URL_3;
     } else {
+      successEl.style.display = "none";
       errorEl.style.display = "block";
     }
   }
 
   submitBtn.addEventListener("click", unlock);
-  passwordInput.addEventListener("keydown", e => { if (e.key === "Enter") unlock(); });
+
+  passwordInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      unlock();
+    }
+  });
 </script>
 
 </body>
