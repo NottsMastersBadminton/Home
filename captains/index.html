@@ -53,7 +53,6 @@
       color: #0a1a33;
     }
 
-    /* Password wrapper */
     .password-wrapper {
       position: relative;
       width: 100%;
@@ -66,10 +65,9 @@
       border-radius: 6px;
       border: 1px solid #ccc;
       font-size: 1rem;
-      box-sizing: border-box; /* prevents overflow */
+      box-sizing: border-box;
     }
 
-    /* Eye icon */
     .toggle-password {
       position: absolute;
       right: 10px;
@@ -142,7 +140,6 @@
   <p>Captains Area — Secure Access</p>
 </header>
 
-<!-- Shared nav include -->
 <div id="nav"></div>
 <script>
   fetch("/Home/nav.html")
@@ -156,7 +153,6 @@
   <h2>Enter Password</h2>
   <p>This section is restricted to Captains & Selectors only.</p>
 
-  <!-- Password with show/hide toggle -->
   <div class="password-wrapper">
     <input type="password" id="password" placeholder="Enter password" autocomplete="off" />
     <span class="toggle-password" id="togglePassword">👁️</span>
@@ -168,9 +164,9 @@
 
   <div id="success" class="success">
     ✅ Access granted.<br><br>
-    <a id="docLink1" href="#" target="_blank" rel="noopener noreferrer">Notts Masters Players</a>
-    <a id="docLink2" href="#" target="_blank" rel="noopener noreferrer">Notts Masters Matches</a>
-    <a id="docLink3" href="#" target="_blank" rel="noopener noreferrer">Captains & Selectors Match Calendar</a>
+    <a id="docLink1" href="#" target="_blank">Notts Masters Players</a>
+    <a id="docLink2" href="#" target="_blank">Notts Masters Matches</a>
+    <a id="docLink3" href="#" target="_blank">Captains & Selectors Match Calendar</a>
   </div>
 </div>
 
@@ -183,7 +179,7 @@
 
   const DOC_URL_1 = "https://docs.google.com/spreadsheets/d/14KBz9GBGR7p48cdM8p34FPGbhoaRUHX3OUhXRh9deNs/edit?gid=1020199153#gid=1020199153";
   const DOC_URL_2 = "https://docs.google.com/spreadsheets/d/1MomVFN0gpfM_bYldQ5Df9CjwOkYRGOMSGtmv2PWyMiw/edit?gid=0#gid=0";
-  const DOC_URL_3 = "/Captains/calendar.html";
+  const DOC_URL_3 = "/Captains/calendar.html";  /* <-- FIXED PATH */
 
   const passwordInput = document.getElementById("password");
   const togglePassword = document.getElementById("togglePassword");
@@ -194,7 +190,6 @@
   const docLink2 = document.getElementById("docLink2");
   const docLink3 = document.getElementById("docLink3");
 
-  // Show/hide password toggle
   togglePassword.addEventListener("click", () => {
     const type = passwordInput.type === "password" ? "text" : "password";
     passwordInput.type = type;
@@ -208,7 +203,7 @@
       successEl.style.display = "block";
       docLink1.href = DOC_URL_1;
       docLink2.href = DOC_URL_2;
-      docLink3.href = DOC_URL_3;
+      docLink3.href = DOC_URL_3;  /* <-- FIXED */
     } else {
       successEl.style.display = "none";
       errorEl.style.display = "block";
