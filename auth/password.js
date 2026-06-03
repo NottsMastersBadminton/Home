@@ -1,1 +1,1 @@
-window.CAPTAINS_PASSWORD = "YourStrongPassword123";
+window.CAPTAINS_PASSWORD = "YourStrongPassword1234";
