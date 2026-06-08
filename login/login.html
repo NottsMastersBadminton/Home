@@ -36,9 +36,8 @@
   </form>
 
   <script>
-    // TODO: replace with your real values
-    const SUPABASE_URL = "https://YOUR-PROJECT.supabase.co";
-    const SUPABASE_ANON_KEY = "YOUR_ANON_KEY";
+    const SUPABASE_URL = "YOUR_URL_HERE";
+    const SUPABASE_ANON_KEY = "YOUR_ANON_KEY_HERE";
 
     const { createClient } = supabase;
     const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -52,24 +51,17 @@
 
       const email = document.getElementById("email").value.trim().toLowerCase();
       const beNumber = document.getElementById("be_number").value.trim();
-      const dobInput = document.getElementById("dob").value; // yyyy-mm-dd
+      const dobInput = document.getElementById("dob").value;
 
-      if (!email || !beNumber || !dobInput) {
-        errorEl.textContent = "Please fill in all fields.";
-        return;
-      }
-
-      // Fetch matching row from Supabase
       const { data, error } = await supabaseClient
-        .from("All")
+        .from("profiles")
         .select("id, firstname, surname, email_address, be_number, dob, age_group, captain_selector")
         .eq("email_address", email)
         .eq("be_number", beNumber)
         .maybeSingle();
 
       if (error) {
-        console.error(error);
-        errorEl.textContent = "Something went wrong. Please try again.";
+        errorEl.textContent = "Something went wrong.";
         return;
       }
 
@@ -78,14 +70,11 @@
         return;
       }
 
-      // Compare DOB (stored as date in Supabase vs input yyyy-mm-dd)
-      const storedDob = data.dob; // e.g. "2005-03-14"
-      if (storedDob !== dobInput) {
-        errorEl.textContent = "Date of birth does not match our records.";
+      if (data.dob !== dobInput) {
+        errorEl.textContent = "Date of birth does not match.";
         return;
       }
 
-      // "Log in" – store minimal profile in localStorage
       const session = {
         loggedIn: true,
         memberId: data.id,
@@ -99,7 +88,6 @@
 
       localStorage.setItem("clubSession", JSON.stringify(session));
 
-      // Redirect to dashboard
       window.location.href = "dashboard.html";
     });
   </script>
