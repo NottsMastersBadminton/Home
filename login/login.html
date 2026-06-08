@@ -17,7 +17,7 @@
     }
     .page-wrapper { max-width: 1000px; margin: 0 auto; }
     header { background: #0a1a33; color: white; padding: 20px; text-align: center; }
-    nav { background: #13294b; display: flex; justify-content: center; padding: 10px 0; }
+    nav { background: #13294b; display: flex; justify-content: center; padding: 10px 0; flex-wrap: wrap; }
     nav a { color: white; margin: 8px 15px; text-decoration: none; font-weight: 600; }
     nav a:hover { text-decoration: underline; }
     .container { margin: 40px auto; padding: 0 20px; text-align: center; }
@@ -28,6 +28,12 @@
     .error { color: #b00020; margin-top: 8px; text-align: center; }
     footer { margin-top: 50px; padding: 20px; text-align: center; background: #0a1a33; color: white; }
   </style>
+
+  <script>
+    // ⭐ Capture redirect BEFORE nav loads (critical fix)
+    const params = new URLSearchParams(window.location.search);
+    const redirectParam = params.get("redirect");
+  </script>
 </head>
 
 <body>
@@ -42,7 +48,19 @@
   <script>
     fetch("/Home/nav.html")
       .then(r => r.text())
-      .then(html => document.getElementById("nav").innerHTML = html);
+      .then(html => {
+        document.getElementById("nav").innerHTML = html;
+
+        // ⭐ Preserve redirect parameter across nav links
+        if (redirectParam) {
+          document.querySelectorAll("#nav a").forEach(a => {
+            if (a.href.includes("login.html")) return; // avoid loops
+            if (!a.href.includes("?redirect=")) {
+              a.href = a.href + "?redirect=" + redirectParam;
+            }
+          });
+        }
+      });
   </script>
 
   <div class="container">
@@ -105,15 +123,13 @@
       ...data
     }));
 
-    const params = new URLSearchParams(window.location.search);
-    const redirect = params.get("redirect");
     const role = (data.captain_selector || "").toLowerCase().trim();
 
     // ⭐ Delay ensures session is saved before redirect
     setTimeout(() => {
 
       // CAPTAINS LOGIN FLOW
-      if (redirect === "captains") {
+      if (redirectParam === "captains") {
         if (role === "captain" || role === "selector") {
           window.location.href = "/Home/captains/access.html";
         } else {
@@ -123,7 +139,7 @@
       }
 
       // PLAYER AVAILABILITY LOGIN FLOW
-      if (redirect === "availability") {
+      if (redirectParam === "availability") {
         if (role === "captain" || role === "selector") {
           window.location.href = "/Home/captains/access.html";
         } else {
