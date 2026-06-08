@@ -7,6 +7,7 @@
 </head>
 
 <body>
+
 <div class="page-wrapper">
 
 <header style="background:#0a1a33;color:white;padding:20px;text-align:center;">
@@ -32,19 +33,32 @@
 </div>
 
 <script>
-  const raw = localStorage.getItem("clubSession");
-  if (!raw) {
-    window.location.href = "/Home/login/captains-login.html";
-  }
+  // Run AFTER layout loads
+  window.addEventListener("DOMContentLoaded", () => {
 
-  const session = JSON.parse(raw);
-  const role = (session.captain_selector || "").toLowerCase().trim();
+    const raw = localStorage.getItem("clubSession");
+    if (!raw) {
+      window.location.href = "/Home/login/captains-login.html";
+      return;
+    }
 
-  if (role === "captain" || role === "selector") {
-    window.location.href = "/Home/captains/dashboard.html";
-  } else {
-    document.getElementById("status").innerText = "You do not have access to this area.";
-  }
+    let session;
+    try { session = JSON.parse(raw); }
+    catch {
+      localStorage.removeItem("clubSession");
+      window.location.href = "/Home/login/captains-login.html";
+      return;
+    }
+
+    const role = (session.captain_selector || "").toLowerCase().trim();
+
+    if (role === "captain" || role === "selector") {
+      window.location.href = "/Home/captains/dashboard.html";
+    } else {
+      document.getElementById("status").innerText = "You do not have access to this area.";
+    }
+
+  });
 </script>
 
 </body>
