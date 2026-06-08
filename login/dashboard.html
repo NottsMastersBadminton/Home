@@ -16,21 +16,13 @@
 
   <script>
     const raw = localStorage.getItem("clubSession");
-    if (!raw) {
-      window.location.href = "login.html";
-    }
+    if (!raw) window.location.href = "login.html";
 
     let session;
-    try {
-      session = JSON.parse(raw);
-    } catch {
-      localStorage.removeItem("clubSession");
-      window.location.href = "login.html";
-    }
+    try { session = JSON.parse(raw); }
+    catch { localStorage.removeItem("clubSession"); window.location.href = "login.html"; }
 
-    if (!session || !session.loggedIn) {
-      window.location.href = "login.html";
-    }
+    if (!session || !session.loggedIn) window.location.href = "login.html";
 
     const content = document.getElementById("content");
     content.innerHTML = `
