@@ -2,15 +2,135 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Player Availability Form</title>
+  <title>Player Availability — Notts Masters Badminton</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    header {
+      background: #0a1a33;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background: #13294b;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 8px 15px;
+      font-weight: 600;
+    }
+
+    nav a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+
+    h2 {
+      margin-top: 0;
+      text-align: center;
+      color: #0a1a33;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 4px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    input[readonly] {
+      background: #eee;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      border-radius: 6px;
+      border: none;
+      background: #1a73e8;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1558b4;
+    }
+
+    .message {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .success { color: #2e7d32; }
+    .error { color: #c62828; }
+
+    .list-container {
+      max-width: 500px;
+      margin: 20px auto 40px;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+
+    .date-item {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .date-item:last-child {
+      border-bottom: none;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      text-align: center;
+      background: #0a1a33;
+      color: white;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 
 <body>
-<div class="page-wrapper">
 
-<header style="background:#0a1a33;color:white;padding:20px;text-align:center;">
-  <h1>Player Availability Form</h1>
+<header>
+  <h1>Notts Masters Badminton</h1>
+  <p>Player Non‑Availability</p>
 </header>
 
 <div id="nav"></div>
@@ -20,34 +140,117 @@
     .then(html => document.getElementById("nav").innerHTML = html);
 </script>
 
-<div style="max-width:900px;margin:40px auto;">
-  <h2>Submit Your Availability</h2>
+<div class="container">
+  <h2>Tell Us When You’re Unavailable</h2>
 
-  <form>
-    <label>Date
-      <input type="date" required />
-    </label>
+  <label>Player Name</label>
+  <input type="text" id="playerName" readonly />
 
-    <label>Availability
-      <select required>
-        <option value="">Select…</option>
-        <option value="available">Available</option>
-        <option value="not available">Not Available</option>
-      </select>
-    </label>
+  <label>Age Group</label>
+  <input type="text" id="ageGroup" readonly />
 
-    <label>Notes
-      <textarea rows="4"></textarea>
-    </label>
+  <label>Date Unavailable</label>
+  <input type="date" id="unavailableDate" />
 
-    <button type="submit">Submit</button>
-  </form>
+  <button id="submitBtn">Submit Unavailability</button>
+
+  <div id="formMessage" class="message"></div>
 </div>
 
-<footer style="margin-top:40px;padding:20px;text-align:center;background:#0a1a33;color:white;">
+<div class="list-container">
+  <h3>Your Unavailable Dates</h3>
+  <div id="datesList">Loading…</div>
+</div>
+
+<footer>
   © Notts Masters Badminton — Player Availability
 </footer>
 
-</div>
+<script>
+  const WEB_APP_URL = "YOUR_WEB_APP_URL_HERE"; // paste your deployed Apps Script URL
+
+  const session = JSON.parse(localStorage.getItem("clubSession") || "{}");
+
+  if (!session.loggedIn) {
+    window.location.href = "/Home/login/captains-login.html";
+  }
+
+  const first = session.first_name || session.firstname || "";
+  const last = session.last_name || session.surname || "";
+  const fullName = `${first} ${last}`.trim();
+  const ageGroup = session.ageGroup || session.age_group || "";
+  const email = session.email_address || session.email || session.emailAddress;
+
+  document.getElementById("playerName").value = fullName;
+  document.getElementById("ageGroup").value = ageGroup;
+
+  async function submitUnavailability() {
+    const date = document.getElementById("unavailableDate").value;
+    const msg = document.getElementById("formMessage");
+
+    if (!date) {
+      msg.textContent = "Please select a date.";
+      msg.className = "message error";
+      return;
+    }
+
+    const payload = {
+      action: "addAvailability",
+      data: {
+        status: "Active",
+        version: "1.0",
+        event: "Unavailable",
+        ageGroup: ageGroup,
+        startDateTime: date,
+        endDateTime: date,
+        playerName: fullName,
+        playerEmail: email
+      }
+    };
+
+    await fetch(WEB_APP_URL, {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
+
+    msg.textContent = "Your unavailability has been recorded.";
+    msg.className = "message success";
+
+    document.getElementById("unavailableDate").value = "";
+
+    loadDates();
+  }
+
+  async function loadDates() {
+    const list = document.getElementById("datesList");
+    list.innerHTML = "Loading…";
+
+    const res = await fetch(`${WEB_APP_URL}?action=getAvailability&email=${encodeURIComponent(email)}`);
+    const data = await res.json();
+
+    if (!data.length) {
+      list.innerHTML = "<p>No unavailable dates recorded.</p>";
+      return;
+    }
+
+    list.innerHTML = data
+      .map(item => {
+        const d = new Date(item.startDateTime);
+        const formatted = d.toLocaleDateString("en-GB", {
+          weekday: "short",
+          day: "numeric",
+          month: "short",
+          year: "numeric"
+        });
+        return `<div class="date-item">${formatted}</div>`;
+      })
+      .join("");
+  }
+
+  document.getElementById("submitBtn").addEventListener("click", submitUnavailability);
+
+  loadDates();
+</script>
+
 </body>
 </html>
