@@ -151,13 +151,23 @@
       .maybeSingle();
 
     if (!data || data.dob !== dobInput) {
-      errorEl.textContent = "No member found with those details.";
-      return;
-    }
+  errorEl.textContent = "No member found with those details.";
+  return;
+}
 
-    localStorage.setItem("clubSession", JSON.stringify({ loggedIn: true, ...data }));
+localStorage.setItem("clubSession", JSON.stringify({
+  loggedIn: true,
+  first_name: data.first_name,
+  last_name: data.surname,
+  ageGroup: data.age_group,
+  captain_selector: data.captain_selector,
+  email: data.email_address,   // ⭐ REQUIRED FIELD
+  be_number: data.be_number,
+  dob: data.dob
+}));
 
-    window.location.href = "/Home/player-availability/access.html";
+window.location.href = "/Home/player-availability/access.html";
+
   });
 </script>
 
