@@ -18,6 +18,18 @@
       color: white;
       padding: 20px;
       text-align: center;
+      position: relative;
+    }
+
+    /* Top-right logout link */
+    #logout-top {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      color: white;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
     }
 
     nav {
@@ -69,6 +81,23 @@
       background: #1a73e8;
     }
 
+    /* Logout button inside container */
+    .logout-btn {
+      margin-top: 25px;
+      padding: 12px;
+      background: #c62828;
+      color: white;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      display: block;
+      text-decoration: none;
+    }
+
+    .logout-btn:hover {
+      background: #a61f1f;
+    }
+
     .error {
       margin-top: 20px;
       color: #c62828;
@@ -91,6 +120,9 @@
 <header>
   <h1>Notts Masters Badminton</h1>
   <p id="welcome-text">Captains & Selectors Area</p>
+
+  <!-- Top-right logout -->
+  <span id="logout-top">Logout</span>
 </header>
 
 <div id="nav"></div>
@@ -123,7 +155,7 @@
 
   const role = (session.captain_selector || "").toLowerCase().trim();
 
-  // FIXED: detect name from any field
+  // Detect name from any possible field
   const name =
     session.first_name ||
     session.firstname ||
@@ -135,12 +167,22 @@
   // Update header welcome text
   welcomeText.textContent = `Welcome – ${name}`;
 
+  // Logout function
+  function logout() {
+    localStorage.removeItem("clubSession");
+    window.location.href = "/Home/captains/login.html";
+  }
+
+  // Attach logout to both buttons
+  document.getElementById("logout-top").addEventListener("click", logout);
+
   // If not captain/selector → deny access
   if (role !== "captain" && role !== "selector") {
     content.innerHTML = `
       <div class="container">
         <h2>Access Denied</h2>
         <p class="error">You do not have permission to access the Captains Area.</p>
+        <a class="logout-btn" onclick="logout()">Logout</a>
       </div>
     `;
   } else {
@@ -154,11 +196,12 @@
         <a class="captain-btn" href="/Home/captains/matches.html">Notts Masters Matches</a>
         <a class="captain-btn" href="/Home/captains/calendar.html">Captains & Selectors Match Calendar</a>
         <a class="captain-btn" href="/Home/captains/availability.html">Player Availability</a>
+
+        <a class="logout-btn" onclick="logout()">Logout</a>
       </div>
     `;
   }
 </script>
-
 
 </body>
 </html>
