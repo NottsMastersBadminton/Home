@@ -28,31 +28,17 @@
       margin: 0 auto;
     }
 
-    /* Remove the old header title entirely */
+    /* ⭐ TITLE HEADER (Forest Green) */
     header {
-      background: #0a1a33;
+      background: #0B3D2E; /* Deep Forest Green */
       color: white;
-      padding: 0; /* no padding since no text */
+      padding: 20px;
       text-align: center;
     }
 
-    /* ⭐ HERO BANNER — full visibility, no cropping */
-    .hero-banner {
-      background: #0B3D2E; /* fills any empty space */
-      text-align: center;
-    }
-
-    .hero-banner img {
-      width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      border-bottom: 4px solid #0B3D2E;
-    }
-
+    /* ⭐ NAVIGATION (Forest Green) */
     .main-nav {
-      background: #13294b;
+      background: #0B3D2E; /* Deep Forest Green */
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -82,9 +68,10 @@
 
     h2 {
       margin-bottom: 20px;
-      color: #0a1a33;
+      color: #0B3D2E; /* Deep Forest Green */
     }
 
+    /* Facebook box */
     .fb-container {
       width: 100%;
       text-align: center;
@@ -100,11 +87,27 @@
       border-radius: 8px;
     }
 
+    /* ⭐ BANNER AT BOTTOM */
+    .hero-banner {
+      background: #0B3D2E; /* fills any empty space */
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .hero-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      border-top: 4px solid #0B3D2E;
+    }
+
     footer {
       margin-top: 50px;
       padding: 20px;
       text-align: center;
-      background: #0a1a33;
+      background: #0B3D2E;
       color: white;
       font-size: 0.9rem;
     }
@@ -114,10 +117,10 @@
 
 <div class="page-wrapper">
 
-  <!-- ⭐ CLEAN HERO BANNER -->
-  <div class="hero-banner">
-    <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Badminton Banner">
-  </div>
+  <!-- ⭐ TITLE HEADER -->
+  <header>
+    <h1>Notts Masters Badminton</h1>
+  </header>
 
   <!-- Shared nav include -->
   <div id="nav"></div>
@@ -145,6 +148,11 @@
       </iframe>
     </div>
 
+  </div>
+
+  <!-- ⭐ BANNER AT BOTTOM -->
+  <div class="hero-banner">
+    <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Badminton Banner">
   </div>
 
   <footer>
