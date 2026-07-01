@@ -12,69 +12,63 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f5f5f5; /* Neutral background */
+      background: #f5f5f5;
       color: #222;
-      overflow-x: hidden;
+      overflow-x: hidden; /* absolutely no sideways scroll */
     }
 
-    /* ⭐ FULL-WIDTH TWO-TONE HEADER */
-    header {
-      width: 100%;
-      background: linear-gradient(to bottom, #06261C, #0B3D2E);
-      color: white;
-      padding: 25px 0;
-      text-align: center;
-      border-bottom: 4px solid #0B3D2E;
+    /* Remove GitHub Pages wrapper spacing */
+    body > div {
+      margin: 0 !important;
+      padding: 0 !important;
+      max-width: 100% !important;
     }
 
-    /* ⭐ FULL-WIDTH TWO-TONE NAV */
-    .main-nav {
-      width: 100%;
-      background: linear-gradient(to bottom, #0B3D2E, #06261C);
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 18px;
-      padding: 12px 0;
-      border-bottom: 2px solid #06261C;
-    }
-
-    .main-nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 6px 10px;
-      border-radius: 4px;
-      transition: background 0.2s ease;
-    }
-
-    .main-nav a:hover {
-      background: rgba(255,255,255,0.15);
-    }
-
-    /* ⭐ CONTENT WRAPPER (CENTRED) */
+    /* Centre the whole page */
     .page-wrapper {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 0 20px;
+    }
+
+    header {
+      background: #0a1a33;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background: #13294b;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 8px 15px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
     }
 
     .container {
       max-width: 100%;
       margin: 40px auto;
+      padding: 0 20px;
       text-align: center;
     }
 
     h2 {
       margin-bottom: 20px;
-      color: #06261C;
+      color: #0a1a33;
     }
 
-    p {
-      color: #333;
-    }
-
-    /* Facebook box */
+    /* Facebook box – FINAL guaranteed centred version */
     .fb-container {
       width: 100%;
       text-align: center;
@@ -83,52 +77,33 @@
     .fb-container iframe {
       display: inline-block;
       width: 100%;
-      max-width: 300px;
+      max-width: 300px; /* ⭐ FINAL FIX: fits every phone safely */
       height: 800px;
       border: none;
       overflow: hidden;
       border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    }
-
-    /* ⭐ FULL-WIDTH BANNER AT BOTTOM */
-    .hero-banner {
-      width: 100%;
-      background: #06261C;
-      text-align: center;
-      margin-top: 40px;
-      padding: 0;
-    }
-
-    .hero-banner img {
-      width: 100%;
-      height: auto;
-      display: block;
-      margin: 0;
-      border: none;
-      box-shadow: none;
     }
 
     footer {
-      width: 100%;
       margin-top: 50px;
       padding: 20px;
       text-align: center;
-      background: #06261C;
+      background: #0a1a33;
       color: white;
       font-size: 0.9rem;
-      border-top: 2px solid #0B3D2E;
     }
   </style>
 </head>
 <body>
 
-  <!-- ⭐ FULL-WIDTH HEADER -->
+<div class="page-wrapper">
+
   <header>
     <h1>Notts Masters Badminton</h1>
+    <p></p>
   </header>
 
-  <!-- ⭐ FULL-WIDTH NAV -->
+  <!-- Shared nav include -->
   <div id="nav"></div>
   <script>
     fetch("/Home/nav.html")
@@ -138,37 +113,29 @@
       });
   </script>
 
-  <!-- ⭐ CENTRED CONTENT -->
-  <div class="page-wrapper">
+  <div class="container">
+    <h2>About Us</h2>
+    <p>Welcome to the Notts Masters Badminton Club website. Explore fixtures, players, and documents, or access the secure Captains Area.</p>
 
-    <div class="container">
-      <h2>About Us</h2>
-      <p>Welcome to the Notts Masters Badminton Club website. Explore fixtures, players, and documents, or access the secure Captains Area.</p>
+    <h2>Follow Us on Facebook</h2>
 
-      <h2>Follow Us on Facebook</h2>
-
-      <div class="fb-container">
-        <iframe 
-          src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100077877812929&tabs=timeline&width=300&height=800&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true"
-          scrolling="no"
-          frameborder="0"
-          allowfullscreen="true"
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-        </iframe>
-      </div>
-
+    <div class="fb-container">
+      <iframe 
+        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100077877812929&tabs=timeline&width=300&height=800&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true"
+        scrolling="no"
+        frameborder="0"
+        allowfullscreen="true"
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
     </div>
 
-  </div>
-
-  <!-- ⭐ FULL-WIDTH BANNER -->
-  <div class="hero-banner">
-    <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Badminton Banner">
   </div>
 
   <footer>
     © Notts Masters Badminton — Home
   </footer>
+
+</div>
 
 </body>
 </html>
