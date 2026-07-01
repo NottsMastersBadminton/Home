@@ -17,23 +17,20 @@
       overflow-x: hidden;
     }
 
-    .page-wrapper {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    /* ⭐ TWO-TONE ULTRA FOREST GREEN HEADER */
+    /* ⭐ FULL-WIDTH TWO-TONE HEADER */
     header {
-      background: linear-gradient(to bottom, #06261C, #0B3D2E); /* Two-tone */
+      width: 100%;
+      background: linear-gradient(to bottom, #06261C, #0B3D2E);
       color: white;
-      padding: 25px;
+      padding: 25px 0;
       text-align: center;
       border-bottom: 4px solid #0B3D2E;
     }
 
-    /* ⭐ TWO-TONE NAVIGATION */
+    /* ⭐ FULL-WIDTH TWO-TONE NAV */
     .main-nav {
-      background: linear-gradient(to bottom, #0B3D2E, #06261C); /* Reverse two-tone */
+      width: 100%;
+      background: linear-gradient(to bottom, #0B3D2E, #06261C);
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -55,10 +52,16 @@
       background: rgba(255,255,255,0.15);
     }
 
+    /* ⭐ CONTENT WRAPPER (CENTRED) */
+    .page-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
     .container {
       max-width: 100%;
       margin: 40px auto;
-      padding: 0 20px;
       text-align: center;
     }
 
@@ -88,8 +91,9 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.25);
     }
 
-    /* ⭐ BANNER AT BOTTOM — FLUSH TOP & BOTTOM */
+    /* ⭐ FULL-WIDTH BANNER AT BOTTOM */
     .hero-banner {
+      width: 100%;
       background: #06261C;
       text-align: center;
       margin-top: 40px;
@@ -106,6 +110,7 @@
     }
 
     footer {
+      width: 100%;
       margin-top: 50px;
       padding: 20px;
       text-align: center;
@@ -118,14 +123,12 @@
 </head>
 <body>
 
-<div class="page-wrapper">
-
-  <!-- ⭐ TITLE HEADER -->
+  <!-- ⭐ FULL-WIDTH HEADER -->
   <header>
     <h1>Notts Masters Badminton</h1>
   </header>
 
-  <!-- Shared nav include -->
+  <!-- ⭐ FULL-WIDTH NAV -->
   <div id="nav"></div>
   <script>
     fetch("/Home/nav.html")
@@ -135,25 +138,30 @@
       });
   </script>
 
-  <div class="container">
-    <h2>About Us</h2>
-    <p>Welcome to the Notts Masters Badminton Club website. Explore fixtures, players, and documents, or access the secure Captains Area.</p>
+  <!-- ⭐ CENTRED CONTENT -->
+  <div class="page-wrapper">
 
-    <h2>Follow Us on Facebook</h2>
+    <div class="container">
+      <h2>About Us</h2>
+      <p>Welcome to the Notts Masters Badminton Club website. Explore fixtures, players, and documents, or access the secure Captains Area.</p>
 
-    <div class="fb-container">
-      <iframe 
-        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100077877812929&tabs=timeline&width=300&height=800&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true"
-        scrolling="no"
-        frameborder="0"
-        allowfullscreen="true"
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-      </iframe>
+      <h2>Follow Us on Facebook</h2>
+
+      <div class="fb-container">
+        <iframe 
+          src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100077877812929&tabs=timeline&width=300&height=800&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true"
+          scrolling="no"
+          frameborder="0"
+          allowfullscreen="true"
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+        </iframe>
+      </div>
+
     </div>
 
   </div>
 
-  <!-- ⭐ BANNER AT BOTTOM -->
+  <!-- ⭐ FULL-WIDTH BANNER -->
   <div class="hero-banner">
     <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Badminton Banner">
   </div>
@@ -161,8 +169,6 @@
   <footer>
     © Notts Masters Badminton — Home
   </footer>
-
-</div>
 
 </body>
 </html>
