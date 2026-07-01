@@ -37,12 +37,23 @@
       text-align: center;
     }
 
-    /* ⭐ HERO BANNER */
+    /* ⭐ HERO BANNER — rounded, shadowed, responsive */
     .hero-banner img {
       width: 100%;
-      height: auto;
+      height: 240px;        /* smaller default height */
+      object-fit: cover;    /* crops nicely */
+      border-radius: 12px;  /* rounded corners */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25); /* soft shadow */
       display: block;
+      margin: 0 auto;
       border-bottom: 4px solid #0B3D2E; /* Deep Forest Green */
+    }
+
+    /* ⭐ Desktop screens — make it even smaller */
+    @media (min-width: 900px) {
+      .hero-banner img {
+        height: 180px;      /* reduced height on desktop */
+      }
     }
 
     .main-nav {
