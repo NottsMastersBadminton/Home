@@ -28,29 +28,27 @@
       margin: 0 auto;
     }
 
+    /* Remove the old header title entirely */
     header {
       background: #0a1a33;
       color: white;
-      padding: 20px;
+      padding: 0; /* no padding since no text */
       text-align: center;
     }
 
-    /* ⭐ CLEAN RECTANGULAR BANNER (no rounded edges) */
-    .hero-banner img {
-      width: 100%;
-      height: 240px;        /* default height */
-      object-fit: cover;    /* crop nicely */
-      display: block;
-      margin: 0 auto;
-      border-bottom: 4px solid #0B3D2E; /* Deep Forest Green */
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25); /* optional soft shadow */
+    /* ⭐ HERO BANNER — full visibility, no cropping */
+    .hero-banner {
+      background: #0B3D2E; /* fills any empty space */
+      text-align: center;
     }
 
-    /* ⭐ Desktop screens — make it smaller */
-    @media (min-width: 900px) {
-      .hero-banner img {
-        height: 180px;
-      }
+    .hero-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      border-bottom: 4px solid #0B3D2E;
     }
 
     .main-nav {
@@ -115,11 +113,6 @@
 <body>
 
 <div class="page-wrapper">
-
-  <header>
-    <h1>Notts Masters Badminton</h1>
-    <p></p>
-  </header>
 
   <!-- ⭐ CLEAN HERO BANNER -->
   <div class="hero-banner">
