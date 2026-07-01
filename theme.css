@@ -1,0 +1,80 @@
+/* ⭐ FULL-WIDTH TWO-TONE HEADER */
+header {
+  width: 100%;
+  background: linear-gradient(to bottom, #06261C, #0B3D2E);
+  color: white;
+  padding: 25px 0;
+  text-align: center;
+  border-bottom: 4px solid #0B3D2E;
+}
+
+/* ⭐ FULL-WIDTH TWO-TONE NAV */
+.main-nav {
+  width: 100%;
+  background: linear-gradient(to bottom, #0B3D2E, #06261C);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding: 12px 0;
+  border-bottom: 2px solid #06261C;
+}
+
+.main-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.main-nav a:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* ⭐ CENTRED CONTENT */
+.page-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #06261C;
+}
+
+p {
+  color: #333;
+}
+
+/* ⭐ FULL-WIDTH BANNER */
+.hero-banner {
+  width: 100%;
+  background: #06261C;
+  text-align: center;
+  margin-top: 40px;
+  padding: 0;
+}
+
+.hero-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+}
+
+/* ⭐ FOOTER */
+footer {
+  width: 100%;
+  margin-top: 50px;
+  padding: 20px;
+  text-align: center;
+  background: #06261C;
+  color: white;
+  font-size: 0.9rem;
+  border-top: 2px solid #0B3D2E;
+}
