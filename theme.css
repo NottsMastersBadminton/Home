@@ -1,3 +1,11 @@
+/* ⭐ GLOBAL PAGE BACKGROUND */
+body {
+  background: #f5f5f5;
+  color: #222;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
 /* ⭐ FULL-WIDTH TWO-TONE HEADER */
 header {
   width: 100%;
@@ -33,20 +41,40 @@ header {
   background: rgba(255,255,255,0.15);
 }
 
-/* ⭐ CENTRED CONTENT */
+/* ⭐ CENTRED CONTENT WRAPPER */
 .page-wrapper {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-h2 {
-  margin-bottom: 20px;
-  color: #06261C;
+/* ⭐ PAGE CONTENT LAYOUT */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
 }
 
-p {
-  color: #333;
+/* ⭐ WHITE CONTENT BOXES */
+.section {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 30px;
+}
+
+/* ⭐ ROLE LABELS */
+.role {
+  font-weight: bold;
+  color: #06261C; /* Ultra Forest Green accent */
+  margin-top: 15px;
+}
+
+/* ⭐ NAMES */
+.name {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
 }
 
 /* ⭐ FULL-WIDTH BANNER */
