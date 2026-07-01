@@ -6,26 +6,26 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-/* ⭐ FULL-WIDTH TWO-TONE HEADER */
+/* ⭐ FULL-WIDTH TWO-TONE BLUE HEADER */
 header {
   width: 100%;
-  background: linear-gradient(to bottom, #06261C, #0B3D2E);
+  background: linear-gradient(to bottom, #0a1a33, #13294b);
   color: white;
   padding: 25px 0;
   text-align: center;
-  border-bottom: 4px solid #0B3D2E;
+  border-bottom: 4px solid #13294b;
 }
 
-/* ⭐ FULL-WIDTH TWO-TONE NAV */
+/* ⭐ FULL-WIDTH TWO-TONE BLUE NAV */
 .main-nav {
   width: 100%;
-  background: linear-gradient(to bottom, #0B3D2E, #06261C);
+  background: linear-gradient(to bottom, #13294b, #0a1a33);
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 18px;
   padding: 12px 0;
-  border-bottom: 2px solid #06261C;
+  border-bottom: 2px solid #0a1a33;
 }
 
 .main-nav a {
@@ -67,7 +67,7 @@ header {
 /* ⭐ ROLE LABELS */
 .role {
   font-weight: bold;
-  color: #06261C; /* Ultra Forest Green accent */
+  color: #0a1a33; /* Blue accent */
   margin-top: 15px;
 }
 
@@ -77,32 +77,14 @@ header {
   font-size: 1.1rem;
 }
 
-/* ⭐ FULL-WIDTH BANNER */
-.hero-banner {
-  width: 100%;
-  background: #06261C;
-  text-align: center;
-  margin-top: 40px;
-  padding: 0;
-}
-
-.hero-banner img {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: 0;
-  border: none;
-  box-shadow: none;
-}
-
 /* ⭐ FOOTER */
 footer {
   width: 100%;
   margin-top: 50px;
   padding: 20px;
   text-align: center;
-  background: #06261C;
+  background: #0a1a33;
   color: white;
   font-size: 0.9rem;
-  border-top: 2px solid #0B3D2E;
+  border-top: 2px solid #13294b;
 }
