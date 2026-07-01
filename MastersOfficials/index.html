@@ -4,174 +4,114 @@
   <meta charset="UTF-8" />
   <title>Masters Officials — Notts Masters Badminton</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f5f5f5;
-      color: #222;
-    }
 
-    header {
-      background: #0a1a33;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    nav {
-      background: #13294b;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 10px 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 8px 15px;
-      font-weight: 600;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    h2 {
-      color: #0a1a33;
-      margin-top: 40px;
-      text-align: center;
-    }
-
-    .section {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      margin-bottom: 30px;
-    }
-
-    .role {
-      font-weight: bold;
-      color: #0a1a33;
-      margin-top: 15px;
-    }
-
-    .name {
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-    }
-
-    footer {
-      margin-top: 50px;
-      padding: 20px;
-      text-align: center;
-      background: #0a1a33;
-      color: white;
-      font-size: 0.9rem;
-    }
-  </style>
+  <!-- ⭐ Shared Ultra Forest Green Theme -->
+  <link rel="stylesheet" href="/Home/theme.css">
 </head>
 <body>
 
-<header>
-  <h1>Notts Masters Badminton</h1>
-  <p>Masters Officials</p>
-</header>
+  <!-- ⭐ FULL-WIDTH HEADER -->
+  <header>
+    <h1>Notts Masters Badminton</h1>
+    <p>Masters Officials</p>
+  </header>
 
-<!-- Shared nav include -->
-<div id="nav"></div>
-<script>
-  fetch("/Home/nav.html")
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById("nav").innerHTML = data;
-    });
-</script>
+  <!-- ⭐ FULL-WIDTH NAV -->
+  <div id="nav"></div>
+  <script>
+    fetch("/Home/nav.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("nav").innerHTML = data;
+      });
+  </script>
 
-<div class="container">
+  <!-- ⭐ CENTRED CONTENT -->
+  <div class="page-wrapper">
 
-  <h2>Meet the team</h2>
+    <div class="container">
 
-  <div class="section">
-    <div class="role">Co‑ordinator</div>
-    <div class="name">Lee Truong</div>
-    <div>Email: <a href="mailto:nottsmasters@gmail.com">nottsmasters@gmail.com</a></div>
+      <h2>Meet the team</h2>
 
-    <div class="role">Masters Fixture Secretaries</div>
-    <div class="name">Laura Birkinshaw / Sion Severn</div>
-    <div>Email: <a href="mailto:nottsmastersmatchsec@gmail.com">nottsmastersmatchsec@gmail.com</a></div>
+      <div class="section">
+        <div class="role">Co‑ordinator</div>
+        <div class="name">Lee Truong</div>
+        <div>Email: <a href="mailto:nottsmasters@gmail.com">nottsmasters@gmail.com</a></div>
 
-    <div class="role">Treasurer</div>
-    <div class="name">Alan Scott</div>
+        <div class="role">Masters Fixture Secretaries</div>
+        <div class="name">Laura Birkinshaw / Sion Severn</div>
+        <div>Email: <a href="mailto:nottsmastersmatchsec@gmail.com">nottsmastersmatchsec@gmail.com</a></div>
+
+        <div class="role">Treasurer</div>
+        <div class="name">Alan Scott</div>
+      </div>
+
+      <h2>Captains for the Season</h2>
+
+      <div class="section">
+        <div class="role">Over 40's</div>
+        <div class="name">Andy Shaw</div>
+
+        <div class="role">Over 45's</div>
+        <div class="name">Sion Severn</div>
+
+        <div class="role">Over 50's</div>
+        <div class="name">Carl Jennings</div>
+
+        <div class="role">Over 55's</div>
+        <div class="name">Warwick Mooney</div>
+
+        <div class="role">Over 60's</div>
+        <div class="name">David Hall</div>
+
+        <div class="role">Over 65's</div>
+        <div class="name">Jerry Deacon</div>
+      </div>
+
+      <h2>Masters General Committee</h2>
+
+      <div class="section">
+        Lee Truong, Laura Birkinshaw, Sion Severn, Alan Scott,  
+        Sally Moore, Graydon Peacock & Paula Wilson
+      </div>
+
+      <h2>Team Selectors</h2>
+
+      <div class="section">
+        <div class="role">Over 40's Team Selectors</div>
+        Andy Shaw & Abby Hunter
+
+        <div class="role" style="margin-top:20px;">Over 45's Team Selectors</div>
+        Sion Severn & Laura Birkinshaw
+
+        <div class="role" style="margin-top:20px;">Over 50's Team Selectors</div>
+        Carl Jennings & Paula Wilson
+
+        <div class="role" style="margin-top:20px;">Over 55's Team Selectors</div>
+        Warwick Mooney & Karen Gleave
+
+        <div class="role" style="margin-top:20px;">Over 60's Team Selectors</div>
+        David Hall & Sally Moore
+
+        <div class="role" style="margin-top:20px;">Over 65's Team Selectors</div>
+        Jerry Deacon & Julian Dumelow
+
+        <div class="role" style="margin-top:20px;">Over 70's Team Selectors</div>
+        Jacqui Burton & Ian Price
+      </div>
+
+    </div>
+
   </div>
 
-  <h2>Captains for the Season</h2>
-
-  <div class="section">
-    <div class="role">Over 40's</div>
-    <div class="name">Andy Shaw</div>
-
-    <div class="role">Over 45's</div>
-    <div class="name">Sion Severn</div>
-
-    <div class="role">Over 50's</div>
-    <div class="name">Carl Jennings</div>
-
-    <div class="role">Over 55's</div>
-    <div class="name">Warwick Mooney</div>
-
-    <div class="role">Over 60's</div>
-    <div class="name">David Hall</div>
-
-    <div class="role">Over 65's</div>
-    <div class="name">Jerry Deacon</div>
+  <!-- ⭐ FULL-WIDTH BANNER -->
+  <div class="hero-banner">
+    <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Badminton Banner">
   </div>
 
-  <h2>Masters General Committee</h2>
-
-  <div class="section">
-    Lee Truong, Laura Birkinshaw, Sion Severn, Alan Scott,  
-    Sally Moore, Graydon Peacock & Paula Wilson
-  </div>
-
-  <h2>Team Selectors</h2>
-
-  <div class="section">
-    <div class="role">Over 40's Team Selectors</div>
-    Andy Shaw & Abby Hunter
-
-    <div class="role" style="margin-top:20px;">Over 45's Team Selectors</div>
-    Sion Severn & Laura Birkinshaw
-
-    <div class="role" style="margin-top:20px;">Over 50's Team Selectors</div>
-    Carl Jennings & Paula Wilson
-
-    <div class="role" style="margin-top:20px;">Over 55's Team Selectors</div>
-    Warwick Mooney & Karen Gleave
-
-    <div class="role" style="margin-top:20px;">Over 60's Team Selectors</div>
-    David Hall & Sally Moore
-
-    <div class="role" style="margin-top:20px;">Over 65's Team Selectors</div>
-    Jerry Deacon & Julian Dumelow
-
-    <div class="role" style="margin-top:20px;">Over 70's Team Selectors</div>
-    Jacqui Burton & Ian Price
-  </div>
-
-</div>
-
-<footer>
-  © Notts Masters Badminton — Masters Officials
-</footer>
+  <footer>
+    © Notts Masters Badminton — Masters Officials
+  </footer>
 
 </body>
 </html>
