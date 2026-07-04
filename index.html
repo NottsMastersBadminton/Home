@@ -36,6 +36,29 @@
   <meta name="msapplication-navbutton-color" content="#06261C" />
   <meta name="apple-mobile-web-app-status-bar-style" content="#06261C" />
 
+  <!-- ⭐ FACEBOOK MOBILE FIX ⭐ -->
+  <script>
+    (function() {
+      const fbReferrers = [
+        "facebook.com",
+        "lm.facebook.com",
+        "l.facebook.com",
+        "m.facebook.com"
+      ];
+
+      const ref = document.referrer;
+      const isFB = fbReferrers.some(r => ref.includes(r));
+
+      if (isFB) {
+        const cleanUrl = window.location.origin + window.location.pathname;
+
+        if (window.location.href !== cleanUrl) {
+          window.location.replace(cleanUrl);
+        }
+      }
+    })();
+  </script>
+
   <!-- Your existing CSS stays exactly where it is -->
   <style>
     html, body {
@@ -189,3 +212,4 @@
 
 </body>
 </html>
+
