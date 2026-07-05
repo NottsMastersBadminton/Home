@@ -224,11 +224,22 @@
 </footer>
 
 <script>
-fetch('/Home/assets/data/articles.json')
-  .then(response => response.json())
-  .then(articles => {
+const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQzH5zzCXSbTKkjMiM20Y4BKHNbVg6i6Kt5WTnC4zP2pfON38i6-tzmJWyTqd-K8ko8idqescZJPmPp/pub?output=csv";
 
-    articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+fetch(sheetURL)
+  .then(response => response.text())
+  .then(csv => {
+    const rows = csv.split("\n").map(r => r.split(","));
+    const headers = rows.shift();
+
+    const articles = rows.map(row => {
+      const obj = {};
+      headers.forEach((h, i) => obj[h.trim()] = row[i] ? row[i].trim() : "");
+      return obj;
+    });
+
+    // Sort newest → oldest
+    articles.sort((a, b) => new Date(b.Date) - new Date(a.Date));
 
     const articleContainer = document.getElementById('article-container');
     const pagination = document.getElementById('pagination');
@@ -236,20 +247,22 @@ fetch('/Home/assets/data/articles.json')
     function showArticle(index) {
       const article = articles[index];
 
-      const mainImage = article.image
-        ? `<img src="${article.image}" alt="${article.title}">`
+      const mainImage = article.Image
+        ? `<img src="${article.Image}" alt="${article.Title}">`
         : '';
 
-      const galleryImages = article.gallery && article.gallery.length
-        ? article.gallery.map(img => `<img src="${img}" class="gallery-img">`).join('')
+      const galleryImages = article.Gallery
+        ? article.Gallery.split(",").map(img => `<img src="${img.trim()}" class="gallery-img">`).join('')
         : '';
+
+      const contentHTML = article.Content.replace(/\n/g, "<br><br>");
 
       articleContainer.innerHTML = `
         <div class="article-card">
-          <h2 class="article-title">${article.title}</h2>
-          <div class="article-date">${new Date(article.date).toLocaleDateString("en-GB")}</div>
+          <h2 class="article-title">${article.Title}</h2>
+          <div class="article-date">${new Date(article.Date).toLocaleDateString("en-GB")}</div>
           ${mainImage}
-          <p class="article-text">${article.content}</p>
+          <p class="article-text">${contentHTML}</p>
           <div class="article-gallery">${galleryImages}</div>
         </div>
       `;
