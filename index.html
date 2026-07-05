@@ -51,16 +51,30 @@
     .page-wrapper {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 20px;
     }
 
+    /* ⭐ ABOUT SECTION */
+    .about-section {
+      margin-bottom: 40px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .about-section h2 {
+      color: #0a1a33;
+      margin-bottom: 10px;
+    }
+
+    /* ⭐ ARTICLE DISPLAY */
     .article-card {
       background: white;
       color: #222;
-      padding: 30px;
+      padding: 25px;
       border-radius: 8px;
       box-shadow: 0 0 12px rgba(0,0,0,0.15);
       width: 100%;
+      box-sizing: border-box;
     }
 
     .article-title {
@@ -77,16 +91,14 @@
 
     .article-card img {
       width: 100%;
-      max-width: 900px;
       height: auto;
       margin: 20px 0;
       border-radius: 6px;
     }
 
     .gallery-img {
-      width: 100%;
-      max-width: 400px;
-      margin: 10px 20px 10px 0;
+      width: 48%;
+      margin: 1%;
       border-radius: 6px;
     }
 
@@ -100,6 +112,10 @@
     .pagination {
       text-align: center;
       margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
     }
 
     .pagination button {
@@ -107,10 +123,10 @@
       color: white;
       border: none;
       padding: 10px 15px;
-      margin: 5px;
       border-radius: 5px;
       cursor: pointer;
       font-size: 1rem;
+      min-width: 45px;
     }
 
     .pagination button.active {
@@ -122,6 +138,7 @@
       background: #0c3a6b;
     }
 
+    /* ⭐ BOTTOM BANNER */
     .bottom-banner {
       width: 100%;
       margin-top: 40px;
@@ -133,6 +150,7 @@
       display: block;
     }
 
+    /* ⭐ FOOTER */
     footer {
       width: 100%;
       padding: 20px;
@@ -141,6 +159,26 @@
       color: white;
       font-size: 0.9rem;
       margin-top: 40px;
+    }
+
+    /* ⭐ MOBILE FIXES */
+    @media (max-width: 600px) {
+      .article-title {
+        font-size: 1.6rem;
+      }
+
+      .article-text {
+        font-size: 1.05rem;
+      }
+
+      .gallery-img {
+        width: 100%;
+        margin: 10px 0;
+      }
+
+      .page-wrapper {
+        padding: 10px;
+      }
     }
   </style>
 </head>
@@ -159,8 +197,20 @@
 </script>
 
 <div class="page-wrapper">
+
+  <!-- ⭐ ABOUT SECTION -->
+  <div class="about-section">
+    <h2>About Us</h2>
+    <p>
+      Notts Masters Badminton: continuing a long county tradition of competitive age‑group play.
+      Fielding teams from O40s through to O70s and providing fixtures, results, documents, and captain resources.
+    </p>
+  </div>
+
+  <!-- ⭐ ARTICLE + PAGINATION -->
   <div id="article-container"></div>
   <div id="pagination" class="pagination"></div>
+
 </div>
 
 <div class="bottom-banner">
