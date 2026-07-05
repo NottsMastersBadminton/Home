@@ -189,7 +189,7 @@ fetch('/Home/assets/data/articles.json')
 
       card.innerHTML = `
         <h2 class="article-title">${article.title}</h2>
-        <div class="article-date">${new Date(article.date).toLocaleDateString()}</div>
+        <div class="article-date">${new Date(article.date).toLocaleDateString("en-GB")}</div>
         ${mainImage}
         <p class="article-text">${article.content}</p>
         <div class="article-gallery">${galleryImages}</div>
