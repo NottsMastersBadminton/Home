@@ -54,13 +54,6 @@
       padding: 40px 20px;
     }
 
-    .home-articles {
-      display: flex;
-      flex-direction: column;
-      gap: 60px;
-      text-align: left;
-    }
-
     .article-card {
       background: white;
       color: #222;
@@ -103,6 +96,32 @@
       margin-bottom: 25px;
     }
 
+    /* ⭐ PAGINATION */
+    .pagination {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .pagination button {
+      background: #13294b;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .pagination button.active {
+      background: #0a1a33;
+      font-weight: bold;
+    }
+
+    .pagination button:hover {
+      background: #0c3a6b;
+    }
+
     .bottom-banner {
       width: 100%;
       margin-top: 40px;
@@ -128,30 +147,31 @@
 
 <body>
 
-  <header>
-    <h1>Notts Masters Badminton</h1>
-  </header>
+<header>
+  <h1>Notts Masters Badminton</h1>
+</header>
 
-  <div id="nav"></div>
-  <script>
-    fetch("/Home/nav.html")
-      .then(r => r.text())
-      .then(html => document.getElementById("nav").innerHTML = html);
-  </script>
+<div id="nav"></div>
+<script>
+  fetch("/Home/nav.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("nav").innerHTML = html);
+</script>
 
-  <div class="page-wrapper">
-    <div id="home-articles" class="home-articles"></div>
-  </div>
+<div class="page-wrapper">
+  <div id="article-container"></div>
+  <div id="pagination" class="pagination"></div>
+</div>
 
-  <div class="bottom-banner">
-    <a href="/Home/">
-      <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Banner">
-    </a>
-  </div>
+<div class="bottom-banner">
+  <a href="/Home/">
+    <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Banner">
+  </a>
+</div>
 
-  <footer>
-    © Notts Masters Badminton — Home
-  </footer>
+<footer>
+  © Notts Masters Badminton — Home
+</footer>
 
 <script>
 fetch('/Home/assets/data/articles.json')
@@ -160,11 +180,11 @@ fetch('/Home/assets/data/articles.json')
 
     articles.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    const container = document.getElementById('home-articles');
+    const articleContainer = document.getElementById('article-container');
+    const pagination = document.getElementById('pagination');
 
-    articles.forEach(article => {
-      const card = document.createElement('div');
-      card.className = 'article-card';
+    function showArticle(index) {
+      const article = articles[index];
 
       const mainImage = article.image
         ? `<img src="${article.image}" alt="${article.title}">`
@@ -174,16 +194,34 @@ fetch('/Home/assets/data/articles.json')
         ? article.gallery.map(img => `<img src="${img}" class="gallery-img">`).join('')
         : '';
 
-      card.innerHTML = `
-        <h2 class="article-title">${article.title}</h2>
-        <div class="article-date">${new Date(article.date).toLocaleDateString("en-GB")}</div>
-        ${mainImage}
-        <p class="article-text">${article.content}</p>
-        <div class="article-gallery">${galleryImages}</div>
+      articleContainer.innerHTML = `
+        <div class="article-card">
+          <h2 class="article-title">${article.title}</h2>
+          <div class="article-date">${new Date(article.date).toLocaleDateString("en-GB")}</div>
+          ${mainImage}
+          <p class="article-text">${article.content}</p>
+          <div class="article-gallery">${galleryImages}</div>
+        </div>
       `;
+    }
 
-      container.appendChild(card);
-    });
+    function buildPagination() {
+      pagination.innerHTML = "";
+      articles.forEach((_, index) => {
+        const btn = document.createElement("button");
+        btn.textContent = index + 1;
+        btn.onclick = () => {
+          showArticle(index);
+          document.querySelectorAll(".pagination button").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+        };
+        if (index === 0) btn.classList.add("active");
+        pagination.appendChild(btn);
+      });
+    }
+
+    showArticle(0);
+    buildPagination();
   });
 </script>
 
