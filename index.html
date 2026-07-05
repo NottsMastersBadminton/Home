@@ -1,23 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ⭐ FULL SEO SECTION ⭐ -->
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Notts Masters Badminton | Nottinghamshire Masters Badminton Club</title>
-  <meta name="description" content="Official site for Notts Masters Badminton." />
+  <meta name="description" content="Official site for Notts Masters Badminton. Fixtures, results, officials, documents and county Masters badminton information for Nottinghamshire." />
+  <meta name="keywords" content="Notts Masters Badminton, Nottinghamshire badminton, Masters badminton, county badminton, badminton fixtures, badminton results, badminton officials" />
+  <meta name="author" content="Notts Masters Badminton" />
   <meta name="robots" content="index, follow" />
 
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Notts Masters Badminton" />
+  <meta property="og:description" content="Fixtures, results, officials and documents for Nottinghamshire Masters badminton." />
+  <meta property="og:image" content="https://nottsmastersbadminton.github.io/Home/documents/storage/Banner.jpg" />
+  <meta property="og:url" content="https://nottsmastersbadminton.github.io/Home/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Notts Masters Badminton" />
+  <meta name="twitter:description" content="Official Nottinghamshire Masters badminton site with fixtures, results and officials information." />
+  <meta name="twitter:image" content="https://nottsmastersbadminton.github.io/Home/documents/storage/Banner.jpg" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://nottsmastersbadminton.github.io/Home/" />
+
+  <!-- Favicon -->
   <link rel="icon" href="/Home/favicon.png" type="image/png" />
 
+  <!-- Theme Colours -->
+  <meta name="theme-color" content="#06261C" />
+  <meta name="msapplication-navbutton-color" content="#06261C" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="#06261C" />
+
+  <!-- ⭐ FACEBOOK MOBILE FIX ⭐ -->
+  <script>
+    (function() {
+      const fbReferrers = [
+        "facebook.com",
+        "lm.facebook.com",
+        "l.facebook.com",
+        "m.facebook.com"
+      ];
+
+      const ref = document.referrer;
+      const isFB = fbReferrers.some(r => ref.includes(r));
+
+      if (isFB) {
+        const cleanUrl = window.location.origin + window.location.pathname;
+
+        if (window.location.href !== cleanUrl) {
+          window.location.replace(cleanUrl);
+        }
+      }
+    })();
+  </script>
+
+  <!-- Your existing CSS stays exactly where it is -->
   <style>
     html, body {
       margin: 0;
       padding: 0;
+    }
+
+    body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #f5f5f5;
       color: #222;
       overflow-x: hidden;
+    }
+
+    body > div {
+      margin: 0 !important;
+      padding: 0 !important;
+      max-width: 100% !important;
+    }
+
+    .page-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
     header {
@@ -25,7 +89,6 @@
       color: white;
       padding: 20px;
       text-align: center;
-      width: 100%;
     }
 
     nav {
@@ -34,7 +97,6 @@
       justify-content: center;
       flex-wrap: wrap;
       padding: 10px 0;
-      width: 100%;
     }
 
     nav a {
@@ -48,97 +110,33 @@
       text-decoration: underline;
     }
 
-    .page-wrapper {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    /* ⭐ ABOUT SECTION */
-    .about-section {
-      margin-bottom: 40px;
-      font-size: 1.2rem;
-      line-height: 1.6;
-    }
-
-    .about-section h2 {
-      color: #0a1a33;
-      margin-bottom: 10px;
-    }
-
-    /* ⭐ ARTICLE DISPLAY */
-    .article-card {
-      background: white;
-      color: #222;
-      padding: 25px;
-      border-radius: 8px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.15);
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    .article-title {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      color: #0a1a33;
-    }
-
-    .article-date {
-      font-size: 1rem;
-      opacity: 0.8;
-      margin-bottom: 20px;
-    }
-
-    .article-card img {
-      width: 100%;
-      height: auto;
-      margin: 20px 0;
-      border-radius: 6px;
-    }
-
-    .gallery-img {
-      width: 48%;
-      margin: 1%;
-      border-radius: 6px;
-    }
-
-    .article-text {
-      font-size: 1.2rem;
-      line-height: 1.7;
-      margin-bottom: 25px;
-    }
-
-    /* ⭐ PAGINATION */
-    .pagination {
+    .container {
+      max-width: 100%;
+      margin: 40px auto;
+      padding: 0 20px;
       text-align: center;
-      margin-top: 40px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
     }
 
-    .pagination button {
-      background: #13294b;
-      color: white;
+    h2 {
+      margin-bottom: 20px;
+      color: #0a1a33;
+    }
+
+    .fb-container {
+      width: 100%;
+      text-align: center;
+    }
+
+    .fb-container iframe {
+      display: inline-block;
+      width: 100%;
+      max-width: 300px;
+      height: 800px;
       border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-      min-width: 45px;
+      overflow: hidden;
+      border-radius: 8px;
     }
 
-    .pagination button.active {
-      background: #0a1a33;
-      font-weight: bold;
-    }
-
-    .pagination button:hover {
-      background: #0c3a6b;
-    }
-
-    /* ⭐ BOTTOM BANNER */
     .bottom-banner {
       width: 100%;
       margin-top: 40px;
@@ -150,143 +148,67 @@
       display: block;
     }
 
-    /* ⭐ FOOTER */
     footer {
-      width: 100%;
+      margin-top: 50px;
       padding: 20px;
       text-align: center;
       background: #0a1a33;
       color: white;
       font-size: 0.9rem;
-      margin-top: 40px;
-    }
-
-    /* ⭐ MOBILE FIXES */
-    @media (max-width: 600px) {
-      .article-title {
-        font-size: 1.6rem;
-      }
-
-      .article-text {
-        font-size: 1.05rem;
-      }
-
-      .gallery-img {
-        width: 100%;
-        margin: 10px 0;
-      }
-
-      .page-wrapper {
-        padding: 10px;
-      }
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Notts Masters Badminton</h1>
-</header>
-
-<div id="nav"></div>
-<script>
-  fetch("/Home/nav.html")
-    .then(r => r.text())
-    .then(html => document.getElementById("nav").innerHTML = html);
-</script>
-
 <div class="page-wrapper">
 
-  <!-- ⭐ ABOUT SECTION -->
-  <div class="about-section">
+  <header>
+    <h1>Notts Masters Badminton</h1>
+    <p></p>
+  </header>
+
+  <!-- Shared nav include -->
+  <div id="nav"></div>
+  <script>
+    fetch("/Home/nav.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("nav").innerHTML = data;
+      });
+  </script>
+
+  <div class="container">
     <h2>About Us</h2>
-    <p>
-      Notts Masters Badminton: continuing a long county tradition of competitive age‑group play.
-      Fielding teams from O40s through to O70s and providing fixtures, results, documents, and captain resources.
-    </p>
+    <p>Notts Masters Badminton: continuing a long county tradition of competitive age‑group play.
+      Fielding teams from O40s through to O70s and providing fixtures, results, documents, and captain resources.</p>
+
+    <h2>Follow Us on Facebook</h2>
+
+    <div class="fb-container">
+      <iframe 
+        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100077877812929&tabs=timeline&width=300&height=800&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true"
+        scrolling="no"
+        frameborder="0"
+        allowfullscreen="true"
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
+
   </div>
 
-  <!-- ⭐ ARTICLE + PAGINATION -->
-  <div id="article-container"></div>
-  <div id="pagination" class="pagination"></div>
+  <!-- ⭐ Clickable bottom banner -->
+  <div class="bottom-banner">
+    <a href="/Home/">
+      <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Banner">
+    </a>
+  </div>
+
+  <footer>
+    © Notts Masters Badminton — Home
+  </footer>
 
 </div>
-
-<div class="bottom-banner">
-  <a href="/Home/">
-    <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Banner">
-  </a>
-</div>
-
-<footer>
-  © Notts Masters Badminton — Home
-</footer>
-
-<script>
-const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQzH5zzCXSbTKkjMiM20Y4BKHNbVg6i6Kt5WTnC4zP2pfON38i6-tzmJWyTqd-K8ko8idqescZJPmPp/pub?output=csv";
-
-fetch(sheetURL)
-  .then(response => response.text())
-  .then(csv => {
-    const rows = csv.split("\n").map(r => r.split(","));
-    const headers = rows.shift();
-
-    const articles = rows.map(row => {
-      const obj = {};
-      headers.forEach((h, i) => obj[h.trim()] = row[i] ? row[i].trim() : "");
-      return obj;
-    });
-
-    // Sort newest → oldest
-    articles.sort((a, b) => new Date(b.Date) - new Date(a.Date));
-
-    const articleContainer = document.getElementById('article-container');
-    const pagination = document.getElementById('pagination');
-
-    function showArticle(index) {
-      const article = articles[index];
-
-      const mainImage = article.Image
-        ? `<img src="${article.Image}" alt="${article.Title}">`
-        : '';
-
-      const galleryImages = article.Gallery
-        ? article.Gallery.split(",").map(img => `<img src="${img.trim()}" class="gallery-img">`).join('')
-        : '';
-
-      const contentHTML = article.Content.replace(/\n/g, "<br><br>");
-
-      articleContainer.innerHTML = `
-        <div class="article-card">
-          <h2 class="article-title">${article.Title}</h2>
-          <div class="article-date">${new Date(article.Date).toLocaleDateString("en-GB")}</div>
-          ${mainImage}
-          <p class="article-text">${contentHTML}</p>
-          <div class="article-gallery">${galleryImages}</div>
-        </div>
-      `;
-    }
-
-    function buildPagination() {
-      pagination.innerHTML = "";
-      articles.forEach((_, index) => {
-        const btn = document.createElement("button");
-        btn.textContent = index + 1;
-        btn.onclick = () => {
-          showArticle(index);
-          document.querySelectorAll(".pagination button").forEach(b => b.classList.remove("active"));
-          btn.classList.add("active");
-        };
-        if (index === 0) btn.classList.add("active");
-        pagination.appendChild(btn);
-      });
-    }
-
-    showArticle(0);
-    buildPagination();
-  });
-</script>
 
 </body>
 </html>
