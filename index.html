@@ -1,12 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Notts Masters Badminton | News & Updates</title>
-  <meta name="description" content="Latest news and updates from Nottinghamshire Masters Badminton." />
+  <title>Notts Masters Badminton | Nottinghamshire Masters Badminton Club</title>
+  <meta name="description" content="Official site for Notts Masters Badminton. Fixtures, results, officials, documents and county Masters badminton information for Nottinghamshire." />
   <meta name="robots" content="index, follow" />
 
   <link rel="icon" href="/Home/favicon.png" type="image/png" />
@@ -16,27 +15,25 @@
       margin: 0;
       padding: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #06261C;
-      color: white;
+      background: #f5f5f5; /* OLD HOMEPAGE BACKGROUND */
+      color: #222;
       overflow-x: hidden;
     }
 
     .page-wrapper {
-      max-width: 1000px;
+      max-width: 1000px; /* OLD HOMEPAGE WIDTH */
       margin: 0 auto;
-      padding-bottom: 40px;
     }
 
     header {
-      background: #083024;
-      padding: 25px;
+      background: #0a1a33; /* OLD DARK BLUE HEADER */
+      color: white;
+      padding: 20px;
       text-align: center;
-      font-size: 2rem;
-      font-weight: bold;
     }
 
     nav {
-      background: #13294b;
+      background: #13294b; /* OLD NAV BAR COLOUR */
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -54,25 +51,28 @@
       text-decoration: underline;
     }
 
-    /* ⭐ FULL ARTICLE LIST ⭐ */
+    /* ⭐ FULL ARTICLE LIST (NEW SYSTEM) ⭐ */
     .home-articles {
       display: flex;
       flex-direction: column;
       gap: 40px;
       margin-top: 40px;
       padding: 0 20px;
+      text-align: left;
     }
 
     .article-card {
-      background: #083024;
+      background: white; /* MATCH OLD PAGE WHITE CONTENT BOX */
+      color: #222;
       padding: 25px;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
     }
 
     .article-title {
       font-size: 1.6rem;
       margin-bottom: 10px;
+      color: #0a1a33; /* OLD HEADER BLUE */
     }
 
     .article-date {
@@ -102,46 +102,59 @@
       margin-bottom: 20px;
     }
 
-    .bottom-banner img {
+    .bottom-banner {
       width: 100%;
-      display: block;
       margin-top: 40px;
     }
 
+    .bottom-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
     footer {
+      margin-top: 50px;
+      padding: 20px;
       text-align: center;
-      padding: 15px;
-      background: #083024;
+      background: #0a1a33; /* OLD FOOTER BLUE */
+      color: white;
       font-size: 0.9rem;
-      margin-top: 40px;
     }
   </style>
 </head>
 
 <body>
+
 <div class="page-wrapper">
 
-  <header>Notts Masters Badminton — Latest News</header>
+  <header>
+    <h1>Notts Masters Badminton</h1>
+  </header>
 
   <!-- Shared nav include -->
   <div id="nav"></div>
   <script>
     fetch("/Home/nav.html")
-      .then(r => r.text())
-      .then(html => document.getElementById("nav").innerHTML = html);
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("nav").innerHTML = data;
+      });
   </script>
 
   <!-- ⭐ FULL ARTICLE LIST ⭐ -->
   <div id="home-articles" class="home-articles"></div>
 
-  <!-- Bottom banner -->
+  <!-- ⭐ Clickable bottom banner -->
   <div class="bottom-banner">
     <a href="/Home/">
       <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Banner">
     </a>
   </div>
 
-  <footer>© Notts Masters Badminton — Home</footer>
+  <footer>
+    © Notts Masters Badminton — Home
+  </footer>
 
 </div>
 
@@ -160,12 +173,10 @@ fetch('/Home/assets/data/articles.json')
       const card = document.createElement('div');
       card.className = 'article-card';
 
-      // Main image
       const mainImage = article.image
         ? `<img src="${article.image}" alt="${article.title}">`
         : '';
 
-      // Extra gallery images
       const galleryImages = article.gallery && article.gallery.length
         ? article.gallery.map(img => `<img src="${img}" class="gallery-img">`).join('')
         : '';
