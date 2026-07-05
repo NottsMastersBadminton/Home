@@ -20,7 +20,6 @@
       overflow-x: hidden;
     }
 
-    /* ⭐ FULL-WIDTH HEADER */
     header {
       background: #0a1a33;
       color: white;
@@ -29,7 +28,6 @@
       width: 100%;
     }
 
-    /* ⭐ FULL-WIDTH NAV */
     nav {
       background: #13294b;
       display: flex;
@@ -50,14 +48,12 @@
       text-decoration: underline;
     }
 
-    /* ⭐ CONTENT WRAPPER (1000px wide) */
     .page-wrapper {
       max-width: 1000px;
       margin: 0 auto;
       padding: 40px 20px;
     }
 
-    /* ⭐ FULL ARTICLE FEED */
     .home-articles {
       display: flex;
       flex-direction: column;
@@ -107,7 +103,6 @@
       margin-bottom: 25px;
     }
 
-    /* ⭐ FULL-WIDTH BOTTOM BANNER */
     .bottom-banner {
       width: 100%;
       margin-top: 40px;
@@ -119,7 +114,6 @@
       display: block;
     }
 
-    /* ⭐ FULL-WIDTH FOOTER */
     footer {
       width: 100%;
       padding: 20px;
@@ -134,12 +128,10 @@
 
 <body>
 
-  <!-- ⭐ FULL-WIDTH HEADER -->
   <header>
     <h1>Notts Masters Badminton</h1>
   </header>
 
-  <!-- ⭐ FULL-WIDTH NAV -->
   <div id="nav"></div>
   <script>
     fetch("/Home/nav.html")
@@ -147,30 +139,25 @@
       .then(html => document.getElementById("nav").innerHTML = html);
   </script>
 
-  <!-- ⭐ CONTENT WRAPPER -->
   <div class="page-wrapper">
     <div id="home-articles" class="home-articles"></div>
   </div>
 
-  <!-- ⭐ FULL-WIDTH BOTTOM BANNER -->
   <div class="bottom-banner">
     <a href="/Home/">
       <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Banner">
     </a>
   </div>
 
-  <!-- ⭐ FULL-WIDTH FOOTER -->
   <footer>
     © Notts Masters Badminton — Home
   </footer>
 
-<!-- ⭐ FULL ARTICLE LOADER ⭐ -->
 <script>
 fetch('/Home/assets/data/articles.json')
   .then(response => response.json())
   .then(articles => {
 
-    // Sort newest → oldest
     articles.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     const container = document.getElementById('home-articles');
