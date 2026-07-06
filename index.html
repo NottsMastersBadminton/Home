@@ -1,214 +1,341 @@
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ⭐ FULL SEO SECTION ⭐ -->
+  <meta charset="UTF-8">
+  <title>Notts Masters Badminton – Home</title>
+  <meta name="description" content="Nottinghamshire Masters Badminton – fixtures, results, news and information for Masters players.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Notts Masters Badminton | Nottinghamshire Masters Badminton Club</title>
-  <meta name="description" content="Official site for Notts Masters Badminton. Fixtures, results, officials, documents and county Masters badminton information for Nottinghamshire." />
-  <meta name="keywords" content="Notts Masters Badminton, Nottinghamshire badminton, Masters badminton, county badminton, badminton fixtures, badminton results, badminton officials" />
-  <meta name="author" content="Notts Masters Badminton" />
-  <meta name="robots" content="index, follow" />
-
-  <!-- OpenGraph -->
-  <meta property="og:title" content="Notts Masters Badminton" />
-  <meta property="og:description" content="Fixtures, results, officials and documents for Nottinghamshire Masters badminton." />
-  <meta property="og:image" content="https://nottsmastersbadminton.github.io/Home/documents/storage/Banner.jpg" />
-  <meta property="og:url" content="https://nottsmastersbadminton.github.io/Home/" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Notts Masters Badminton" />
-  <meta name="twitter:description" content="Official Nottinghamshire Masters badminton site with fixtures, results and officials information." />
-  <meta name="twitter:image" content="https://nottsmastersbadminton.github.io/Home/documents/storage/Banner.jpg" />
-
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://nottsmastersbadminton.github.io/Home/" />
-
-  <!-- Favicon -->
-  <link rel="icon" href="/Home/favicon.png" type="image/png" />
-
-  <!-- Theme Colours -->
-  <meta name="theme-color" content="#06261C" />
-  <meta name="msapplication-navbutton-color" content="#06261C" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="#06261C" />
-
-  <!-- ⭐ FACEBOOK MOBILE FIX ⭐ -->
-  <script>
-    (function() {
-      const fbReferrers = [
-        "facebook.com",
-        "lm.facebook.com",
-        "l.facebook.com",
-        "m.facebook.com"
-      ];
-
-      const ref = document.referrer;
-      const isFB = fbReferrers.some(r => ref.includes(r));
-
-      if (isFB) {
-        const cleanUrl = window.location.origin + window.location.pathname;
-
-        if (window.location.href !== cleanUrl) {
-          window.location.replace(cleanUrl);
-        }
-      }
-    })();
-  </script>
-
-  <!-- Your existing CSS stays exactly where it is -->
   <style>
-    html, body {
+    :root {
+      --ultra-forest: #06261C;
+      --deep-woodland: #083024;
+      --accent: #ffffff;
+      --accent-soft: #f5f7f6;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f5f5f5;
-      color: #222;
-      overflow-x: hidden;
+      background: var(--accent-soft);
+      color: #111;
     }
 
-    body > div {
-      margin: 0 !important;
-      padding: 0 !important;
-      max-width: 100% !important;
+    /* Top banner */
+    .hero {
+      background: linear-gradient(135deg, var(--ultra-forest), var(--deep-woodland));
+      color: var(--accent);
+      padding: 40px 20px 60px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .page-wrapper {
-      max-width: 1000px;
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      bottom: -40px;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.18), transparent 60%);
+      opacity: 0.8;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
       margin: 0 auto;
-    }
-
-    header {
-      background: #0a1a33;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    nav {
-      background: #13294b;
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
-      padding: 10px 0;
+      align-items: center;
+      gap: 24px;
+      position: relative;
+      z-index: 1;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 8px 15px;
+    .hero-text {
+      flex: 1 1 280px;
+    }
+
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+    }
+
+    .hero-tagline {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .hero-badge {
+      flex: 0 0 220px;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-radius: 999px;
+      padding: 18px 20px;
+      text-align: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-badge h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .hero-badge p {
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    /* Main layout */
+    .page {
+      max-width: 1100px;
+      margin: -30px auto 40px;
+      padding: 0 20px;
+    }
+
+    .card-shell {
+      background: #ffffff;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      padding: 24px 24px 28px;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 18px;
+    }
+
+    /* News grid */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 10px;
+    }
+
+    .news-card {
+      background: var(--accent-soft);
+      border-radius: 10px;
+      padding: 16px 16px 18px;
+      border: 1px solid #dde3df;
+    }
+
+    .news-card h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .news-card .date {
+      font-size: 0.8rem;
+      color: #777;
+      margin-bottom: 8px;
+    }
+
+    .news-card p {
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    /* Two-column lower area */
+    .lower-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 24px;
+      margin-top: 26px;
+    }
+
+    @media (max-width: 800px) {
+      .lower-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .info-list {
+      list-style: none;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .info-list li + li {
+      margin-top: 6px;
+    }
+
+    .info-list strong {
       font-weight: 600;
     }
 
-    nav a:hover {
-      text-decoration: underline;
+    /* Facebook panel */
+    .fb-panel {
+      background: var(--accent-soft);
+      border-radius: 10px;
+      padding: 16px;
+      border: 1px solid #dde3df;
     }
 
-    .container {
-      max-width: 100%;
-      margin: 40px auto;
-      padding: 0 20px;
-      text-align: center;
+    .fb-panel h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
     }
 
-    h2 {
-      margin-bottom: 20px;
-      color: #0a1a33;
+    .fb-panel p {
+      font-size: 0.85rem;
+      color: #555;
+      margin-bottom: 10px;
     }
 
-    .fb-container {
-      width: 100%;
-      text-align: center;
-    }
-
-    .fb-container iframe {
-      display: inline-block;
-      width: 100%;
-      max-width: 300px;
-      height: 800px;
-      border: none;
-      overflow: hidden;
-      border-radius: 8px;
-    }
-
+    /* Bottom banner */
     .bottom-banner {
-      width: 100%;
-      margin-top: 40px;
-    }
-
-    .bottom-banner img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    footer {
-      margin-top: 50px;
-      padding: 20px;
-      text-align: center;
-      background: #0a1a33;
-      color: white;
+      margin-top: 30px;
+      background: linear-gradient(135deg, var(--deep-woodland), var(--ultra-forest));
+      border-radius: 999px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--accent);
       font-size: 0.9rem;
+    }
+
+    .bottom-banner a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: 999px;
+      padding: 6px 14px;
+    }
+
+    .bottom-banner a:hover {
+      background: rgba(255,255,255,0.12);
     }
   </style>
 </head>
-
 <body>
 
-<div class="page-wrapper">
-
-  <header>
-    <h1>Notts Masters Badminton</h1>
-    <p></p>
+  <!-- HERO BANNER -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-title">Notts Masters Badminton</div>
+        <div class="hero-subtitle">Masters teams, fixtures, results and news for Nottinghamshire players.</div>
+        <div class="hero-tagline">
+          Competitive badminton for age‑group players across county and regional leagues.
+          Stay up to date with selections, match reports and documents here.
+        </div>
+      </div>
+      <div class="hero-badge">
+        <h2>Masters Season Hub</h2>
+        <p>
+          Latest news, fixtures and documents for<br>
+          <strong>Nottinghamshire Masters squads</strong>.
+        </p>
+      </div>
+    </div>
   </header>
 
-  <!-- Shared nav include -->
-  <div id="nav"></div>
-  <script>
-    fetch("/Home/nav.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("nav").innerHTML = data;
-      });
-  </script>
+  <!-- MAIN PAGE -->
+  <main class="page">
+    <div class="card-shell">
 
-  <div class="container">
-    <h2>About Us</h2>
-    <p>Notts Masters Badminton: continuing a long county tradition of competitive age‑group play.
-      Fielding teams from O40s through to O70s and providing fixtures, results, documents, and captain resources.</p>
+      <!-- LATEST NEWS -->
+      <section>
+        <h1 class="section-title">Latest Masters News</h1>
+        <p class="section-subtitle">
+          Short updates from recent matches, selections and training. Older items are kept in the Documents and Results pages.
+        </p>
 
-    <h2>Follow Us on Facebook</h2>
+        <div class="news-grid">
+          <article class="news-card">
+            <h3>Masters Win Season Opener</h3>
+            <p class="date">5 July 2026</p>
+            <p>
+              Strong performances across all age groups in the first fixture of the season,
+              with key wins from the 55s and 60s squads.
+            </p>
+          </article>
 
-    <div class="fb-container">
-      <iframe 
-        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100077877812929&tabs=timeline&width=300&height=800&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true"
-        scrolling="no"
-        frameborder="0"
-        allowfullscreen="true"
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-      </iframe>
+          <article class="news-card">
+            <h3>New Players Added to Squads</h3>
+            <p class="date">1 July 2026</p>
+            <p>
+              Several new Masters players have been confirmed for the 45s and 50s teams.
+              Updated squad lists are available in the Documents section.
+            </p>
+          </article>
+
+          <article class="news-card">
+            <h3>Training Session Photos</h3>
+            <p class="date">28 June 2026</p>
+            <p>
+              Photos from the recent Nottingham training session have been uploaded.
+              Check the Documents page for the latest gallery and notes.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- LOWER GRID: INFO + FACEBOOK -->
+      <section class="lower-grid">
+        <!-- Left: quick info / navigation -->
+        <div>
+          <h2 class="section-title">Masters Information</h2>
+          <p class="section-subtitle">
+            Use the links in the menu for full fixtures, results and documents. This page gives a quick overview.
+          </p>
+          <ul class="info-list">
+            <li><strong>Fixtures & Results:</strong> Full match schedules and scores are kept on the Fixtures and Results pages.</li>
+            <li><strong>Squad Lists:</strong> Current age‑group squads and selection notes are stored in the Documents area.</li>
+            <li><strong>Training & Events:</strong> Any upcoming training sessions or Masters events will be highlighted in the news cards above.</li>
+            <li><strong>Contact:</strong> For questions about Masters selection or availability, please use the contact details provided by the county.</li>
+          </ul>
+        </div>
+
+        <!-- Right: Facebook panel -->
+        <div class="fb-panel">
+          <h3>Masters Facebook Updates</h3>
+          <p>
+            Some additional photos and informal updates are shared on Facebook.
+            You can view them here, but all key information is also kept on this website.
+          </p>
+
+          <!-- Replace this with your existing Facebook embed code -->
+          <div style="background:#fff;border-radius:8px;padding:10px;text-align:center;font-size:0.85rem;color:#444;">
+            Facebook feed embed goes here.
+            <br>
+            (Existing iframe or plugin code can be pasted inside this box.)
+          </div>
+        </div>
+      </section>
+
+      <!-- BOTTOM BANNER -->
+      <div class="bottom-banner">
+        <span>Return to the main Notts Masters Badminton homepage.</span>
+        <a href="Home.html">Back to Home</a>
+      </div>
+
     </div>
-
-  </div>
-
-  <!-- ⭐ Clickable bottom banner -->
-  <div class="bottom-banner">
-    <a href="/Home/">
-      <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Banner">
-    </a>
-  </div>
-
-  <footer>
-    © Notts Masters Badminton — Home
-  </footer>
-
-</div>
+  </main>
 
 </body>
 </html>
