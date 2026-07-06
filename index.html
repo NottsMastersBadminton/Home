@@ -156,6 +156,43 @@
       color: white;
       font-size: 0.9rem;
     }
+
+    /* ⭐ FIXTURES STRIP ⭐ */
+    .fixtures-strip {
+      width: 100%;
+      background: #06261C;
+      color: white;
+      padding: 12px 0;
+      overflow: hidden;
+      border-top: 3px solid #083024;
+      border-bottom: 3px solid #083024;
+    }
+
+    .fixtures-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+    }
+
+    .fixtures-scroller {
+      display: flex;
+      gap: 40px;
+      white-space: nowrap;
+      animation: scrollFixtures 18s linear infinite;
+      padding-left: 100%;
+    }
+
+    .fixture-item {
+      font-size: 1rem;
+      opacity: 0.95;
+    }
+
+    @keyframes scrollFixtures {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
   </style>
 </head>
 
@@ -167,6 +204,12 @@
     <h1>Notts Masters Badminton</h1>
     <p></p>
   </header>
+
+  <!-- ⭐ FIXTURES STRIP INSERTED HERE ⭐ -->
+  <div class="fixtures-strip">
+    <div class="fixtures-title">Upcoming Fixtures</div>
+    <div id="fixturesScroller" class="fixtures-scroller"></div>
+  </div>
 
   <!-- Shared nav include -->
   <div id="nav"></div>
@@ -209,6 +252,80 @@
   </footer>
 
 </div>
+
+<!-- ⭐ FIXTURES SCRIPT ⭐ -->
+<script>
+async function loadFixtures() {
+  const calendarIDs = [
+    "d3f8306e6f53796b6ee44aae77df1396283908352c1e3ec7593355759e79897b@group.calendar.google.com",
+    "b024854681be57b3d997782a0b544ce4761141d5297b3db253c65e0f664f81b9@group.calendar.google.com",
+    "6c39481674e5e2ed5b0e8a2b70164e5b124b06859f7e926cb697482da942afff@group.calendar.google.com",
+    "6eeda09ae2397a6cfdb64ccbf7e877962005fb31ea6b91f28ebd6f3a33f866d3@group.calendar.google.com",
+    "0d4a5c59de910d6c7b712e5c1cae039ced84cb2781507b861a5f90700bdba8b7@group.calendar.google.com",
+    "0c081532fa53354144966a4086b8f174356f769bd57b0130cc998e0dad8b8a51@group.calendar.google.com",
+    "4401341695df1a71b52107fb7ddf3113a3274095deedd929d367856a2657c686@group.calendar.google.com",
+    "a81eefc3f905e0fa28dd51151cde566a86e85d5332312817621d87f9559474db@group.calendar.google.com",
+    "a734926c2b32b9e70c957b7c3fb75b8405aca9f7121f6e856be80f812a96cb0f@group.calendar.google.com"
+  ];
+
+  const events = [];
+
+  for (const id of calendarIDs) {
+    const url = `https://calendar.google.com/calendar/ical/${id}/public/basic.ics`;
+    const response = await fetch(url);
+    const text = await response.text();
+
+    const rawEvents = text.split("BEGIN:VEVENT");
+
+    rawEvents.forEach(block => {
+      const summaryMatch = block.match(/SUMMARY:(.+)/);
+      const dateMatch = block.match(/DTSTART:(\d{8}T\d{6})/);
+
+      if (summaryMatch && dateMatch) {
+        const summary = summaryMatch[1].trim();
+        const dt = dateMatch[1];
+
+        const year = dt.substring(0,4);
+        const month = dt.substring(4,6);
+        const day = dt.substring(6,8);
+        const hour = dt.substring(9,11);
+        const min = dt.substring(11,13);
+
+        const dateObj = new Date(`${year}-${month}-${day}T${hour}:${min}:00`);
+
+        if (dateObj > new Date()) {
+          events.push({
+            summary,
+            date: dateObj
+          });
+        }
+      }
+    });
+  }
+
+  events.sort((a,b) => a.date - b.date);
+
+  const scroller = document.getElementById("fixturesScroller");
+
+  events.slice(0,8).forEach(ev => {
+    const item = document.createElement("div");
+    item.className = "fixture-item";
+
+    const formatted = ev.date.toLocaleString("en-GB", {
+      weekday: "short",
+      day: "numeric",
+      month: "short",
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+
+    item.textContent = `${ev.summary} — ${formatted}`;
+    scroller.appendChild(item);
+  });
+}
+
+loadFixtures();
+</script>
 
 </body>
 </html>
