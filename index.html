@@ -1,383 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ⭐ FULL SEO SECTION ⭐ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Club Homepage</title>
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- GLOBAL THEME -->
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #06261C;
+    color: white;
+}
 
-  <title>Notts Masters Badminton | Nottinghamshire Masters Badminton Club</title>
-  <meta name="description" content="Official site for Notts Masters Badminton. Fixtures, results, officials, documents and county Masters badminton information for Nottinghamshire." />
-  <meta name="keywords" content="Notts Masters Badminton, Nottinghamshire badminton, Masters badminton, county badminton, badminton fixtures, badminton results, badminton officials" />
-  <meta name="author" content="Notts Masters Badminton" />
-  <meta name="robots" content="index, follow" />
+/* FULL-WIDTH TOP BANNER */
+.header-banner {
+    width: 100%;
+    height: 260px;
+    background: url('banner-silhouette.png') center/cover no-repeat;
+    border-bottom: 6px solid #083024;
+}
 
-  <!-- OpenGraph -->
-  <meta property="og:title" content="Notts Masters Badminton" />
-  <meta property="og:description" content="Fixtures, results, officials and documents for Nottinghamshire Masters badminton." />
-  <meta property="og:image" content="https://nottsmastersbadminton.github.io/Home/documents/storage/Banner.jpg" />
-  <meta property="og:url" content="https://nottsmastersbadminton.github.io/Home/" />
-  <meta property="og:type" content="website" />
+/* NAVIGATION */
+nav {
+    background: #083024;
+    padding: 12px 20px;
+    display: flex;
+    gap: 25px;
+    font-size: 1.2rem;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover {
+    text-decoration: underline;
+}
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Notts Masters Badminton" />
-  <meta name="twitter:description" content="Official Nottinghamshire Masters badminton site with fixtures, results and officials information." />
-  <meta name="twitter:image" content="https://nottsmastersbadminton.github.io/Home/documents/storage/Banner.jpg" />
+/* TICKER */
+.ticker {
+    background: #06261C;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1.25rem;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    border-bottom: 3px solid #083024;
+    animation: tickerMove 22s linear infinite;
+}
+@keyframes tickerMove {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
 
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://nottsmastersbadminton.github.io/Home/" />
+/* MAIN CONTENT */
+.main {
+    padding: 40px;
+    max-width: 1100px;
+    margin: auto;
+}
+.main h1 {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+}
+.main p {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+}
 
-  <!-- Favicon -->
-  <link rel="icon" href="/Home/favicon.png" type="image/png" />
-
-  <!-- Theme Colours -->
-  <meta name="theme-color" content="#06261C" />
-  <meta name="msapplication-navbutton-color" content="#06261C" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="#06261C" />
-
-  <!-- ⭐ FACEBOOK MOBILE FIX ⭐ -->
-  <script>
-    (function() {
-      const fbReferrers = [
-        "facebook.com",
-        "lm.facebook.com",
-        "l.facebook.com",
-        "m.facebook.com"
-      ];
-
-      const ref = document.referrer;
-      const isFB = fbReferrers.some(r => ref.includes(r));
-
-      if (isFB) {
-        const cleanUrl = window.location.origin + window.location.pathname;
-
-        if (window.location.href !== cleanUrl) {
-          window.location.replace(cleanUrl);
-        }
-      }
-    })();
-  </script>
-
-  <!-- ⭐ PAGE CSS ⭐ -->
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f5f5f5;
-      color: #222;
-      overflow-x: hidden;
-    }
-
-    .page-wrapper {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    header {
-      background: #0a1a33;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    nav {
-      background: #13294b;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 10px 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 8px 15px;
-      font-weight: 600;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .container {
-      max-width: 100%;
-      margin: 40px auto;
-      padding: 0 20px;
-      text-align: center;
-    }
-
-    h2 {
-      margin-bottom: 20px;
-      color: #0a1a33;
-    }
-
-    .fb-container iframe {
-      width: 100%;
-      max-width: 300px;
-      height: 800px;
-      border: none;
-      border-radius: 8px;
-    }
-
-    .bottom-banner img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    footer {
-      margin-top: 50px;
-      padding: 20px;
-      text-align: center;
-      background: #0a1a33;
-      color: white;
-      font-size: 0.9rem;
-    }
-
-    /* ⭐ NEXT MATCH BOX ⭐ */
-    .next-match-box {
-      background: #083024;
-      color: white;
-      padding: 18px;
-      text-align: center;
-      border-bottom: 4px solid #06261C;
-    }
-
-    .nm-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-      letter-spacing: 1px;
-    }
-
-    .nm-content {
-      font-size: 1.1rem;
-      opacity: 0.95;
-    }
-
-    /* ⭐ FIXTURES STRIP ⭐ */
-    .fixtures-strip {
-      width: 100%;
-      background: #06261C;
-      color: white;
-      padding: 12px 0;
-      overflow: hidden;
-      border-top: 3px solid #083024;
-      border-bottom: 3px solid #083024;
-    }
-
-    .fixtures-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      text-align: center;
-      margin-bottom: 6px;
-      letter-spacing: 1px;
-    }
-
-    .fixtures-scroller {
-      display: flex;
-      gap: 40px;
-      white-space: nowrap;
-      animation: scrollFixtures 20s linear infinite;
-      padding-left: 100%;
-    }
-
-    .fixture-item {
-      font-size: 1rem;
-      opacity: 0.95;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* ⭐ EVENT TYPE COLOURS ⭐ */
-    .match { color: #F6BF26; }
-    .training { color: #42A5F5; }
-    .tournament { color: #E53935; }
-    .social { color: #8E24AA; }
-    .default { color: #FFFFFF; }
-
-    @keyframes scrollFixtures {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
-  </style>
+/* BOTTOM HOMEPAGE LINK BANNER */
+.bottom-banner {
+    width: 100%;
+    background: #083024;
+    padding: 20px;
+    text-align: center;
+    margin-top: 60px;
+}
+.bottom-banner a {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+.bottom-banner a:hover {
+    text-decoration: underline;
+}
+</style>
 </head>
 
 <body>
 
-<div class="page-wrapper">
+<!-- TOP BANNER -->
+<div class="header-banner"></div>
 
-  <header>
-    <h1>Notts Masters Badminton</h1>
-  </header>
+<!-- NAVIGATION -->
+<nav>
+    <a href="index.html">Home</a>
+    <a href="calendar.html">Calendar</a>
+    <a href="captains.html">Captains</a>
+    <a href="fixtures.html">Fixtures</a>
+    <a href="contact.html">Contact</a>
+</nav>
 
-  <!-- ⭐ NEXT MATCH BOX ⭐ -->
-  <div class="next-match-box" id="nextMatchBox">
-    <div class="nm-title">Next Match</div>
-    <div class="nm-content" id="nextMatchContent">Loading...</div>
-  </div>
+<!-- TICKER -->
+<div id="eventTicker" class="ticker">Loading upcoming events…</div>
 
-  <!-- ⭐ FIXTURES STRIP ⭐ -->
-  <div class="fixtures-strip">
-    <div class="fixtures-title">Upcoming Fixtures</div>
-    <div id="fixturesScroller" class="fixtures-scroller"></div>
-  </div>
-
-  <!-- Shared nav include -->
-  <div id="nav"></div>
-  <script>
-    fetch("/Home/nav.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("nav").innerHTML = data;
-      });
-  </script>
-
-  <div class="container">
-    <h2>About Us</h2>
-    <p>Notts Masters Badminton: continuing a long county tradition of competitive age‑group play.
-      Fielding teams from O40s through to O70s and providing fixtures, results, documents, and captain resources.</p>
-
-    <h2>Follow Us on Facebook</h2>
-
-    <div class="fb-container">
-      <iframe 
-        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100077877812929&tabs=timeline&width=300&height=800&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true"
-        scrolling="no"
-        frameborder="0"
-        allowfullscreen="true"
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-      </iframe>
-    </div>
-
-  </div>
-
-  <!-- ⭐ Clickable bottom banner -->
-  <div class="bottom-banner">
-    <a href="/Home/">
-      <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Banner">
-    </a>
-  </div>
-
-  <footer>
-    © Notts Masters Badminton — Home
-  </footer>
-
+<!-- MAIN CONTENT -->
+<div class="main">
+    <h1>Welcome to the Club</h1>
+    <p>
+        This is the official homepage for the club.  
+        All fixtures, captains, age groups, and calendar downloads are available through the navigation above.  
+        The ticker shows the next upcoming events automatically from our live Google Sheet.
+    </p>
 </div>
 
-<!-- ⭐ FIXTURES SCRIPT ⭐ -->
+<!-- BOTTOM BANNER -->
+<div class="bottom-banner">
+    <a href="index.html">Return to Homepage</a>
+</div>
+
+<!-- TICKER SCRIPT -->
 <script>
-async function loadFixtures() {
-  const calendarIDs = [
-    "d3f8306e6f53796b6ee44aae77df1396283908352c1e3ec7593355759e79897b@group.calendar.google.com",
-    "b024854681be57b3d997782a0b544ce4761141d5297b3db253c65e0f664f81b9@group.calendar.google.com",
-    "6c39481674e5e2ed5b0e8a2b70164e5b124b06859f7e926cb697482da942afff@group.calendar.google.com",
-    "6eeda09ae2397a6cfdb64ccbf7e877962005fb31ea6b91f28ebd6f3a33f866d3@group.calendar.google.com",
-    "0d4a5c59de910d6c7b712e5c1cae039ced84cb2781507b861a5f90700bdba8b7@group.calendar.google.com",
-    "0c081532fa53354144966a4086b8f174356f769bd57b0130cc998e0dad8b8a51@group.calendar.google.com",
-    "4401341695df1a71b52107fb7ddf3113a3274095deedd929d367856a2657c686@group.calendar.google.com",
-    "a81eefc3f905e0fa28dd51151cde566a86e85d5332312817621d87f9559474db@group.calendar.google.com",
-    "a734926c2b32b9e70c957b7c3fb75b8405aca9f7121f6e856be80f812a96cb0f@group.calendar.google.com"
-  ];
+async function loadTicker() {
+    try {
+        const sheetURL = "https://docs.google.com/spreadsheets/d/1Z_2mF9dpJqJAuAijkyX_n6qaAVvTKtHxGSO8_xBC6mE/export?format=csv";
 
-  const events = [];
+        const response = await fetch(sheetURL);
+        const csv = await response.text();
+        const rows = csv.split("\n").map(r => r.split(","));
 
-  for (const id of calendarIDs) {
-    const url = `https://calendar.google.com/calendar/ical/${id}/public/basic.ics`;
-    const response = await fetch(url);
-    const text = await response.text();
+        const upcoming = rows.slice(1).filter(r => {
+            const date = new Date(r[2]);
+            return date > new Date();
+        });
 
-    const rawEvents = text.split("BEGIN:VEVENT");
-
-    rawEvents.forEach(block => {
-      const summaryMatch = block.match(/SUMMARY:(.+)/);
-      const dateMatch = block.match(/DTSTART:(\d{8}T\d{6})/);
-      const locationMatch = block.match(/LOCATION:(.+)/);
-
-      if (summaryMatch && dateMatch) {
-        const summary = summaryMatch[1].trim();
-        const dt = dateMatch[1];
-
-        const year = dt.substring(0,4);
-        const month = dt.substring(4,6);
-        const day = dt.substring(6,8);
-        const hour = dt.substring(9,11);
-        const min = dt.substring(11,13);
-
-        const dateObj = new Date(`${year}-${month}-${day}T${hour}:${min}:00`);
-
-        if (dateObj > new Date()) {
-          events.push({
-            summary,
-            location: locationMatch ? locationMatch[1].trim() : "",
-            date: dateObj
-          });
+        if (upcoming.length === 0) {
+            document.getElementById("eventTicker").innerText = "No upcoming events.";
+            return;
         }
-      }
-    });
-  }
 
-  events.sort((a,b) => a.date - b.date);
+        const tickerText = upcoming
+            .map(r => `${r[0]} – ${r[2]}`)
+            .join("   |   ");
 
-  function classify(ev) {
-    const s = ev.summary.toLowerCase();
-    if (s.includes("vs") || s.includes("match")) return "match";
-    if (s.includes("training") || s.includes("practice")) return "training";
-    if (s.includes("tournament") || s.includes("championship")) return "tournament";
-    if (s.includes("social") || s.includes("meal")) return "social";
-    return "default";
-  }
+        document.getElementById("eventTicker").innerText = tickerText;
 
-  const next = events[0];
-  if (next) {
-    const formatted = next.date.toLocaleString("en-GB", {
-      weekday: "short",
-      day: "numeric",
-      month: "short",
-      hour: "2-digit",
-      minute: "2-digit"
-    });
-
-    document.getElementById("nextMatchContent").innerHTML =
-      `<strong>${next.summary}</strong><br>${formatted}<br>${next.location || ""}`;
-  }
-
-  const scroller = document.getElementById("fixturesScroller");
-
-  events.slice(0,10).forEach(ev => {
-    const item = document.createElement("div");
-    const type = classify(ev);
-
-    item.className = `fixture-item ${type}`;
-
-    const icon = {
-      match: "🏸",
-      training: "📘",
-      tournament: "🎖",
-      social: "🍻",
-      default: "📅"
-    }[type];
-
-    const formatted = ev.date.toLocaleString("en-GB", {
-      weekday: "short",
-      day: "numeric",
-      month: "short",
-      hour: "2-digit",
-      minute: "2-digit"
-    });
-
-    item.textContent = `${icon} ${ev.summary} — ${formatted}`;
-    scroller.appendChild(item);
-  });
+    } catch (error) {
+        document.getElementById("eventTicker").innerText = "Unable to load events.";
+        console.error("Ticker error:", error);
+    }
 }
 
-loadFixtures();
+loadTicker();
 </script>
 
 </body>
