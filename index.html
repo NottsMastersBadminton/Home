@@ -59,7 +59,7 @@
     })();
   </script>
 
-  <!-- Your existing CSS stays exactly where it is -->
+  <!-- ⭐ PAGE CSS ⭐ -->
   <style>
     html, body {
       margin: 0;
@@ -71,12 +71,6 @@
       background: #f5f5f5;
       color: #222;
       overflow-x: hidden;
-    }
-
-    body > div {
-      margin: 0 !important;
-      padding: 0 !important;
-      max-width: 100% !important;
     }
 
     .page-wrapper {
@@ -122,24 +116,12 @@
       color: #0a1a33;
     }
 
-    .fb-container {
-      width: 100%;
-      text-align: center;
-    }
-
     .fb-container iframe {
-      display: inline-block;
       width: 100%;
       max-width: 300px;
       height: 800px;
       border: none;
-      overflow: hidden;
       border-radius: 8px;
-    }
-
-    .bottom-banner {
-      width: 100%;
-      margin-top: 40px;
     }
 
     .bottom-banner img {
@@ -155,6 +137,27 @@
       background: #0a1a33;
       color: white;
       font-size: 0.9rem;
+    }
+
+    /* ⭐ NEXT MATCH BOX ⭐ */
+    .next-match-box {
+      background: #083024;
+      color: white;
+      padding: 18px;
+      text-align: center;
+      border-bottom: 4px solid #06261C;
+    }
+
+    .nm-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+    }
+
+    .nm-content {
+      font-size: 1.1rem;
+      opacity: 0.95;
     }
 
     /* ⭐ FIXTURES STRIP ⭐ */
@@ -180,14 +183,24 @@
       display: flex;
       gap: 40px;
       white-space: nowrap;
-      animation: scrollFixtures 18s linear infinite;
+      animation: scrollFixtures 20s linear infinite;
       padding-left: 100%;
     }
 
     .fixture-item {
       font-size: 1rem;
       opacity: 0.95;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
+
+    /* ⭐ EVENT TYPE COLOURS ⭐ */
+    .match { color: #F6BF26; }
+    .training { color: #42A5F5; }
+    .tournament { color: #E53935; }
+    .social { color: #8E24AA; }
+    .default { color: #FFFFFF; }
 
     @keyframes scrollFixtures {
       0% { transform: translateX(0); }
@@ -202,10 +215,15 @@
 
   <header>
     <h1>Notts Masters Badminton</h1>
-    <p></p>
   </header>
 
-  <!-- ⭐ FIXTURES STRIP INSERTED HERE ⭐ -->
+  <!-- ⭐ NEXT MATCH BOX ⭐ -->
+  <div class="next-match-box" id="nextMatchBox">
+    <div class="nm-title">Next Match</div>
+    <div class="nm-content" id="nextMatchContent">Loading...</div>
+  </div>
+
+  <!-- ⭐ FIXTURES STRIP ⭐ -->
   <div class="fixtures-strip">
     <div class="fixtures-title">Upcoming Fixtures</div>
     <div id="fixturesScroller" class="fixtures-scroller"></div>
@@ -280,6 +298,7 @@ async function loadFixtures() {
     rawEvents.forEach(block => {
       const summaryMatch = block.match(/SUMMARY:(.+)/);
       const dateMatch = block.match(/DTSTART:(\d{8}T\d{6})/);
+      const locationMatch = block.match(/LOCATION:(.+)/);
 
       if (summaryMatch && dateMatch) {
         const summary = summaryMatch[1].trim();
@@ -296,6 +315,7 @@ async function loadFixtures() {
         if (dateObj > new Date()) {
           events.push({
             summary,
+            location: locationMatch ? locationMatch[1].trim() : "",
             date: dateObj
           });
         }
@@ -305,11 +325,44 @@ async function loadFixtures() {
 
   events.sort((a,b) => a.date - b.date);
 
+  function classify(ev) {
+    const s = ev.summary.toLowerCase();
+    if (s.includes("vs") || s.includes("match")) return "match";
+    if (s.includes("training") || s.includes("practice")) return "training";
+    if (s.includes("tournament") || s.includes("championship")) return "tournament";
+    if (s.includes("social") || s.includes("meal")) return "social";
+    return "default";
+  }
+
+  const next = events[0];
+  if (next) {
+    const formatted = next.date.toLocaleString("en-GB", {
+      weekday: "short",
+      day: "numeric",
+      month: "short",
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+
+    document.getElementById("nextMatchContent").innerHTML =
+      `<strong>${next.summary}</strong><br>${formatted}<br>${next.location || ""}`;
+  }
+
   const scroller = document.getElementById("fixturesScroller");
 
-  events.slice(0,8).forEach(ev => {
+  events.slice(0,10).forEach(ev => {
     const item = document.createElement("div");
-    item.className = "fixture-item";
+    const type = classify(ev);
+
+    item.className = `fixture-item ${type}`;
+
+    const icon = {
+      match: "🏸",
+      training: "📘",
+      tournament: "🎖",
+      social: "🍻",
+      default: "📅"
+    }[type];
 
     const formatted = ev.date.toLocaleString("en-GB", {
       weekday: "short",
@@ -319,7 +372,7 @@ async function loadFixtures() {
       minute: "2-digit"
     });
 
-    item.textContent = `${ev.summary} — ${formatted}`;
+    item.textContent = `${icon} ${ev.summary} — ${formatted}`;
     scroller.appendChild(item);
   });
 }
