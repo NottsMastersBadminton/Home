@@ -40,17 +40,17 @@
 
 <div id="nav"></div>
 <script>
-  fetch("/Home/nav.html")
+  // IMPORTANT: relative path so it works inside /Home/matches/
+  fetch("../nav.html")
     .then(r => r.text())
     .then(html => document.getElementById("nav").innerHTML = html);
 </script>
 
 <div class="container">
 
-  <!-- PUBLIC CONTENT -->
-  <iframe src="https://docs.google.com/spreadsheets/d/16ALLKw2po0AvNRycDs8sDFjtdxKZDQSNvxJRvuTwsEU/edit?gid=0#gid=0"></iframe>
+  <iframe src="https://docs.google.com/spreadsheets/d/REPLACE_WITH_NEW_SHEET_ID/edit?gid=0#gid=0"></iframe>
 
-  <a href="/Home/index.html" class="back-button">⬅ Back to Home</a>
+  <a href="../index.html" class="back-button">⬅ Back to Home</a>
 
 </div>
 
