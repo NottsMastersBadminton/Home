@@ -163,14 +163,24 @@
     <p></p>
   </header>
 
-  <!-- ⭐ SEASON COUNTDOWN TIMER AT TOP ⭐ -->
+  <!-- Shared nav include -->
+  <div id="nav"></div>
+  <script>
+    fetch("/Home/nav.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("nav").innerHTML = data;
+      });
+  </script>
+
+  <!-- ⭐ COUNTDOWN TIMER BETWEEN NAV + ABOUT US ⭐ -->
   <div id="season-timer" style="margin:30px auto 0; background:white; padding:25px; border-radius:12px; box-shadow:0 6px 16px rgba(0,0,0,0.12); text-align:center; max-width:90%;">
     <h2>Season 2026–27</h2>
     <div id="timer-text" style="font-size:1.6rem; font-weight:700; margin-top:10px;"></div>
   </div>
 
   <script>
-    const SEASON_START = new Date("2026-09-15T09:00:00");
+    const SEASON_START = new Date("2026-10-18T12:00:00");
 
     function updateSeasonTimer() {
       const now = new Date();
@@ -195,16 +205,6 @@
     updateSeasonTimer();
   </script>
   <!-- ⭐ END TIMER ⭐ -->
-
-  <!-- Shared nav include -->
-  <div id="nav"></div>
-  <script>
-    fetch("/Home/nav.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("nav").innerHTML = data;
-      });
-  </script>
 
   <div class="container">
     <h2>About Us</h2>
