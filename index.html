@@ -49,7 +49,6 @@
           window.location.pathname +
           (params.toString() ? "?" + params.toString() : "");
 
-        // Rewrite URL without reloading the page
         window.history.replaceState({}, document.title, cleanUrl);
       }
     })();
@@ -190,6 +189,39 @@
         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
       </iframe>
     </div>
+
+    <!-- ⭐ SEASON COUNTDOWN TIMER ⭐ -->
+    <div id="season-timer" style="margin-top:40px; background:white; padding:25px; border-radius:12px; box-shadow:0 6px 16px rgba(0,0,0,0.12);">
+      <h2>Season 2026–27</h2>
+      <div id="timer-text" style="font-size:1.6rem; font-weight:700; margin-top:10px;"></div>
+    </div>
+
+    <script>
+      const SEASON_START = new Date("2026-09-15T09:00:00");
+
+      function updateSeasonTimer() {
+        const now = new Date();
+        const diff = SEASON_START - now;
+        const timerText = document.getElementById("timer-text");
+
+        if (diff <= 0) {
+          timerText.textContent = "Season has started!";
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        timerText.textContent =
+          `Season 2026–27 starts in ${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+
+      setInterval(updateSeasonTimer, 1000);
+      updateSeasonTimer();
+    </script>
+    <!-- ⭐ END TIMER ⭐ -->
 
   </div>
 
