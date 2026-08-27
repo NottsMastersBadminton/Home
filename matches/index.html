@@ -18,6 +18,15 @@
       border-radius: 10px; background: white;
     }
 
+    .message-box {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+      font-size: 1.2rem;
+      margin-top: 40px;
+    }
+
     .back-button {
       display: inline-block; margin: 25px auto 0; padding: 12px 20px;
       background: #13294b; color: white; text-decoration: none;
@@ -40,7 +49,6 @@
 
 <div id="nav"></div>
 <script>
-  // IMPORTANT: relative path so it works inside /Home/matches/
   fetch("../nav.html")
     .then(r => r.text())
     .then(html => document.getElementById("nav").innerHTML = html);
@@ -48,7 +56,29 @@
 
 <div class="container">
 
-  <iframe src="https://docs.google.com/spreadsheets/d/16ALLKw2po0AvNRycDs8sDFjtdxKZDQSNvxJRvuTwsEU/edit?gid=0#gid=0"></iframe>
+  <script>
+    // CHANGE THIS TO true WHEN MATCHES ARE READY
+    const MATCHES_READY = false;
+  </script>
+
+  <div id="content"></div>
+
+  <script>
+    const content = document.getElementById("content");
+
+    if (MATCHES_READY) {
+      content.innerHTML = `
+        <iframe src="https://docs.google.com/spreadsheets/d/16ALLKw2po0AvNRycDs8sDFjtdxKZDQSNvxJRvuTwsEU/edit?gid=0#gid=0"></iframe>
+      `;
+    } else {
+      content.innerHTML = `
+        <div class="message-box">
+          <h2>Matches Coming Soon</h2>
+          <p>Once all matches have been confirmed, the full fixture list will appear here.</p>
+        </div>
+      `;
+    }
+  </script>
 
   <a href="../index.html" class="back-button">⬅ Back to Home</a>
 
