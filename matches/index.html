@@ -56,28 +56,48 @@
 
 <div class="container">
 
-  <script>
-    // CHANGE THIS TO true WHEN MATCHES ARE READY
-    const MATCHES_READY = false;
-  </script>
-
   <div id="content"></div>
 
   <script>
-    const content = document.getElementById("content");
+    // Set the date/time when the matches will be released
+    // ⚠️ Change this to your real release moment
+    const RELEASE_DATE = new Date("2026-09-15T09:00:00");
 
-    if (MATCHES_READY) {
-      content.innerHTML = `
-        <iframe src="https://docs.google.com/spreadsheets/d/16ALLKw2po0AvNRycDs8sDFjtdxKZDQSNvxJRvuTwsEU/edit?gid=0#gid=0"></iframe>
-      `;
-    } else {
+    function updateCountdown() {
+      const now = new Date();
+      const diff = RELEASE_DATE - now;
+      const content = document.getElementById("content");
+
+      if (diff <= 0) {
+        // Countdown finished → show spreadsheet
+        content.innerHTML = `
+          <iframe src="https://docs.google.com/spreadsheets/d/16ALLKw2po0AvNRycDs8sDFjtdxKZDQSNvxJRvuTwsEU/edit?gid=0#gid=0"></iframe>
+        `;
+        return;
+      }
+
+      // Calculate remaining time
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
       content.innerHTML = `
         <div class="message-box">
           <h2>Matches Coming Soon</h2>
           <p>Once all matches have been confirmed, the full fixture list will appear here.</p>
+
+          <h3 style="margin-top:25px;">Countdown to Release</h3>
+          <div style="font-size:2rem; font-weight:700; margin-top:10px;">
+            ${days}d ${hours}h ${minutes}m ${seconds}s
+          </div>
         </div>
       `;
     }
+
+    // Update every second
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
   </script>
 
   <a href="../index.html" class="back-button">⬅ Back to Home</a>
