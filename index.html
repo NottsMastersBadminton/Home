@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+  <!-- ⭐ GOOGLE ANALYTICS (GA4) ⭐ -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2LZ8WDPHSL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2LZ8WDPHSL');
+  </script>
+
   <!-- ⭐ FULL SEO SECTION ⭐ -->
 
   <meta charset="UTF-8" />
@@ -153,90 +164,3 @@
     }
   </style>
 </head>
-
-<body>
-
-<div class="page-wrapper">
-
-  <header>
-    <h1>Notts Masters Badminton</h1>
-    <p></p>
-  </header>
-
-  <!-- Shared nav include -->
-  <div id="nav"></div>
-  <script>
-    fetch("/Home/nav.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("nav").innerHTML = data;
-      });
-  </script>
-
-  <!-- ⭐ COUNTDOWN TIMER BETWEEN NAV + ABOUT US ⭐ -->
-  <div id="season-timer" style="margin:30px auto 0; background:white; padding:25px; border-radius:12px; box-shadow:0 6px 16px rgba(0,0,0,0.12); text-align:center; max-width:90%;">
-    <h2>Season 2026–27</h2>
-    <div id="timer-text" style="font-size:1.6rem; font-weight:700; margin-top:10px;"></div>
-  </div>
-
-  <script>
-    const SEASON_START = new Date("2026-10-18T12:00:00");
-
-    function updateSeasonTimer() {
-      const now = new Date();
-      const diff = SEASON_START - now;
-      const timerText = document.getElementById("timer-text");
-
-      if (diff <= 0) {
-        timerText.textContent = "Season has started!";
-        return;
-      }
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-
-      timerText.textContent =
-        `Starts in ${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }
-
-    setInterval(updateSeasonTimer, 1000);
-    updateSeasonTimer();
-  </script>
-  <!-- ⭐ END TIMER ⭐ -->
-
-  <div class="container">
-    <h2>About Us</h2>
-    <p>Notts Masters Badminton: continuing a long county tradition of competitive age‑group play.
-      Fielding teams from O40s through to O70s and providing fixtures, results, documents, and captain resources.</p>
-
-    <h2>Follow Us on Facebook</h2>
-
-    <div class="fb-container">
-      <iframe 
-        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100077877812929&tabs=timeline&width=300&height=800&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true"
-        scrolling="no"
-        frameborder="0"
-        allowfullscreen="true"
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-      </iframe>
-    </div>
-
-  </div>
-
-  <!-- ⭐ Clickable bottom banner -->
-  <div class="bottom-banner">
-    <a href="/Home/">
-      <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Banner">
-    </a>
-  </div>
-
-  <footer>
-    © Notts Masters Badminton — Home
-  </footer>
-
-</div>
-
-</body>
-</html>
