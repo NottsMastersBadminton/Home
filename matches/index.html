@@ -32,7 +32,6 @@
       text-align: center; background: #0a1a33; color: white;
     }
 
-    /* ⭐ Full-width bottom banner */
     .bottom-banner {
       width: 100%;
       margin-top: 40px;
@@ -65,16 +64,31 @@
 
   <script>
     const RELEASE_DATE = new Date("2026-09-01T10:00:00");
+    const content = document.getElementById("content");
+
+    function renderCountdown() {
+      content.innerHTML = `
+        <div class="message-box">
+          <h2>Matches Coming Soon</h2>
+          <p>Once all matches have been confirmed, the full fixture list will appear here.</p>
+
+          <h3 style="margin-top:25px;">Countdown to Release</h3>
+          <div id="countdown" style="font-size:2rem; font-weight:700; margin-top:10px;">
+            <!-- countdown -->
+          </div>
+        </div>
+      `;
+    }
 
     function updateCountdown() {
       const now = new Date();
       const diff = RELEASE_DATE - now;
-      const content = document.getElementById("content");
 
       if (diff <= 0) {
         content.innerHTML = `
           <iframe src="https://docs.google.com/spreadsheets/d/16ALLKw2po0AvNRycDs8sDFjtdxKZDQSNvxJRvuTwsEU/edit?gid=0#gid=0"></iframe>
         `;
+        clearInterval(countdownTimer);
         return;
       }
 
@@ -83,26 +97,19 @@
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
 
-      content.innerHTML = `
-        <div class="message-box">
-          <h2>Matches Coming Soon</h2>
-          <p>Once all matches have been confirmed, the full fixture list will appear here.</p>
-
-          <h3 style="margin-top:25px;">Countdown to Release</h3>
-          <div style="font-size:2rem; font-weight:700; margin-top:10px;">
-            ${days}d ${hours}h ${minutes}m ${seconds}s
-          </div>
-        </div>
-      `;
+      const countdownEl = document.getElementById("countdown");
+      if (countdownEl) {
+        countdownEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
     }
 
-    setInterval(updateCountdown, 1000);
+    renderCountdown();
+    const countdownTimer = setInterval(updateCountdown, 1000);
     updateCountdown();
   </script>
 
 </div>
 
-<!-- ⭐ Full-width bottom banner (now outside container) -->
 <div class="bottom-banner">
   <a href="/Home/">
     <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Banner">
