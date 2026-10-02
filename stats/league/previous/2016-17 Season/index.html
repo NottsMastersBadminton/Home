@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Previous Years League Player Performance Statistics — Notts Masters Badminton</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
 
+    header {
+      background: #0a1a33;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background: #13294b;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 8px 15px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #0a1a33;
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      text-decoration: none;
+      color: #222;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+/* Full‑width bottom banner */
+    .bottom-banner {
+      width: 100%;
+      margin-top: 40px;
+    }
+
+    .bottom-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      text-align: center;
+      background: #0a1a33;
+      color: white;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Notts Masters Badminton</h1>
+  <p>Previous Years League Player Performance Statistics</p>
+</header>
+
+<!-- Shared nav include -->
+<div id="nav"></div>
+<script>
+  fetch("/Home/nav.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("nav").innerHTML = data;
+    });
+</script>
+
+<div class="container">
+  <h2>Select Season</h2>
+  <p>Choose a past season to view Statistics.</p>
+
+  <div class="list">
+    <a class="card" href="/Home/stats/league/previous/2025-26 Season">2025-26 Season</a>
+    <a class="card" href="/Home/stats/league/previous/2024-25 Season">2024-25 Season</a>
+    <a class="card" href="/Home/stats/league/previous/2023-24 Season">2023-24 Season</a>
+    <a class="card" href="/Home/stats/league/previous/2022-23 Season">2022-23 Season</a>
+    <a class="card" href="/Home/stats/league/previous/2021-22 Season">2021-22 Season</a>
+    <a class="card" href="/Home/stats/league/previous/2019-20 Season">2019-20 Season</a>
+    <a class="card" href="/Home/stats/league/previous/2018-19 Season">2018-19 Season</a>
+    <a class="card" href="/Home/stats/league/previous/2016-17 Season">2016-17 Season</a>
+  </div>
+</div>
+  
+ <!-- ⭐ Clickable bottom banner -->
+  <div class="bottom-banner">
+    <a href="/Home/">
+      <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Banner">
+    </a>
+  </div>
+<footer>
+  © Notts Masters Badminton — Previous Years
+</footer>
+
+</body>
+</html>
