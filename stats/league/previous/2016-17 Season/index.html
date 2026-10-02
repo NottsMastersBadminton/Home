@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Previous Years League Player Performance Statistics — Notts Masters Badminton</title>
+  <title>League Player Performance Statistics 2016-17 Season — Notts Masters Badminton</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
@@ -50,17 +50,17 @@
       color: #0a1a33;
     }
 
-    .list {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
       margin-top: 30px;
     }
 
     .card {
       background: white;
-      padding: 15px;
-      border-radius: 8px;
+      padding: 20px;
+      border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       text-decoration: none;
       color: #222;
@@ -69,10 +69,10 @@
     }
 
     .card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-4px);
       box-shadow: 0 6px 16px rgba(0,0,0,0.12);
     }
-/* Full‑width bottom banner */
+    /* Full‑width bottom banner */
     .bottom-banner {
       width: 100%;
       margin-top: 40px;
@@ -83,6 +83,7 @@
       height: auto;
       display: block;
     }
+
     footer {
       margin-top: 50px;
       padding: 20px;
@@ -97,7 +98,7 @@
 
 <header>
   <h1>Notts Masters Badminton</h1>
-  <p>Previous Years League Player Performance Statistics</p>
+  <p>League Player Performance Statistics 2016-17 Season</p>
 </header>
 
 <!-- Shared nav include -->
@@ -111,29 +112,27 @@
 </script>
 
 <div class="container">
-  <h2>Select Season</h2>
-  <p>Choose a past season to view Statistics.</p>
+  <h2>League Player Performance Statistics 2016-17 Season</h2>
+  <p>Choose the age group to view Player Performance Statistics.</p>
 
-  <div class="list">
-    <a class="card" href="/Home/stats/league/previous/2025-26 Season">2025-26 Season</a>
-    <a class="card" href="/Home/stats/league/previous/2024-25 Season">2024-25 Season</a>
-    <a class="card" href="/Home/stats/league/previous/2023-24 Season">2023-24 Season</a>
-    <a class="card" href="/Home/stats/league/previous/2022-23 Season">2022-23 Season</a>
-    <a class="card" href="/Home/stats/league/previous/2021-22 Season">2021-22 Season</a>
-    <a class="card" href="/Home/stats/league/previous/2019-20 Season">2019-20 Season</a>
-    <a class="card" href="/Home/stats/league/previous/2018-19 Season">2018-19 Season</a>
-    <a class="card" href="/Home/stats/league/previous/2016-17 Season">2016-17 Season</a>
-  </div>
+  <div class="grid">
+    <a class="card" href="https://be.tournamentsoftware.com/sport/teamplayerstats.aspx?id=C735B95F-9C7E-4548-AB81-C225DFD735F5&team=270" target="_blank" rel="noopener noreferrer">O40s Statistics</a>
+    <a class="card" href="https://be.tournamentsoftware.com/sport/teamplayerstats.aspx?id=C735B95F-9C7E-4548-AB81-C225DFD735F5&team=271" target="_blank" rel="noopener noreferrer">O45s Statistics</a>
+    <a class="card" href="https://be.tournamentsoftware.com/sport/teamplayerstats.aspx?id=C735B95F-9C7E-4548-AB81-C225DFD735F5&team=272" target="_blank" rel="noopener noreferrer">O50s Statistics</a>
+    <a class="card" href="https://be.tournamentsoftware.com/sport/teamplayerstats.aspx?id=C735B95F-9C7E-4548-AB81-C225DFD735F5&team=273" target="_blank" rel="noopener noreferrer">O55s Statistics</a>
+    <a class="card" href="https://be.tournamentsoftware.com/sport/teamplayerstats.aspx?id=C735B95F-9C7E-4548-AB81-C225DFD735F5&team=274" target="_blank" rel="noopener noreferrer">O60s Statistics</a>
+    </div>
 </div>
-  
- <!-- ⭐ Clickable bottom banner -->
+
+   <!-- ⭐ Clickable bottom banner -->
   <div class="bottom-banner">
     <a href="/Home/">
       <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Banner">
     </a>
   </div>
+
 <footer>
-  © Notts Masters Badminton — Previous Years
+  © Notts Masters Badminton — League Player Performance Statistics 2016-17 Season
 </footer>
 
 </body>
