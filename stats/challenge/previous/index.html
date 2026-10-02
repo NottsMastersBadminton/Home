@@ -1,1 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Previous Years Challenge Player Performance Statistics — Notts Masters Badminton</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
 
+    header {
+      background: #0a1a33;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background: #13294b;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 8px 15px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #0a1a33;
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      text-decoration: none;
+      color: #222;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+/* Full‑width bottom banner */
+    .bottom-banner {
+      width: 100%;
+      margin-top: 40px;
+    }
+
+    .bottom-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      text-align: center;
+      background: #0a1a33;
+      color: white;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Notts Masters Badminton</h1>
+  <p>Previous Years Challenge Player Performance Statistics</p>
+</header>
+
+<!-- Shared nav include -->
+<div id="nav"></div>
+<script>
+  fetch("/Home/nav.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("nav").innerHTML = data;
+    });
+</script>
+
+<div class="container">
+  <h2>Select Season</h2>
+  <p>Choose a past season to view Statistics.</p>
+
+  <div class="list">
+    <a class="card" href="https://be.tournamentsoftware.com/sport/clubstandings.aspx?id=61F175EA-F09D-4BB4-8E42-2AD1DAE6BB9F&cid=26" target="_blank" rel="noopener noreferrer">2026</a>
+    <a class="card" href="https://be.tournamentsoftware.com/sport/clubstandings.aspx?id=D1DCB52F-2E99-4457-A2CF-56C2EF72AC7E&cid=37" target="_blank" rel="noopener noreferrer">2025</a>
+    <a class="card" href="https://be.tournamentsoftware.com/sport/clubstandings.aspx?id=0182BAAE-E65A-4C1D-AC9F-A5E278E0C010&cid=37" target="_blank" rel="noopener noreferrer">2024</a>
+    <a class="card" href="https://be.tournamentsoftware.com/sport/clubstandings.aspx?id=EA259C47-7420-4479-833F-0729D8A05303&cid=37" target="_blank" rel="noopener noreferrer">2023</a>
+    <a class="card" href="https://be.tournamentsoftware.com/sport/clubstandings.aspx?id=AED6E310-8E60-45CA-89C7-96B7D69FBC43&cid=37" target="_blank" rel="noopener noreferrer">2020</a>
+    <a class="card" href="https://be.tournamentsoftware.com/sport/clubstandings.aspx?id=77E70B71-3EAC-4F7D-B549-DA07D8607EB4&cid=37" target="_blank" rel="noopener noreferrer">2019</a>
+    <a class="card" href="https://be.tournamentsoftware.com/sport/clubstandings.aspx?id=19E2A3EC-C72C-4D56-8033-F6BF4055EEBB&cid=37" target="_blank" rel="noopener noreferrer">2018</a>
+    <a class="card" href="https://be.tournamentsoftware.com/sport/clubstandings.aspx?id=F44B2218-B794-4FD0-9115-9220DBDAC136&cid=37" target="_blank" rel="noopener noreferrer">2017</a>
+    <a class="card" href="https://be.tournamentsoftware.com/sport/clubstandings.aspx?id=AADF636E-E8E4-4CF4-A706-A11A91276737&cid=37" target="_blank" rel="noopener noreferrer">2016</a>
+    <a class="card" href="https://be.tournamentsoftware.com/sport/clubstandings.aspx?id=2235FE53-7212-40DB-874B-5480BFFE1F79&cid=19" target="_blank" rel="noopener noreferrer">2015</a>
+  </div>
+</div>
+ <!-- ⭐ Clickable bottom banner -->
+  <div class="bottom-banner">
+    <a href="/Home/">
+      <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Banner">
+    </a>
+  </div>
+<footer>
+  © Notts Masters Badminton — Previous Years
+</footer>
+
+</body>
+</html>
