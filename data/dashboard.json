@@ -1,1 +1,34 @@
+{
+  "fixtures": [
+    {
+      "date": "2026-10-18",
+      "team": "Notts Masters O45",
+      "opponent": "Derbyshire O45",
+      "venue": "Home"
+    }
+  ],
+  "results": [
+    {
+      "date": "2026-09-28",
+      "team": "Notts Masters O50",
+      "opponent": "Leicestershire O50",
+      "score": "9–3"
+    }
+  ],
+  "teams": [
+    {
+      "name": "O40",
+      "players": ["Player A", "Player B", "Player C"]
+    }
+  ],
+  "league": [
+    {
+      "team": "Notts Masters O45",
+      "played": 3,
+      "won": 2,
+      "lost": 1,
+      "points": 6
+    }
+  ]
+}
 
