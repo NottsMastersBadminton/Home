@@ -2,65 +2,25 @@
 <html lang="en">
 <head>
 
-  <!-- ⭐ GOOGLE ANALYTICS (GA4) ⭐ -->
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2LZ8WDPHSL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-2LZ8WDPHSL');
-  </script>
-
-  <!-- ⭐ FULL SEO SECTION ⭐ -->
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Notts Masters Badminton | Nottinghamshire Masters Badminton Club</title>
-  <meta name="description" content="Official site for Notts Masters Badminton. Fixtures, results, officials, documents and county Masters badminton information for Nottinghamshire." />
-  <meta name="keywords" content="Notts Masters Badminton, Nottinghamshire badminton, Masters badminton, county badminton, badminton fixtures, badminton results, badminton officials" />
-  <meta name="author" content="Notts Masters Badminton" />
-  <meta name="robots" content="index, follow" />
-
-  <!-- OpenGraph -->
-  <meta property="og:title" content="Notts Masters Badminton" />
-  <meta property="og:description" content="Fixtures, results, officials and documents for Nottinghamshire Masters badminton." />
-  <meta property="og:image" content="https://nottsmastersbadminton.github.io/Home/documents/storage/Banner.jpg" />
-  <meta property="og:url" content="https://nottsmastersbadminton.github.io/Home/" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Notts Masters Badminton" />
-  <meta name="twitter:description" content="Official Nottinghamshire Masters badminton site with fixtures, results and officials information." />
-  <meta name="twitter:image" content="https://nottsmastersbadminton.github.io/Home/documents/storage/Banner.jpg" />
-
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://nottsmastersbadminton.github.io/Home/" />
-
-  <!-- Favicon -->
-  <link rel="icon" href="/Home/favicon.png" type="image/png" />
-
-  <!-- Theme Colours -->
-  <meta name="theme-color" content="#06261C" />
-  <meta name="msapplication-navbutton-color" content="#06261C" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="#06261C" />
-<!DOCTYPE html>
-<html lang="en">
-<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Notts Masters Dashboard</title>
+<title>Notts Masters Badminton</title>
+
+<meta name="description" content="Official site for Notts Masters Badminton. Fixtures, results, officials and documents.">
 
 <style>
 
-body{
+html,body{
     margin:0;
-    font-family:Segoe UI,sans-serif;
-    background:#f4f6f8;
+    padding:0;
+}
+
+body{
+    font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:#f5f5f5;
     color:#222;
+    overflow-x:hidden;
 }
 
 .page-wrapper{
@@ -69,91 +29,95 @@ body{
 }
 
 header{
+    background:#0a1a33;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.dashboard-wrapper{
+    padding:20px;
+}
+
+.hero-card{
     background:linear-gradient(135deg,#06261C,#083024);
     color:white;
-    padding:40px 20px;
-    text-align:center;
-}
-
-header h1{
-    margin:0;
-    font-size:2.5rem;
-}
-
-.hero-match{
-    background:white;
-    margin:30px 20px;
     border-radius:20px;
     padding:30px;
-    box-shadow:0 10px 25px rgba(0,0,0,.12);
-    text-align:center;
-}
-
-.hero-match h2{
-    margin-top:0;
-    color:#06261C;
-}
-
-.match-title{
-    font-size:2rem;
-    font-weight:700;
-}
-
-.countdown{
-    margin-top:15px;
-    font-size:1.8rem;
-    font-weight:800;
-    color:#0a8f55;
-}
-
-.dashboard{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
     gap:20px;
-    margin:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+    margin-bottom:25px;
 }
 
-.card{
+.hero-left{
+    flex:1;
+}
+
+.hero-label{
+    font-size:.85rem;
+    letter-spacing:2px;
+    opacity:.8;
+}
+
+.hero-countdown{
+    font-size:clamp(2rem,5vw,4rem);
+    font-weight:800;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.stat-card{
     background:white;
     border-radius:18px;
     padding:25px;
-    box-shadow:0 8px 18px rgba(0,0,0,.08);
-    transition:.3s;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
 }
 
-.card:hover{
-    transform:translateY(-4px);
+.stat-card span{
+    display:block;
+    color:#666;
 }
 
-.card h3{
-    margin-top:0;
+.stat-card strong{
+    display:block;
+    margin-top:12px;
+    font-size:2rem;
     color:#06261C;
 }
 
-.big{
-    font-size:2.5rem;
-    font-weight:800;
-    margin-top:10px;
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
 }
 
-.section{
+.panel{
     background:white;
-    margin:20px;
+    border-radius:18px;
     padding:25px;
-    border-radius:20px;
-    box-shadow:0 8px 18px rgba(0,0,0,.08);
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
 }
 
-.section h2{
+.panel h2{
     margin-top:0;
     color:#06261C;
 }
 
 .fixture-row,
 .result-row{
-    display:flex;
-    justify-content:space-between;
-    padding:14px 0;
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:15px;
+    padding:12px 0;
     border-bottom:1px solid #eee;
 }
 
@@ -162,185 +126,160 @@ header h1{
     border-bottom:none;
 }
 
-.team{
+.fixture-date{
+    color:#666;
+    font-size:.9rem;
+}
+
+.fixture-title{
     font-weight:600;
+}
+
+.fb-container{
+    width:100%;
+    text-align:center;
+    margin-top:30px;
+}
+
+.fb-container iframe{
+    width:100%;
+    max-width:350px;
+    height:700px;
+    border:none;
+    border-radius:10px;
+}
+
+.bottom-banner{
+    width:100%;
+    margin-top:40px;
+}
+
+.bottom-banner img{
+    width:100%;
+    display:block;
 }
 
 footer{
     margin-top:40px;
-    background:#06261C;
+    background:#0a1a33;
     color:white;
     text-align:center;
     padding:20px;
 }
 
-@media(max-width:700px){
+@media(max-width:900px){
 
-.fixture-row,
-.result-row{
-    flex-direction:column;
-    gap:5px;
+    .hero-card{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .dashboard-grid{
+        grid-template-columns:1fr;
+    }
+
 }
 
-.match-title{
-    font-size:1.4rem;
-}
+@media(max-width:600px){
+
+    .fixture-row,
+    .result-row{
+        grid-template-columns:1fr;
+    }
+
+    .hero-card{
+        padding:20px;
+    }
 
 }
 
 </style>
+
 </head>
+
 <body>
 
 <div class="page-wrapper">
 
 <header>
-    <h1>🏸 Notts Masters Dashboard</h1>
+    <h1>Notts Masters Badminton</h1>
 </header>
 
-<div class="hero-match">
-
-    <h2>Next Match</h2>
-
-    <div class="match-title">
-        O50 Nottinghamshire v Derbyshire
-    </div>
-
-    <p>18 October 2026</p>
-
-    <div id="countdown" class="countdown"></div>
-
-</div>
-
-<div class="dashboard">
-
-    <div class="card">
-        <h3>Fixtures Remaining</h3>
-        <div class="big">31</div>
-    </div>
-
-    <div class="card">
-        <h3>Active Teams</h3>
-        <div class="big">7</div>
-    </div>
-
-    <div class="card">
-        <h3>Wins This Season</h3>
-        <div class="big">12</div>
-    </div>
-
-    <div class="card">
-        <h3>Win Rate</h3>
-        <div class="big">78%</div>
-    </div>
-
-</div>
-
-<div class="section">
-
-    <h2>📅 Upcoming Fixtures</h2>
-
-    <div class="fixture-row">
-        <span>18 Oct</span>
-        <span class="team">O50 Nottinghamshire v Derbyshire</span>
-        <span>Home</span>
-    </div>
-
-    <div class="fixture-row">
-        <span>25 Oct</span>
-        <span class="team">O60 Nottinghamshire v Yorkshire</span>
-        <span>Away</span>
-    </div>
-
-    <div class="fixture-row">
-        <span>01 Nov</span>
-        <span class="team">O70 Nottinghamshire v Warwickshire</span>
-        <span>Home</span>
-    </div>
-
-    <div class="fixture-row">
-        <span>08 Nov</span>
-        <span class="team">O40 Nottinghamshire v Suffolk</span>
-        <span>Away</span>
-    </div>
-
-    <div class="fixture-row">
-        <span>15 Nov</span>
-        <span class="team">O50 Nottinghamshire v Norfolk</span>
-        <span>Home</span>
-    </div>
-
-</div>
-
-<div class="section">
-
-    <h2>✅ Latest Results</h2>
-
-    <div class="result-row">
-        <span>O40</span>
-        <span>Notts 13-7 Derbyshire</span>
-        <span>WIN</span>
-    </div>
-
-    <div class="result-row">
-        <span>O50</span>
-        <span>Notts 14-6 Leicestershire</span>
-        <span>WIN</span>
-    </div>
-
-    <div class="result-row">
-        <span>O60</span>
-        <span>Notts 12-8 Yorkshire</span>
-        <span>WIN</span>
-    </div>
-
-</div>
-
-<footer>
-
-© Notts Masters Badminton
-
-</footer>
-
-</div>
+<div id="nav"></div>
 
 <script>
-
-const nextMatch = new Date("2026-10-18T12:00:00");
-
-function updateCountdown(){
-
-    const now = new Date();
-    const diff = nextMatch - now;
-
-    if(diff <= 0){
-        document.getElementById("countdown").innerHTML =
-        "🏸 Match Day!";
-        return;
-    }
-
-    const days =
-    Math.floor(diff / (1000*60*60*24));
-
-    const hours =
-    Math.floor(
-    diff / (1000*60*60)
-    ) % 24;
-
-    const mins =
-    Math.floor(
-    diff / (1000*60)
-    ) % 60;
-
-    document.getElementById("countdown").innerHTML =
-    `${days} Days ${hours} Hours ${mins} Minutes`;
-
-}
-
-setInterval(updateCountdown,1000);
-updateCountdown();
-
+fetch("/Home/nav.html")
+.then(response => response.text())
+.then(data => {
+    document.getElementById("nav").innerHTML = data;
+});
 </script>
 
-</body>
-</html>
+<div class="dashboard-wrapper">
+
+<div class="hero-card">
+
+    <div class="hero-left">
+
+        <div class="hero-label">
+            NEXT MATCH
+        </div>
+
+        <h2 id="nextMatchTitle">
+            Loading Fixtures...
+        </h2>
+
+        <div id="nextMatchDate">
+            Loading...
+        </div>
+
+    </div>
+
+    <div id="countdown" class="hero-countdown">
+        ...
+    </div>
+
+</div>
+
+<div class="stats-grid">
+
+    <div class="stat-card">
+        <span>Fixtures Remaining</span>
+        <strong id="fixturesRemaining">-</strong>
+    </div>
+
+    <div class="stat-card">
+        <span>This Month</span>
+        <strong id="monthFixtures">-</strong>
+    </div>
+
+    <div class="stat-card">
+        <span>Age Groups</span>
+        <strong id="activeTeams">-</strong>
+    </div>
+
+    <div class="stat-card">
+        <span>Upcoming Matches</span>
+        <strong id="upcomingMatches">-</strong>
+    </div>
+
+</div>
+
+<div class="dashboard-grid">
+
+    <div class="panel">
+
+        <h2>🏸 Upcoming Fixtures</h2>
+
+        <div id="fixturesList">
+            Loading...
+        </div>
+
+    </div>
+
+    <div class="panel">
+
+        <h2>✅ Latest Results</h2>
+
+        <div id="resultsList">
+ 
