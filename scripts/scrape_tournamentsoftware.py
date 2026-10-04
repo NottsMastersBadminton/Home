@@ -15,11 +15,8 @@ def scrape():
         "league": []
     }
 
-    # -------------------------
     # Fixtures & Results
-    # -------------------------
     rows = soup.select("table.clubteams-table tr")
-
     for row in rows:
         cols = [c.get_text(strip=True) for c in row.find_all("td")]
         if len(cols) < 5:
@@ -42,20 +39,15 @@ def scrape():
                 "score": score
             })
 
-    # -------------------------
-    # Teams (simple list)
-    # -------------------------
+    # Teams
     team_panels = soup.select(".clubteams-team")
     for panel in team_panels:
         name = panel.select_one("h3").get_text(strip=True)
         players = [li.get_text(strip=True) for li in panel.select("li")]
         data["teams"].append({"name": name, "players": players})
 
-    # -------------------------
     # League Table
-    # -------------------------
     league_rows = soup.select("table.clubteams-league tr")
-
     for row in league_rows[1:]:
         cols = [c.get_text(strip=True) for c in row.find_all("td")]
         if len(cols) < 5:
@@ -70,9 +62,7 @@ def scrape():
             "points": int(points)
         })
 
-    # -------------------------
     # Save JSON
-    # -------------------------
     with open("Home/data/dashboard.json", "w") as f:
         json.dump(data, f, indent=2)
 
