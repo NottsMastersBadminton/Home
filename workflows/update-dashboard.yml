@@ -2,7 +2,7 @@ name: Update Dashboard
 
 on:
   schedule:
-    - cron: "0 3 * * *"   # 3am nightly
+    - cron: "0 3 * * *"
   workflow_dispatch:
 
 jobs:
@@ -10,22 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Install Python
-        uses: actions/setup-python@v4
+      - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
 
-      - name: Install dependencies
-        run: pip install requests beautifulsoup4
+      - run: pip install requests beautifulsoup4
 
-      - name: Run scraper
-        run: python scripts/scrape_tournamentsoftware.py
+      - run: python scripts/scrape_tournamentsoftware.py
 
-      - name: Commit updated dashboard.json
-        run: |
+      - run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add Home/data/dashboard.json
