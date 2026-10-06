@@ -115,11 +115,12 @@
    
    .match-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
   gap: 25px;
-  justify-items: center;   /* centres cards inside each grid cell */
-  margin-top: 20px;
+  justify-content: center;   /* centres the whole row */
+  justify-items: center;     /* centres cards inside each cell */
 }
+
 
 .section-title {
   text-align: center;
