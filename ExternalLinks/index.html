@@ -1,1 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Notts Masters – External Links</title>
+
+<style>
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    color: #222;
+  }
+
+  .page-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  header {
+    background: #0a1a33;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+
+  nav {
+    background: #13294b;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px 0;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin: 8px 15px;
+    font-weight: 600;
+  }
+
+  nav a:hover {
+    text-decoration: underline;
+  }
+
+  .container {
+    max-width: 100%;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  h2 {
+    text-align: center;
+    color: #0a1a33;
+    margin-bottom: 25px;
+  }
+
+  .links-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+  }
+
+  .link-card {
+    background: white;
+    width: 260px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+    border-left: 8px solid #0a1a33;
+  }
+
+  .link-card h3 {
+    margin-top: 0;
+    color: #0a1a33;
+  }
+
+  .link-card a {
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: 600;
+    color: #13294b;
+    text-decoration: none;
+  }
+
+  .link-card a:hover {
+    text-decoration: underline;
+  }
+
+  footer {
+    margin-top: 50px;
+    padding: 20px;
+    text-align: center;
+    background: #0a1a33;
+    color: white;
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+
+<body>
+<div class="page-wrapper">
+
+  <header>
+    <h1>Notts Masters Badminton</h1>
+  </header>
+
+  <div id="nav"></div>
+  <script>
+    fetch("/Home/nav.html")
+      .then(r => r.text())
+      .then(html => document.getElementById("nav").innerHTML = html);
+  </script>
+
+  <div class="container">
+    <h2>External Links</h2>
+
+    <div class="links-grid">
+
+      <div class="link-card">
+        <h3>TournamentSoftware</h3>
+        <p>Fixtures, results, rankings and competition data.</p>
+        <a href="https://www.tournamentsoftware.com" target="_blank">Visit Site</a>
+      </div>
+
+      <div class="link-card">
+        <h3>Badminton England</h3>
+        <p>National governing body for badminton in England.</p>
+        <a href="https://www.badmintonengland.co.uk" target="_blank">Visit Site</a>
+      </div>
+
+      <div class="link-card">
+        <h3>Masters Badminton</h3>
+        <p>Information on national Masters competitions.</p>
+        <a href="https://www.badmintonengland.co.uk/competitions/masters/" target="_blank">Visit Site</a>
+      </div>
+
+      <div class="link-card">
+        <h3>Notts Badminton Association</h3>
+        <p>County badminton information and updates.</p>
+        <a href="https://www.nottsbadminton.co.uk" target="_blank">Visit Site</a>
+      </div>
+
+      <div class="link-card">
+        <h3>Facebook Page</h3>
+        <p>Follow Nottinghamshire Masters on Facebook.</p>
+        <a href="https://www.facebook.com/profile.php?id=100077877812929" target="_blank">Visit Page</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    © Notts Masters Badminton — External Links
+  </footer>
+
+</div>
+</body>
+</html>
 
