@@ -116,14 +116,17 @@
    .match-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;   /* centres each row */
+  justify-content: center;   /* centre each row */
   gap: 25px;
   margin-top: 20px;
 }
 
 .match-card {
-  flex: 0 1 280px;           /* ~3 per row on desktop */
+  width: 300px;              /* fixed width so 3 fit per row */
+  max-width: 300px;
+  flex: 0 0 auto;            /* prevents stretching */
 }
+
 
 
 
@@ -222,14 +225,15 @@ async function loadMatches() {
   const colour = AGE_COLOURS[match.age] || "#333";
 
   return `
-    <div class="match-card" style="
-      background:white;
-      padding:15px;
-      border-radius:10px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.1);
-      text-align:left;
-      border-left: 8px solid ${colour};
-    ">
+  <div class="match-card" style="
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    text-align:left;
+    border-left: 8px solid ${colour};
+  ">
+
       <h3 style="color:${colour};">${match.age} vs ${match.opposition}</h3>
       <p><strong>Date:</strong> ${match.datetime.toLocaleString()}</p>
       <p><strong>Location:</strong> ${match.location}</p>
