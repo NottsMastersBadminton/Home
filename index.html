@@ -123,15 +123,24 @@ async function loadMatches() {
 
   const json = JSON.parse(text.substring(text.indexOf("{"), text.lastIndexOf("}") + 1));
 
-  const rows = json.table.rows.map(r => ({
-    age: r.c[0]?.v,
-    datetime: r.c[1]?.f,   // FIXED
-    opposition: r.c[2]?.v,
-    location: r.c[3]?.v,
-    address: r.c[4]?.v,
-    link: r.c[5]?.v,
-    result: r.c[6]?.v
-  }));
+  function parseUKDate(str) {
+  if (!str) return null;
+  const [datePart, timePart] = str.split(" ");
+  const [day, month, year] = datePart.split("/").map(Number);
+  const [hour, minute, second] = timePart.split(":").map(Number);
+  return new Date(year, month - 1, day, hour, minute, second);
+}
+
+const rows = json.table.rows.map(r => ({
+  age: r.c[0]?.v,
+  datetime: parseUKDate(r.c[1]?.f),   // FIXED
+  opposition: r.c[2]?.v,
+  location: r.c[3]?.v,
+  address: r.c[4]?.v,
+  link: r.c[5]?.v,
+  result: r.c[6]?.v
+}));
+
 
   const now = new Date();
   const cutoff = new Date();
