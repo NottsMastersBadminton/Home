@@ -115,6 +115,53 @@
     }
   </style>
 </head>
+<script>
+async function loadMatches() {
+  const url = "https://docs.google.com/spreadsheets/d/16ALLKw2po0AvNRycDs8sDFjtdxKZDQSNvxJRvuTwsEU/gviz/tq?tqx=out:json";
+
+  const res = await fetch(url);
+  const text = await res.text();
+
+  // Google returns JS, not pure JSON, so we extract it
+  const json = JSON.parse(text.substring(text.indexOf("{"), text.lastIndexOf("}") + 1));
+
+  const rows = json.table.rows.map(r => ({
+    age: r.c[0]?.v,
+    datetime: r.c[1]?.v,
+    opposition: r.c[2]?.v,
+    location: r.c[3]?.v,
+    address: r.c[4]?.v,
+    link: r.c[5]?.v,
+    result: r.c[6]?.v
+  }));
+
+  const now = new Date();
+
+  const upcoming = rows.filter(r => new Date(r.datetime) > now);
+  const recent = rows.filter(r => r.result && r.result.trim() !== "");
+
+  function card(match) {
+    return `
+      <div style="background:white; padding:15px; margin:15px 0; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1); text-align:left;">
+        <h3>${match.age} vs ${match.opposition}</h3>
+        <p><strong>Date:</strong> ${new Date(match.datetime).toLocaleString()}</p>
+        <p><strong>Location:</strong> ${match.location}</p>
+        <p><strong>Address:</strong> ${match.address}</p>
+        <p><a href="${match.link}" target="_blank">View on TournamentSoftware</a></p>
+        ${match.result ? `<p><strong>Result:</strong> ${match.result}</p>` : ""}
+      </div>
+    `;
+  }
+
+  document.getElementById("upcoming-matches").innerHTML =
+    upcoming.length ? upcoming.map(card).join("") : "<p>No upcoming matches.</p>";
+
+  document.getElementById("recent-results").innerHTML =
+    recent.length ? recent.map(card).join("") : "<p>No recent results.</p>";
+}
+
+loadMatches();
+</script>
 
 <body>
 
@@ -164,6 +211,14 @@
     setInterval(updateSeasonTimer, 1000);
     updateSeasonTimer();
   </script>
+  
+<div id="matches-dashboard" style="margin:40px auto; max-width:900px;">
+  <h2>Upcoming Matches</h2>
+  <div id="upcoming-matches"></div>
+
+  <h2 style="margin-top:40px;">Recent Results</h2>
+  <div id="recent-results"></div>
+</div>
 
   <div class="container">
     <h2>About Us</h2>
