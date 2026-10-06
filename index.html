@@ -118,16 +118,14 @@
 async function loadMatches() {
   const url = "https://docs.google.com/spreadsheets/d/16ALLKw2po0AvNRycDs8sDFjtdxKZDQSNvxJRvuTwsEU/gviz/tq?gid=0&tqx=out:json";
 
-
   const res = await fetch(url);
   const text = await res.text();
 
-  // Google returns JS, not pure JSON, so we extract it
   const json = JSON.parse(text.substring(text.indexOf("{"), text.lastIndexOf("}") + 1));
 
   const rows = json.table.rows.map(r => ({
     age: r.c[0]?.v,
-    datetime: r.c[1]?.v,
+    datetime: r.c[1]?.f,   // FIXED
     opposition: r.c[2]?.v,
     location: r.c[3]?.v,
     address: r.c[4]?.v,
@@ -136,14 +134,13 @@ async function loadMatches() {
   }));
 
   const now = new Date();
-
   const cutoff = new Date();
-cutoff.setDate(cutoff.getDate() + 14); // 14 days ahead
+  cutoff.setDate(cutoff.getDate() + 60);
 
-const upcoming = rows.filter(r => {
-  const matchDate = new Date(r.datetime);
-  return matchDate > now && matchDate <= cutoff;
-});
+  const upcoming = rows.filter(r => {
+    const matchDate = new Date(r.datetime);
+    return matchDate > now && matchDate <= cutoff;
+  });
 
   const recent = rows.filter(r => r.result && r.result.trim() !== "");
 
@@ -169,6 +166,7 @@ const upcoming = rows.filter(r => {
 
 loadMatches();
 </script>
+
 
 <body>
 
