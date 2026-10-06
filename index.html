@@ -112,6 +112,14 @@
       color: white;
       font-size: 0.9rem;
     }
+   
+   .match-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
   </style>
 </head>
 <script>
@@ -225,10 +233,15 @@ async function loadMatches() {
   // OUTPUT TO PAGE
   // ------------------------------
   document.getElementById("upcoming-matches").innerHTML =
-    upcoming.length ? upcoming.map(card).join("") : "<p>No upcoming matches.</p>";
+  upcoming.length
+    ? `<div class="match-grid">${upcoming.map(card).join("")}</div>`
+    : "<p>No upcoming matches.</p>";
 
-  document.getElementById("recent-results").innerHTML =
-    recent.length ? recent.map(card).join("") : "<p>No recent results.</p>";
+document.getElementById("recent-results").innerHTML =
+  recent.length
+    ? `<div class="match-grid">${recent.map(card).join("")}</div>`
+    : "<p>No recent results.</p>";
+
 }
 
 
