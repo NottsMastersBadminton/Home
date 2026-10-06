@@ -115,57 +115,115 @@
   </style>
 </head>
 <script>
+// ------------------------------
+// CONFIGURATION
+// ------------------------------
+const DAYS_AHEAD = 60;   // How many days of upcoming matches to show
+const RESULTS_LIMIT = 4; // How many recent results to show
+
+
+// ------------------------------
+// AGE GROUP COLOURS
+// ------------------------------
+const AGE_COLOURS = {
+  "O40s": "#0a1a33",
+  "O45s": "#2e8b57",
+  "O50s": "#ff8c00",
+  "O55s": "#800080",
+  "O60s": "#b22222",
+  "O65s": "#008b8b",
+  "O70s": "#daa520"
+};
+
+
+// ------------------------------
+// DATE PARSING (UK format)
+// ------------------------------
+function parseUKDate(str) {
+  if (!str) return null;
+
+  const [datePart, timePart] = str.split(" ");
+  const [day, month, year] = datePart.split("/").map(Number);
+  const [hour, minute, second] = timePart.split(":").map(Number);
+
+  return new Date(year, month - 1, day, hour, minute, second);
+}
+
+
+// ------------------------------
+// MAIN LOADER
+// ------------------------------
 async function loadMatches() {
-  const url = "https://docs.google.com/spreadsheets/d/16ALLKw2po0AvNRycDs8sDFjtdxKZDQSNvxJRvuTwsEU/gviz/tq?gid=0&tqx=out:json";
+  const url =
+    "https://docs.google.com/spreadsheets/d/16ALLKw2po0AvNRycDs8sDFjtdxKZDQSNvxJRvuTwsEU/gviz/tq?gid=0&tqx=out:json";
 
   const res = await fetch(url);
   const text = await res.text();
 
-  const json = JSON.parse(text.substring(text.indexOf("{"), text.lastIndexOf("}") + 1));
+  const json = JSON.parse(
+    text.substring(text.indexOf("{"), text.lastIndexOf("}") + 1)
+  );
 
-  function parseUKDate(str) {
-  if (!str) return null;
-  const [datePart, timePart] = str.split(" ");
-  const [day, month, year] = datePart.split("/").map(Number);
-  const [hour, minute, second] = timePart.split(":").map(Number);
-  return new Date(year, month - 1, day, hour, minute, second);
-}
-
-const rows = json.table.rows.map(r => ({
-  age: r.c[0]?.v,
-  datetime: parseUKDate(r.c[1]?.f),   // FIXED
-  opposition: r.c[2]?.v,
-  location: r.c[3]?.v,
-  address: r.c[4]?.v,
-  link: r.c[5]?.v,
-  result: r.c[6]?.v
-}));
+  const rows = json.table.rows.map(r => ({
+    age: r.c[0]?.v || "",
+    datetime: parseUKDate(r.c[1]?.f),
+    opposition: r.c[2]?.v || "",
+    location: r.c[3]?.v || "",
+    address: r.c[4]?.v || "",
+    link: r.c[5]?.v || "",
+    result: r.c[6]?.v || ""
+  }));
 
 
+  // ------------------------------
+  // UPCOMING MATCHES
+  // ------------------------------
   const now = new Date();
   const cutoff = new Date();
-  cutoff.setDate(cutoff.getDate() + 14);
+  cutoff.setDate(cutoff.getDate() + DAYS_AHEAD);
 
-  const upcoming = rows.filter(r => {
-    const matchDate = new Date(r.datetime);
-    return matchDate > now && matchDate <= cutoff;
-  });
+  const upcoming = rows.filter(r => r.datetime && r.datetime > now && r.datetime <= cutoff);
 
-  const recent = rows.filter(r => r.result && r.result.trim() !== "");
 
+  // ------------------------------
+  // RECENT RESULTS (last 4)
+  // ------------------------------
+  const recent = rows
+    .filter(r => r.result && r.result.trim() !== "")
+    .sort((a, b) => b.datetime - a.datetime)
+    .slice(0, RESULTS_LIMIT);
+
+
+  // ------------------------------
+  // CARD RENDERING
+  // ------------------------------
   function card(match) {
+    const colour = AGE_COLOURS[match.age] || "#333";
+
     return `
-      <div style="background:white; padding:15px; margin:15px 0; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1); text-align:left;">
-        <h3>${match.age} vs ${match.opposition}</h3>
-        <p><strong>Date:</strong> ${new Date(match.datetime).toLocaleString()}</p>
+      <div style="
+        background:white;
+        padding:15px;
+        margin:15px 0;
+        border-radius:10px;
+        box-shadow:0 4px 12px rgba(0,0,0,0.1);
+        text-align:left;
+        border-left: 8px solid ${colour};
+      ">
+        <h3 style="color:${colour};">${match.age} vs ${match.opposition}</h3>
+        <p><strong>Date:</strong> ${match.datetime.toLocaleString()}</p>
         <p><strong>Location:</strong> ${match.location}</p>
         <p><strong>Address:</strong> ${match.address}</p>
-        <p><a href="${match.link}" target="_blank">View on TournamentSoftware</a></p>
+        ${match.link ? `<p><a href="${match.link}" target="_blank">View on TournamentSoftware</a></p>` : ""}
         ${match.result ? `<p><strong>Result:</strong> ${match.result}</p>` : ""}
       </div>
     `;
   }
 
+
+  // ------------------------------
+  // OUTPUT TO PAGE
+  // ------------------------------
   document.getElementById("upcoming-matches").innerHTML =
     upcoming.length ? upcoming.map(card).join("") : "<p>No upcoming matches.</p>";
 
@@ -173,8 +231,13 @@ const rows = json.table.rows.map(r => ({
     recent.length ? recent.map(card).join("") : "<p>No recent results.</p>";
 }
 
+
+// ------------------------------
+// RUN
+// ------------------------------
 loadMatches();
 </script>
+
 
 
 <body>
