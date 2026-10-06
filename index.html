@@ -135,7 +135,7 @@ async function loadMatches() {
 
   const now = new Date();
   const cutoff = new Date();
-  cutoff.setDate(cutoff.getDate() + 60);
+  cutoff.setDate(cutoff.getDate() + 14);
 
   const upcoming = rows.filter(r => {
     const matchDate = new Date(r.datetime);
