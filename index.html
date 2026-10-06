@@ -137,7 +137,14 @@ async function loadMatches() {
 
   const now = new Date();
 
-  const upcoming = rows.filter(r => new Date(r.datetime) > now);
+  const cutoff = new Date();
+cutoff.setDate(cutoff.getDate() + 14); // 14 days ahead
+
+const upcoming = rows.filter(r => {
+  const matchDate = new Date(r.datetime);
+  return matchDate > now && matchDate <= cutoff;
+});
+
   const recent = rows.filter(r => r.result && r.result.trim() !== "");
 
   function card(match) {
