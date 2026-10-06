@@ -115,10 +115,17 @@
    
    .match-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  justify-items: center;   /* centres cards inside each grid cell */
   margin-top: 20px;
 }
+
+.section-title {
+  text-align: center;
+}
+
+
 
   </style>
 </head>
@@ -241,6 +248,7 @@ document.getElementById("recent-results").innerHTML =
   recent.length
     ? `<div class="match-grid">${recent.map(card).join("")}</div>`
     : "<p>No recent results.</p>";
+
 
 }
 
