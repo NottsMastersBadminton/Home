@@ -114,12 +114,17 @@
     }
    
    .match-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;   /* centres each row */
   gap: 25px;
-  justify-content: center;   /* centres the whole row */
-  justify-items: center;     /* centres cards inside each cell */
+  margin-top: 20px;
 }
+
+.match-card {
+  flex: 0 1 280px;           /* ~3 per row on desktop */
+}
+
 
 
 .section-title {
@@ -214,27 +219,27 @@ async function loadMatches() {
   // CARD RENDERING
   // ------------------------------
   function card(match) {
-    const colour = AGE_COLOURS[match.age] || "#333";
+  const colour = AGE_COLOURS[match.age] || "#333";
 
-    return `
-      <div style="
-        background:white;
-        padding:15px;
-        margin:15px 0;
-        border-radius:10px;
-        box-shadow:0 4px 12px rgba(0,0,0,0.1);
-        text-align:left;
-        border-left: 8px solid ${colour};
-      ">
-        <h3 style="color:${colour};">${match.age} vs ${match.opposition}</h3>
-        <p><strong>Date:</strong> ${match.datetime.toLocaleString()}</p>
-        <p><strong>Location:</strong> ${match.location}</p>
-        <p><strong>Address:</strong> ${match.address}</p>
-        ${match.link ? `<p><a href="${match.link}" target="_blank">View on TournamentSoftware</a></p>` : ""}
-        ${match.result ? `<p><strong>Result:</strong> ${match.result}</p>` : ""}
-      </div>
-    `;
-  }
+  return `
+    <div class="match-card" style="
+      background:white;
+      padding:15px;
+      border-radius:10px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+      text-align:left;
+      border-left: 8px solid ${colour};
+    ">
+      <h3 style="color:${colour};">${match.age} vs ${match.opposition}</h3>
+      <p><strong>Date:</strong> ${match.datetime.toLocaleString()}</p>
+      <p><strong>Location:</strong> ${match.location}</p>
+      <p><strong>Address:</strong> ${match.address}</p>
+      ${match.link ? `<p><a href="${match.link}" target="_blank">View on TournamentSoftware</a></p>` : ""}
+      ${match.result ? `<p><strong>Result:</strong> ${match.result}</p>` : ""}
+    </div>
+  `;
+}
+
 
 
   // ------------------------------
