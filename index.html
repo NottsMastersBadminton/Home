@@ -41,9 +41,12 @@
       overflow-x: hidden;
     }
 
+    /* ⭐ FULL WIDTH ALWAYS ⭐ */
     .page-wrapper {
-      max-width: 1000px;
-      margin: 0 auto;
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
     }
 
     header {
@@ -51,6 +54,7 @@
       color: white;
       padding: 20px;
       text-align: center;
+      width: 100%;
     }
 
     nav {
@@ -59,6 +63,7 @@
       justify-content: center;
       flex-wrap: wrap;
       padding: 10px 0;
+      width: 100%;
     }
 
     nav a {
@@ -73,10 +78,11 @@
     }
 
     .container {
-      max-width: 100%;
+      width: 100%;
       margin: 40px auto;
       padding: 0 20px;
       text-align: center;
+      box-sizing: border-box;
     }
 
     h2 {
@@ -84,9 +90,10 @@
       color: #0a1a33;
     }
 
-    /* ⭐ NEW CLEAN TILE DESIGN ⭐ */
+    /* ⭐ NEW FULL-WIDTH TILE DESIGN ⭐ */
     .match-grid {
       display: block;
+      width: 100%;
       margin-top: 20px;
     }
 
@@ -98,7 +105,7 @@
       margin-bottom: 20px;
       width: 100%;
       box-sizing: border-box;
-      border-left: 8px solid #0a1a33; /* default, overridden by JS */
+      border-left: 8px solid #0a1a33;
     }
 
     .match-card h3 {
@@ -106,6 +113,7 @@
       color: #0a1a33;
     }
 
+    /* ⭐ FACEBOOK FULL WIDTH ⭐ */
     .fb-container iframe {
       width: 100%;
       height: 450px;
@@ -126,6 +134,7 @@
       background: #0a1a33;
       color: white;
       font-size: 0.9rem;
+      width: 100%;
     }
 
     /* ⭐ MOBILE FIXES ⭐ */
@@ -163,7 +172,6 @@
 
   <header>
     <h1>Notts Masters Badminton</h1>
-    <p></p>
   </header>
 
   <!-- Shared nav include -->
@@ -177,7 +185,7 @@
   </script>
 
   <!-- ⭐ COUNTDOWN TIMER ⭐ -->
-  <div id="season-timer" style="margin:30px auto 0; background:white; padding:25px; border-radius:12px; box-shadow:0 6px 16px rgba(0,0,0,0.12); text-align:center; max-width:90%;">
+  <div id="season-timer" style="margin:30px auto 0; background:white; padding:25px; border-radius:12px; box-shadow:0 6px 16px rgba(0,0,0,0.12); text-align:center; width:90%;">
     <h2>Season 2026–27</h2>
     <div id="timer-text" style="font-size:1.6rem; font-weight:700; margin-top:10px;"></div>
   </div>
@@ -209,7 +217,7 @@
   </script>
 
   <!-- ⭐ ABOUT US ⭐ -->
-  <div class="container" style="margin-top:40px;">
+  <div class="container">
     <h2>About Us</h2>
     <p>
       Notts Masters Badminton: continuing a long county tradition of competitive age‑group play.
@@ -221,7 +229,7 @@
   </div>
 
   <!-- ⭐ MATCHES DASHBOARD ⭐ -->
-  <div id="matches-dashboard" style="margin:40px auto; max-width:1000px;">
+  <div class="container">
     <h2 class="section-title">Upcoming Matches</h2>
     <div id="upcoming-matches"></div>
 
@@ -230,7 +238,7 @@
   </div>
 
   <!-- ⭐ FACEBOOK ⭐ -->
-  <div class="container" style="margin-top:40px;">
+  <div class="container">
     <h2>Follow Us on Facebook</h2>
 
     <div class="fb-container">
