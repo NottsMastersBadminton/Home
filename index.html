@@ -13,7 +13,7 @@
       color: #222;
     }
 
-    /* ⭐ EXACT SAME HEADER AS EXTERNAL LINKS ⭐ */
+    /* HEADER — EXACT MATCH TO OTHER PAGES */
     header {
       background: #0a1a33;
       color: white;
@@ -21,7 +21,7 @@
       text-align: center;
     }
 
-    /* ⭐ EXACT SAME NAV AS EXTERNAL LINKS ⭐ */
+    /* NAV — EXACT MATCH TO OTHER PAGES */
     nav {
       background: #13294b;
       display: flex;
@@ -162,13 +162,13 @@
   <p>Home</p>
 </header>
 
-<!-- ⭐ NAV EXACTLY LIKE EXTERNAL LINKS ⭐ -->
-<div id="nav"></div>
+<!-- ⭐ FIXED NAV: NO WRAPPER, EXACT MATCH TO OTHER PAGES ⭐ -->
+<nav id="nav"></nav>
 <script>
   fetch("/Home/nav.html")
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById("nav").innerHTML = data;
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById("nav").outerHTML = html;
     });
 </script>
 
