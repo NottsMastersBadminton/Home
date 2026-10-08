@@ -162,13 +162,13 @@
   <p>Home</p>
 </header>
 
-<!-- ⭐ FIXED NAV: NO WRAPPER, EXACT MATCH TO OTHER PAGES ⭐ -->
-<nav id="nav"></nav>
+  <!-- Shared nav include -->
+<div id="nav"></div>
 <script>
   fetch("/Home/nav.html")
-    .then(r => r.text())
-    .then(html => {
-      document.getElementById("nav").outerHTML = html;
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("nav").innerHTML = data;
     });
 </script>
 
