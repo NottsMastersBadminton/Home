@@ -5,7 +5,7 @@
   <title>Notts Masters Badminton — Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- ⭐ UNIVERSAL FACEBOOK PARAMETER CLEANER ⭐ -->
+  <!-- Facebook cleaner -->
   <script>
     (function() {
       const params = new URLSearchParams(window.location.search);
@@ -20,7 +20,7 @@
     })();
   </script>
 
-  <!-- ⭐ GOOGLE ANALYTICS (GA4) ⭐ -->
+  <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2LZ8WDPHSL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -37,6 +37,7 @@
       color: #222;
     }
 
+    /* HEADER */
     header {
       background: #0a1a33;
       color: white;
@@ -44,25 +45,33 @@
       text-align: center;
     }
 
-    nav {
-      background: #13294b;
+    /* ⭐ WHITE BAR UNDER HEADER (MATCHES OFFICIALS PAGE) ⭐ */
+    .nav-wrapper {
+      background: white;
+      padding: 10px 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* NAVIGATION */
+    nav.main-nav {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      padding: 10px 0;
+      gap: 10px 20px;
     }
 
-    nav a {
-      color: white;
+    nav.main-nav a {
+      color: #0a1a33;
       text-decoration: none;
-      margin: 8px 15px;
       font-weight: 600;
     }
 
-    nav a:hover {
+    nav.main-nav a:hover {
       text-decoration: underline;
     }
 
+    /* CONTENT CONTAINER */
     .container {
       max-width: 900px;
       margin: 40px auto;
@@ -71,8 +80,8 @@
 
     h2 {
       color: #0a1a33;
-      margin-top: 40px;
       text-align: center;
+      margin-top: 40px;
     }
 
     .section {
@@ -81,11 +90,6 @@
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       margin-bottom: 30px;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 10px;
     }
 
     /* MATCH GRID */
@@ -114,26 +118,16 @@
       margin-top: 0;
     }
 
-    .fb-container {
-      width: 100%;
-      text-align: center;
-    }
-
+    /* FACEBOOK */
     .fb-container iframe {
-      display: inline-block;
       width: 100%;
       max-width: 300px;
       height: 800px;
       border: none;
-      overflow: hidden;
       border-radius: 8px;
     }
 
-    .bottom-banner {
-      width: 100%;
-      margin-top: 40px;
-    }
-
+    /* BANNER */
     .bottom-banner img {
       width: 100%;
       height: auto;
@@ -151,13 +145,8 @@
 
     /* MOBILE */
     @media (max-width: 600px) {
-      nav {
+      nav.main-nav {
         flex-direction: column;
-        padding: 5px 0;
-      }
-
-      nav a {
-        margin: 6px 0;
       }
 
       .container {
@@ -174,7 +163,6 @@
         width: 100% !important;
         max-width: 100% !important;
         border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       }
 
       .fb-container iframe {
@@ -185,20 +173,23 @@
     }
   </style>
 </head>
+
 <body>
 
 <header>
   <h1>Notts Masters Badminton</h1>
-  <p></p>
 </header>
 
-<!-- Shared nav include -->
-<div id="nav"></div>
+<!-- ⭐ WHITE BAR + NAV (MATCHES OFFICIALS PAGE EXACTLY) ⭐ -->
+<div class="nav-wrapper">
+  <div id="nav"></div>
+</div>
+
 <script>
   fetch("/Home/nav.html")
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById("nav").innerHTML = data;
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById("nav").innerHTML = html;
     });
 </script>
 
@@ -216,20 +207,19 @@
     function updateSeasonTimer() {
       const now = new Date();
       const diff = SEASON_START - now;
-      const timerText = document.getElementById("timer-text");
+      const el = document.getElementById("timer-text");
 
       if (diff <= 0) {
-        timerText.textContent = "Season has started!";
+        el.textContent = "Season has started!";
         return;
       }
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const days = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff / 3600000) % 24);
+      const minutes = Math.floor((diff / 60000) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
 
-      timerText.textContent =
-        `Starts in ${days}d ${hours}h ${minutes}m ${seconds}s`;
+      el.textContent = `Starts in ${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
 
     setInterval(updateSeasonTimer, 1000);
@@ -275,7 +265,7 @@
 
 </div>
 
-<!-- Bottom banner -->
+<!-- Banner -->
 <div class="bottom-banner">
   <a href="/Home/">
     <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Banner">
@@ -286,7 +276,7 @@
   © Notts Masters Badminton — Home
 </footer>
 
-<!-- MATCH LOADER SCRIPT -->
+<!-- MATCH LOADER -->
 <script>
   const DAYS_AHEAD = 14;
   const RESULTS_LIMIT = 4;
@@ -303,9 +293,9 @@
 
   function parseUKDate(str) {
     if (!str) return null;
-    const [datePart, timePart] = str.split(" ");
-    const [day, month, year] = datePart.split("/").map(Number);
-    const [hour, minute, second] = timePart.split(":").map(Number);
+    const [d, t] = str.split(" ");
+    const [day, month, year] = d.split("/").map(Number);
+    const [hour, minute, second] = t.split(":").map(Number);
     return new Date(year, month - 1, day, hour, minute, second);
   }
 
@@ -315,7 +305,6 @@
     return `
       <div class="match-card" style="border-left-color:${colour};">
         <h3>${match.age} vs ${match.opposition}</h3>
-
         <p><strong>Date:</strong> ${match.datetime.toLocaleString("en-GB", {
           day: "2-digit",
           month: "2-digit",
@@ -323,10 +312,8 @@
           hour: "2-digit",
           minute: "2-digit"
         })}</p>
-
         <p><strong>Location:</strong> ${match.location}</p>
         <p><strong>Address:</strong> ${match.address}</p>
-
         ${match.link ? `<p><a href="${match.link}" target="_blank">View on TournamentSoftware</a></p>` : ""}
         ${match.result ? `<p><strong>Result:</strong> ${match.result}</p>` : ""}
       </div>
