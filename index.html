@@ -57,27 +57,35 @@
       width: 100%;
     }
 
-    nav {
+    /* ⭐ NAVIGATION FULL WIDTH ⭐ */
+    #nav {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav.main-nav {
+      width: 100%;
       background: #13294b;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       padding: 10px 0;
-      width: 100%;
+      box-sizing: border-box;
     }
 
-    nav a {
+    nav.main-nav a {
       color: white;
       text-decoration: none;
       margin: 8px 15px;
       font-weight: 600;
     }
 
-    nav a:hover {
+    nav.main-nav a:hover {
       text-decoration: underline;
     }
 
-    /* ⭐ FULL WIDTH CONTAINERS ⭐ */
+    /* ⭐ FULL WIDTH CONTENT BLOCKS ⭐ */
     .container {
       width: 100%;
       max-width: 100%;
@@ -92,7 +100,7 @@
       color: #0a1a33;
     }
 
-    /* ⭐ NEW FULL-WIDTH TILE DESIGN ⭐ */
+    /* ⭐ FULL-WIDTH MATCH TILES ⭐ */
     .match-grid {
       display: block;
       width: 100%;
@@ -142,11 +150,12 @@
     /* ⭐ MOBILE FIXES ⭐ */
     @media (max-width: 600px) {
 
-      nav {
+      nav.main-nav {
         flex-direction: column;
+        padding: 10px 0;
       }
 
-      nav a {
+      nav.main-nav a {
         margin: 6px 0;
       }
 
@@ -191,7 +200,7 @@
     <h1>Notts Masters Badminton</h1>
   </header>
 
-  <!-- Shared nav include -->
+  <!-- ⭐ NAVIGATION ⭐ -->
   <div id="nav"></div>
   <script>
     fetch("/Home/nav.html")
