@@ -37,6 +37,7 @@
       color: #222;
     }
 
+    /* HEADER — EXACT MATCH TO EXTERNAL LINKS PAGE */
     header {
       background: #0a1a33;
       color: white;
@@ -44,6 +45,7 @@
       text-align: center;
     }
 
+    /* NAV — EXACT MATCH TO EXTERNAL LINKS PAGE */
     nav {
       background: #13294b;
       display: flex;
@@ -63,6 +65,7 @@
       text-decoration: underline;
     }
 
+    /* CONTENT */
     .container {
       max-width: 900px;
       margin: 40px auto;
@@ -90,7 +93,7 @@
       color: #0a1a33;
     }
 
-    /* Match grid */
+    /* MATCH GRID */
     .match-grid {
       display: flex;
       flex-wrap: wrap;
@@ -116,6 +119,7 @@
       margin-top: 0;
     }
 
+    /* FACEBOOK */
     .fb-container iframe {
       width: 100%;
       max-width: 300px;
@@ -124,6 +128,7 @@
       border-radius: 8px;
     }
 
+    /* BANNER */
     .bottom-banner {
       width: 100%;
       margin-top: 40px;
@@ -144,6 +149,7 @@
       font-size: 0.9rem;
     }
 
+    /* MOBILE */
     @media (max-width: 600px) {
       nav {
         flex-direction: column;
@@ -185,7 +191,7 @@
   <p>Home</p>
 </header>
 
-<!-- Shared nav include -->
+<!-- NAV — EXACT SAME AS EXTERNAL LINKS PAGE -->
 <div id="nav"></div>
 <script>
   fetch("/Home/nav.html")
