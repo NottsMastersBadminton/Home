@@ -1,4 +1,54 @@
- <!-- ⭐ UNIVERSAL FACEBOOK PARAMETER CLEANER ⭐ -->
+@@ -1,242 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- ⭐ GOOGLE ANALYTICS (GA4) ⭐ -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2LZ8WDPHSL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2LZ8WDPHSL');
+  </script>
+
+  <!-- ⭐ FULL SEO SECTION ⭐ -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Notts Masters Badminton | Nottinghamshire Masters Badminton Club</title>
+  <meta name="description" content="Official site for Notts Masters Badminton. Fixtures, results, officials, documents and county Masters badminton information for Nottinghamshire." />
+  <meta name="keywords" content="Notts Masters Badminton, Nottinghamshire badminton, Masters badminton, county badminton, badminton fixtures, badminton results, badminton officials" />
+  <meta name="author" content="Notts Masters Badminton" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Notts Masters Badminton" />
+  <meta property="og:description" content="Fixtures, results, officials and documents for Nottinghamshire Masters badminton." />
+  <meta property="og:image" content="https://nottsmastersbadminton.github.io/Home/documents/storage/Banner.jpg" />
+  <meta property="og:url" content="https://nottsmastersbadminton.github.io/Home/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Notts Masters Badminton" />
+  <meta name="twitter:description" content="Official Nottinghamshire Masters badminton site with fixtures, results and officials information." />
+  <meta name="twitter:image" content="https://nottsmastersbadminton.github.io/Home/documents/storage/Banner.jpg" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://nottsmastersbadminton.github.io/Home/" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/Home/favicon.png" type="image/png" />
+
+  <!-- Theme Colours -->
+  <meta name="theme-color" content="#06261C" />
+  <meta name="msapplication-navbutton-color" content="#06261C" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="#06261C" />
+
+  <!-- ⭐ UNIVERSAL FACEBOOK PARAMETER CLEANER ⭐ -->
   <script>
     (function() {
       const params = new URLSearchParams(window.location.search);
@@ -16,6 +66,7 @@
     })();
   </script>
 
+  <!-- Your existing CSS stays exactly where it is -->
   <style>
     html, body {
       margin: 0;
@@ -112,182 +163,8 @@
       color: white;
       font-size: 0.9rem;
     }
-   
-   .match-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;              /* slightly smaller gap */
-  margin-top: 20px;
-}
-
-.match-card {
-  width: 240px;           /* narrower so 3 fit more easily */
-  max-width: 240px;
-  flex: 0 0 auto;
-}
-
-
-
-
-
-.section-title {
-  text-align: center;
-}
-   
   </style>
 </head>
-
- <!-- ⭐ GOOGLE ANALYTICS (GA4) ⭐ -->
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2LZ8WDPHSL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-2LZ8WDPHSL');
-  </script>
-
-<script>
-// ------------------------------
-// CONFIGURATION
-// ------------------------------
-const DAYS_AHEAD = 14;   // How many days of upcoming matches to show
-const RESULTS_LIMIT = 4; // How many recent results to show
-
-
-// ------------------------------
-// AGE GROUP COLOURS
-// ------------------------------
-const AGE_COLOURS = {
-  "O40s": "#0a1a33",
-  "O45s": "#2e8b57",
-  "O50s": "#ff8c00",
-  "O55s": "#800080",
-  "O60s": "#b22222",
-  "O65s": "#008b8b",
-  "O70s": "#daa520"
-};
-
-
-// ------------------------------
-// DATE PARSING (UK format)
-// ------------------------------
-function parseUKDate(str) {
-  if (!str) return null;
-
-  const [datePart, timePart] = str.split(" ");
-  const [day, month, year] = datePart.split("/").map(Number);
-  const [hour, minute, second] = timePart.split(":").map(Number);
-
-  return new Date(year, month - 1, day, hour, minute, second);
-}
-
-
-// ------------------------------
-// MAIN LOADER
-// ------------------------------
-async function loadMatches() {
-  const url =
-    "https://docs.google.com/spreadsheets/d/16ALLKw2po0AvNRycDs8sDFjtdxKZDQSNvxJRvuTwsEU/gviz/tq?gid=0&tqx=out:json";
-
-  const res = await fetch(url);
-  const text = await res.text();
-
-  const json = JSON.parse(
-    text.substring(text.indexOf("{"), text.lastIndexOf("}") + 1)
-  );
-
-  const rows = json.table.rows.map(r => ({
-    age: r.c[0]?.v || "",
-    datetime: parseUKDate(r.c[1]?.f),
-    opposition: r.c[2]?.v || "",
-    location: r.c[3]?.v || "",
-    address: r.c[4]?.v || "",
-    link: r.c[5]?.v || "",
-    result: r.c[6]?.v || ""
-  }));
-
-
-  // ------------------------------
-  // UPCOMING MATCHES
-  // ------------------------------
-  const now = new Date();
-  const cutoff = new Date();
-  cutoff.setDate(cutoff.getDate() + DAYS_AHEAD);
-
-  const upcoming = rows.filter(r => r.datetime && r.datetime > now && r.datetime <= cutoff);
-
-
-  // ------------------------------
-  // RECENT RESULTS (last 4)
-  // ------------------------------
-  const recent = rows
-    .filter(r => r.result && r.result.trim() !== "")
-    .sort((a, b) => b.datetime - a.datetime)
-    .slice(0, RESULTS_LIMIT);
-
-
-  // ------------------------------
-  // CARD RENDERING
-  // ------------------------------
-  function card(match) {
-  const colour = AGE_COLOURS[match.age] || "#333";
-
-  return `
-  <div class="match-card" style="
-    background:white;
-    padding:15px;
-    border-radius:10px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.1);
-    text-align:left;
-    border-left: 8px solid ${colour};
-  ">
-
-      <h3 style="color:${colour};">${match.age} vs ${match.opposition}</h3>
-      <p><strong>Date:</strong> ${match.datetime.toLocaleString("en-GB", {
-  day: "2-digit",
-  month: "2-digit",
-  year: "numeric",
-  hour: "2-digit",
-  minute: "2-digit"
-})}</p>
-
-      <p><strong>Location:</strong> ${match.location}</p>
-      <p><strong>Address:</strong> ${match.address}</p>
-      ${match.link ? `<p><a href="${match.link}" target="_blank">View on TournamentSoftware</a></p>` : ""}
-      ${match.result ? `<p><strong>Result:</strong> ${match.result}</p>` : ""}
-    </div>
-  `;
-}
-
-
-
-  // ------------------------------
-  // OUTPUT TO PAGE
-  // ------------------------------
-  document.getElementById("upcoming-matches").innerHTML =
-  upcoming.length
-    ? `<div class="match-grid">${upcoming.map(card).join("")}</div>`
-    : "<p>No upcoming matches.</p>";
-
-document.getElementById("recent-results").innerHTML =
-  recent.length
-    ? `<div class="match-grid">${recent.map(card).join("")}</div>`
-    : "<p>No recent results.</p>";
-
-
-
-}
-
-
-// ------------------------------
-// RUN
-// ------------------------------
-loadMatches();
-</script>
-
-
 
 <body>
 
@@ -298,6 +175,7 @@ loadMatches();
     <p></p>
   </header>
 
+  <!-- Shared nav include -->
   <div id="nav"></div>
   <script>
     fetch("/Home/nav.html")
@@ -307,19 +185,11 @@ loadMatches();
       });
   </script>
 
+  <!-- ⭐ COUNTDOWN TIMER BETWEEN NAV + ABOUT US ⭐ -->
   <div id="season-timer" style="margin:30px auto 0; background:white; padding:25px; border-radius:12px; box-shadow:0 6px 16px rgba(0,0,0,0.12); text-align:center; max-width:90%;">
     <h2>Season 2026–27</h2>
     <div id="timer-text" style="font-size:1.6rem; font-weight:700; margin-top:10px;"></div>
   </div>
-<div class="container" style="margin-top:40px;">
-  <h2>About Us</h2>
-    <p>Notts Masters Badminton: continuing a long county tradition of competitive age‑group play.
-  Fielding teams from O40s through to O70s and providing fixtures, results, documents, and captain resources.<br><br>
-
-  Interested in joining the Nottinghamshire Masters teams? Reach out to Lee Truong via email
-  <a href="mailto:nottsmasters@gmail.com">nottsmasters@gmail.com</a> and we’ll help you get started.
-</p>
-</div>
 
   <script>
     const SEASON_START = new Date("2026-10-18T12:00:00");
@@ -346,30 +216,28 @@ loadMatches();
     setInterval(updateSeasonTimer, 1000);
     updateSeasonTimer();
   </script>
-  
-<div id="matches-dashboard" style="margin:40px auto; max-width:1000px;">
-  <h2 class="section-title">Upcoming Matches</h2>
-  <div id="upcoming-matches"></div>
+  <!-- ⭐ END TIMER ⭐ -->
 
-  <h2 class="section-title" style="margin-top:40px;">Recent Results</h2>
-  <div id="recent-results"></div>
-</div>
+  <div class="container">
+    <h2>About Us</h2>
+    <p>Notts Masters Badminton: continuing a long county tradition of competitive age‑group play.
+      Fielding teams from O40s through to O70s and providing fixtures, results, documents, and captain resources.</p>
 
- <div class="container" style="margin-top:40px;">
-  <h2>Follow Us on Facebook</h2>
+    <h2>Follow Us on Facebook</h2>
 
-  <div class="fb-container">
-    <iframe 
-      src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100077877812929&tabs=timeline&width=300&height=800&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true"
-      scrolling="no"
-      frameborder="0"
-      allowfullscreen="true"
-      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-    </iframe>
+    <div class="fb-container">
+      <iframe 
+        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100077877812929&tabs=timeline&width=300&height=800&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true"
+        scrolling="no"
+        frameborder="0"
+        allowfullscreen="true"
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
+
   </div>
-</div>
 
- 
+  <!-- ⭐ Clickable bottom banner -->
   <div class="bottom-banner">
     <a href="/Home/">
       <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Banner">
