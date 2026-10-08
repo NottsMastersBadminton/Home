@@ -5,30 +5,6 @@
   <title>Home — Notts Masters Badminton</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Facebook cleaner -->
-  <script>
-    (function() {
-      const params = new URLSearchParams(window.location.search);
-      if (params.has("fbclid")) {
-        params.delete("fbclid");
-        const cleanUrl =
-          window.location.origin +
-          window.location.pathname +
-          (params.toString() ? "?" + params.toString() : "");
-        window.history.replaceState({}, document.title, cleanUrl);
-      }
-    })();
-  </script>
-
-  <!-- GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2LZ8WDPHSL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-2LZ8WDPHSL');
-  </script>
-
   <style>
     body {
       margin: 0;
@@ -37,7 +13,7 @@
       color: #222;
     }
 
-    /* HEADER — EXACT MATCH TO EXTERNAL LINKS PAGE */
+    /* ⭐ EXACT SAME HEADER AS EXTERNAL LINKS ⭐ */
     header {
       background: #0a1a33;
       color: white;
@@ -45,7 +21,7 @@
       text-align: center;
     }
 
-    /* NAV — EXACT MATCH TO EXTERNAL LINKS PAGE */
+    /* ⭐ EXACT SAME NAV AS EXTERNAL LINKS ⭐ */
     nav {
       background: #13294b;
       display: flex;
@@ -129,11 +105,6 @@
     }
 
     /* BANNER */
-    .bottom-banner {
-      width: 100%;
-      margin-top: 40px;
-    }
-
     .bottom-banner img {
       width: 100%;
       height: auto;
@@ -191,7 +162,7 @@
   <p>Home</p>
 </header>
 
-<!-- NAV — EXACT SAME AS EXTERNAL LINKS PAGE -->
+<!-- ⭐ NAV EXACTLY LIKE EXTERNAL LINKS ⭐ -->
 <div id="nav"></div>
 <script>
   fetch("/Home/nav.html")
