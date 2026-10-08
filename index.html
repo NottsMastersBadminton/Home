@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Notts Masters Badminton — Home</title>
+  <title>Home — Notts Masters Badminton</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Facebook cleaner -->
@@ -37,7 +37,6 @@
       color: #222;
     }
 
-    /* HEADER */
     header {
       background: #0a1a33;
       color: white;
@@ -45,54 +44,53 @@
       text-align: center;
     }
 
-    /* ⭐ WHITE BAR UNDER HEADER (MATCHES OFFICIALS PAGE) ⭐ */
-    .nav-wrapper {
-      background: white;
-      padding: 10px 0;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    /* NAVIGATION */
-    nav.main-nav {
+    nav {
+      background: #13294b;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 10px 20px;
+      padding: 10px 0;
     }
 
-    nav.main-nav a {
-      color: #0a1a33;
+    nav a {
+      color: white;
       text-decoration: none;
+      margin: 8px 15px;
       font-weight: 600;
     }
 
-    nav.main-nav a:hover {
+    nav a:hover {
       text-decoration: underline;
     }
 
-    /* CONTENT CONTAINER */
     .container {
       max-width: 900px;
       margin: 40px auto;
       padding: 0 20px;
+      text-align: center;
     }
 
     h2 {
+      margin-bottom: 20px;
       color: #0a1a33;
-      text-align: center;
-      margin-top: 40px;
     }
 
-    .section {
+    .section-card {
       background: white;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       margin-bottom: 30px;
+      text-align: left;
     }
 
-    /* MATCH GRID */
+    .section-card h3 {
+      margin-top: 0;
+      text-align: center;
+      color: #0a1a33;
+    }
+
+    /* Match grid */
     .match-grid {
       display: flex;
       flex-wrap: wrap;
@@ -114,11 +112,10 @@
       box-sizing: border-box;
     }
 
-    .match-card h3 {
+    .match-card h4 {
       margin-top: 0;
     }
 
-    /* FACEBOOK */
     .fb-container iframe {
       width: 100%;
       max-width: 300px;
@@ -127,7 +124,11 @@
       border-radius: 8px;
     }
 
-    /* BANNER */
+    .bottom-banner {
+      width: 100%;
+      margin-top: 40px;
+    }
+
     .bottom-banner img {
       width: 100%;
       height: auto;
@@ -143,10 +144,14 @@
       font-size: 0.9rem;
     }
 
-    /* MOBILE */
     @media (max-width: 600px) {
-      nav.main-nav {
+      nav {
         flex-direction: column;
+        padding: 5px 0;
+      }
+
+      nav a {
+        margin: 6px 0;
       }
 
       .container {
@@ -162,7 +167,6 @@
       .match-card {
         width: 100% !important;
         max-width: 100% !important;
-        border-radius: 8px;
       }
 
       .fb-container iframe {
@@ -178,27 +182,25 @@
 
 <header>
   <h1>Notts Masters Badminton</h1>
+  <p>Home</p>
 </header>
 
-<!-- ⭐ WHITE BAR + NAV (MATCHES OFFICIALS PAGE EXACTLY) ⭐ -->
-<div class="nav-wrapper">
-  <div id="nav"></div>
-</div>
-
+<!-- Shared nav include -->
+<div id="nav"></div>
 <script>
   fetch("/Home/nav.html")
-    .then(r => r.text())
-    .then(html => {
-      document.getElementById("nav").innerHTML = html;
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("nav").innerHTML = data;
     });
 </script>
 
 <div class="container">
 
   <!-- Season timer -->
-  <h2>Season 2026–27</h2>
-  <div class="section" id="season-timer">
-    <div id="timer-text" style="font-size:1.4rem; font-weight:700; text-align:center;"></div>
+  <div class="section-card" id="season-timer">
+    <h3>Season 2026–27</h3>
+    <p id="timer-text" style="font-size:1.4rem; font-weight:700; text-align:center;"></p>
   </div>
 
   <script>
@@ -227,8 +229,8 @@
   </script>
 
   <!-- About us -->
-  <h2>About Us</h2>
-  <div class="section">
+  <div class="section-card">
+    <h3>About Us</h3>
     <p>
       Notts Masters Badminton: continuing a long county tradition of competitive age‑group play.
       Fielding teams from O40s through to O70s and providing fixtures, results, documents, and captain resources.
@@ -238,20 +240,21 @@
     </p>
   </div>
 
-  <!-- Matches dashboard -->
-  <h2>Upcoming Matches</h2>
-  <div class="section">
+  <!-- Upcoming matches -->
+  <div class="section-card">
+    <h3>Upcoming Matches</h3>
     <div id="upcoming-matches"></div>
   </div>
 
-  <h2>Recent Results</h2>
-  <div class="section">
+  <!-- Recent results -->
+  <div class="section-card">
+    <h3>Recent Results</h3>
     <div id="recent-results"></div>
   </div>
 
   <!-- Facebook -->
-  <h2>Follow Us on Facebook</h2>
-  <div class="section">
+  <div class="section-card">
+    <h3>Follow Us on Facebook</h3>
     <div class="fb-container">
       <iframe 
         src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100077877812929&tabs=timeline&width=300&height=800&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true"
@@ -265,7 +268,7 @@
 
 </div>
 
-<!-- Banner -->
+<!-- Bottom banner -->
 <div class="bottom-banner">
   <a href="/Home/">
     <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Banner">
@@ -304,7 +307,7 @@
 
     return `
       <div class="match-card" style="border-left-color:${colour};">
-        <h3>${match.age} vs ${match.opposition}</h3>
+        <h4>${match.age} vs ${match.opposition}</h4>
         <p><strong>Date:</strong> ${match.datetime.toLocaleString("en-GB", {
           day: "2-digit",
           month: "2-digit",
