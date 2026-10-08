@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <div id="global-head"></div>
+<script>
+  fetch("/Home/global-head.html")
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById("global-head").outerHTML = html;
+    });
+</script>
   <meta charset="UTF-8" />
   <title>Masters Officials — Notts Masters Badminton</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
