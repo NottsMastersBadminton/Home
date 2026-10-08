@@ -13,7 +13,6 @@
       color: #222;
     }
 
-    /* HEADER — EXACT MATCH TO OTHER PAGES */
     header {
       background: #0a1a33;
       color: white;
@@ -21,7 +20,6 @@
       text-align: center;
     }
 
-    /* NAV — EXACT MATCH TO OTHER PAGES */
     nav {
       background: #13294b;
       display: flex;
@@ -41,7 +39,6 @@
       text-decoration: underline;
     }
 
-    /* CONTENT */
     .container {
       max-width: 900px;
       margin: 40px auto;
@@ -69,7 +66,6 @@
       color: #0a1a33;
     }
 
-    /* MATCH GRID */
     .match-grid {
       display: flex;
       flex-wrap: wrap;
@@ -95,7 +91,6 @@
       margin-top: 0;
     }
 
-    /* FACEBOOK */
     .fb-container iframe {
       width: 100%;
       max-width: 300px;
@@ -104,7 +99,6 @@
       border-radius: 8px;
     }
 
-    /* BANNER */
     .bottom-banner img {
       width: 100%;
       height: auto;
@@ -120,15 +114,15 @@
       font-size: 0.9rem;
     }
 
-    /* MOBILE */
+    /* ⭐ FIXED MOBILE NAV — stays horizontal */
     @media (max-width: 600px) {
       nav {
-        flex-direction: column;
-        padding: 5px 0;
+        flex-direction: row;
+        flex-wrap: wrap;
       }
 
       nav a {
-        margin: 6px 0;
+        margin: 8px 10px;
       }
 
       .container {
@@ -162,7 +156,6 @@
   <p>Home</p>
 </header>
 
-  <!-- Shared nav include -->
 <div id="nav"></div>
 <script>
   fetch("/Home/nav.html")
@@ -174,7 +167,6 @@
 
 <div class="container">
 
-  <!-- Season timer -->
   <div class="section-card" id="season-timer">
     <h3>Season 2026–27</h3>
     <p id="timer-text" style="font-size:1.4rem; font-weight:700; text-align:center;"></p>
@@ -205,7 +197,6 @@
     updateSeasonTimer();
   </script>
 
-  <!-- About us -->
   <div class="section-card">
     <h3>About Us</h3>
     <p>
@@ -217,19 +208,16 @@
     </p>
   </div>
 
-  <!-- Upcoming matches -->
   <div class="section-card">
     <h3>Upcoming Matches</h3>
     <div id="upcoming-matches"></div>
   </div>
 
-  <!-- Recent results -->
   <div class="section-card">
     <h3>Recent Results</h3>
     <div id="recent-results"></div>
   </div>
 
-  <!-- Facebook -->
   <div class="section-card">
     <h3>Follow Us on Facebook</h3>
     <div class="fb-container">
@@ -245,7 +233,6 @@
 
 </div>
 
-<!-- Bottom banner -->
 <div class="bottom-banner">
   <a href="/Home/">
     <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Banner">
@@ -256,7 +243,6 @@
   © Notts Masters Badminton — Home
 </footer>
 
-<!-- MATCH LOADER -->
 <script>
   const DAYS_AHEAD = 14;
   const RESULTS_LIMIT = 4;
