@@ -78,6 +78,20 @@
       transform: translateY(-2px);
     }
 
+    .back-button {
+      display: inline-block;
+      margin: 25px auto 0;
+      padding: 12px 20px;
+      background: #13294b;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 8px;
+    }
+    .back-button:hover {
+      background: #0a1a33;
+    }
+
     footer {
       margin-top: 40px;
       padding: 20px;
@@ -95,7 +109,6 @@
   <p>Captains & Selectors — Documents</p>
 </header>
 
-<!-- Shared nav include -->
 <div id="nav"></div>
 <script>
   fetch("/Home/nav.html")
@@ -105,14 +118,12 @@
     });
 </script>
 
-<!-- LOAD HASHED PASSWORD -->
 <script src="/Home/auth/password.js"></script>
 
 <script>
   const PASSWORD_HASH = window.CAPTAINS_PASSWORD_HASH;
   const SESSION_KEY = "captainsAuth";
 
-  // Redirect if not authenticated
   if (sessionStorage.getItem(SESSION_KEY) !== PASSWORD_HASH) {
     window.location.href = "/Home/captains/index.html";
   }
@@ -121,7 +132,6 @@
 <div class="container">
   <h2>Documents</h2>
 
-  <!-- Season 2026–2027 -->
   <h3>Season 2026–2027</h3>
 
   <a class="file-link" href="/Home/documents/storage/Masters-county-championships-score-sheet-2026-27.pdf" target="_blank">
@@ -158,7 +168,6 @@
 
   <br><br>
 
-  <!-- Guides -->
   <h3>Guides & Information</h3>
 
   <a class="file-link" href="/Home/documents/storage/Tournament Software User Guide - For Masters Captains.pdf" target="_blank">
@@ -179,7 +188,6 @@
 
   <br><br>
 
-  <!-- Policies -->
   <h3>Policies & Governance</h3>
 
   <a class="file-link" href="/Home/documents/storage/Masters Handbook 2026-27.pdf" target="_blank">
@@ -193,6 +201,8 @@
   <a class="file-link" href="/Home/documents/storage/Regulations for the Badminton England Masters County Challenge 2024-25.pdf" target="_blank">
     Regulations — County Challenge 2024–2025 (PDF)
   </a>
+
+  <a href="/Home/captains/index.html" class="back-button">⬅ Back to Captains & Selectors Area</a>
 
 </div>
 
