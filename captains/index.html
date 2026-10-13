@@ -164,6 +164,7 @@
     <a id="docLink1" href="#">Notts Masters Players</a>
     <a id="docLink2" href="#">Notts Masters Matches</a>
     <a id="docLink3" href="#">Captains & Selectors Match Calendar</a>
+    <a id="docLink3" href="#">Captains & Selectors Documents</a>
   </div>
 </div>
 
@@ -179,6 +180,7 @@
   const DOC_URL_1 = "/Home/captains/players.html";
   const DOC_URL_2 = "/Home/captains/matches.html";
   const DOC_URL_3 = "/Home/captains/calendar.html";
+  const DOC_URL_4 = "/Home/captains/documents/";
 
   const passwordInput = document.getElementById("password");
   const togglePassword = document.getElementById("togglePassword");
@@ -188,6 +190,7 @@
   const docLink1 = document.getElementById("docLink1");
   const docLink2 = document.getElementById("docLink2");
   const docLink3 = document.getElementById("docLink3");
+  const docLink4 = document.getElementById("docLink4");
 
   // SHA‑256 hashing function
   async function sha256(str) {
@@ -203,6 +206,7 @@
     docLink1.href = DOC_URL_1;
     docLink2.href = DOC_URL_2;
     docLink3.href = DOC_URL_3;
+    docLink4.href = DOC_URL_4;
   }
 
   // Toggle password visibility
@@ -226,6 +230,7 @@
       docLink1.href = DOC_URL_1;
       docLink2.href = DOC_URL_2;
       docLink3.href = DOC_URL_3;
+      docLink4.href = DOC_URL_4;
     } else {
       successEl.style.display = "none";
       errorEl.style.display = "block";
