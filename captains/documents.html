@@ -1,54 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+   <!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2LZ8WDPHSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2LZ8WDPHSL');
+</script>
+
+  <meta charset="UTF-8" />
+  <title>Captains & Selectors Documents — Notts Masters Badminton</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
+    header {
+      background: #0a1a33;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background: #13294b;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 8px 15px;
+      font-weight: 600;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+
+    h2 {
+      text-align: center;
+      color: #0a1a33;
+      margin-bottom: 20px;
+    }
+
+    .file-link {
+      display: block;
+      padding: 12px;
+      margin: 10px 0;
+      background: #e9eef7;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #0a1a33;
+      font-weight: 600;
+      transition: 0.2s;
+      text-align: center;
+    }
+
+    .file-link:hover {
+      background: #d6e2f3;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      text-align: center;
+      background: #0a1a33;
+      color: white;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Notts Masters Badminton</h1>
+  <p>Captains & Selectors — Documents</p>
+</header>
+
+<!-- Shared nav include -->
+<div id="nav"></div>
+<script>
+  fetch("/Home/nav.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("nav").innerHTML = data;
+    });
+</script>
+
+<!-- LOAD HASHED PASSWORD -->
+<script src="/Home/auth/password.js"></script>
+
+<script>
+  const PASSWORD_HASH = window.CAPTAINS_PASSWORD_HASH;
+  const SESSION_KEY = "captainsAuth";
+
+  // Redirect if not authenticated
+  if (sessionStorage.getItem(SESSION_KEY) !== PASSWORD_HASH) {
+    window.location.href = "/Home/captains/index.html";
+  }
+</script>
+
 <div class="container">
+  <h2>Documents</h2>
 
-    <div class="logged-in-banner">
-        ✅ You are now logged in to the Captains & Selectors Area
-    </div>
+  <!-- Season 2026–2027 -->
+  <h3>Season 2026–2027</h3>
 
-    <div class="section">
-        <h3>📋 Team Documents</h3>
+  <a class="file-link" href="/Home/documents/storage/Masters-county-championships-score-sheet-2026-27.pdf" target="_blank">
+    Masters County Championships Score Sheet (PDF)
+  </a>
 
-        <a class="file-link" href="/Home/captains/documents/
-            O35 Team Sheet
-        </a>
+  <a class="file-link" href="/Home/documents/storage/Masters-county-championships-065-070-score-sheet-2026-27.pdf" target="_blank">
+    Masters Championships 065–070 Score Sheet (PDF)
+  </a>
 
-        <a class="file-link" href="/Home/c40-Team-Sheet.xlsx
-            O40 Team Sheet
-        </a>
+  <a class="file-link" href="/Home/documents/storage/Challenge divisions 26-27.pdf" target="_blank">
+    Challenge Divisions 2026–2027 (PDF)
+  </a>
 
-        <a class="file-link" href="/Home/captains/documents/storage/O45-Team-Sheet.heet
-        </a>
+  <a class="file-link" href="/Home/documents/storage/Challenge hotels Milton Keynes 2026 to 2027.pdf" target="_blank">
+    Challenge Hotels — Milton Keynes (PDF)
+  </a>
 
-        <a class="file-link" href="/Home/captains/documents/storage/O50-Team-Sheet.xlsx" target </a>
+  <a class="file-link" href="/Home/documents/storage/Challenge hotels Wolverhampton 2026 to 2027.docx" target="_blank">
+    Challenge Hotels — Wolverhampton (DOCX)
+  </a>
 
-        <a class="file-link" href="/Home/captains/documents/storage/O55-Team-SheetSheet
-        </a>
-    </div>
+  <a class="file-link" href="/Home/documents/storage/Challenge hotels Wolverhampton 2026 to 2027.pdf" target="_blank">
+    Challenge Hotels — Wolverhampton (PDF)
+  </a>
 
-    <div class="section">
-        <h3>📚 Captains Resources</h3>
+  <a class="file-link" href="/Home/documents/storage/Challenge hotels Worcester 2026 to 2027.docx" target="_blank">
+    Challenge Hotels — Worcester (DOCX)
+  </a>
 
-        <a class="file-link" href="/rage/Captains-Handbook.pdf
-            Captains Handbook
-        </a>
+  <a class="file-link" href="/Home/documents/storage/Challenge hotels Worcester 2026 to 2027.pdf" target="_blank">
+    Challenge Hotels — Worcester (PDF)
+  </a>
 
-        <a class="file-link" href="/Home/captains/documents/storage/Selection-Selection Guidelines
-        </a>
+  <br><br>
 
-        <a class="file-link" href="/Home/captains/documents/storage       Travel Expenses Form
-        </a>
-    </div>
+  <!-- Guides -->
+  <h3>Guides & Information</h3>
 
-    <div class="section">
-        <h3>🔗 Useful Links</h3>
+  <a class="file-link" href="/Home/documents/storage/Tournament Software User Guide - For Masters Captains.pdf" target="_blank">
+    Tournament Software User Guide (PDF)
+  </a>
 
-        <a class="file-link" href="https://be.tournamentsoftware.com/" target="_blank">
-            Tournament Software
-        </a>
+  <a class="file-link" href="/Home/documents/storage/Information for nominating players and entering results 2026-27.pdf" target="_blank">
+    Nominating Players & Entering Results 2026–2027 (PDF)
+  </a>
 
-        <a class="file-link" href="https://www.badmintonengland.co.uk/" target="_ </a>
-    </div>
+  <a class="file-link" href="/Home/documents/storage/Compete fee.pdf" target="_blank">
+    Compete Fee — How to Pay (PDF)
+  </a>
 
-    <a href="/Home/captains/index.html" class="back-ains & Selectors Area
-    </a>
+  <a class="file-link" href="/Home/documents/storage/Nottinghamshire County Boundaries map.pdf" target="_blank">
+    Nottinghamshire County Boundaries Map (PDF)
+  </a>
+
+  <br><br>
+
+  <!-- Policies -->
+  <h3>Policies & Governance</h3>
+
+  <a class="file-link" href="/Home/documents/storage/Masters Handbook 2026-27.pdf" target="_blank">
+    Masters Handbook 2026–2027 (PDF)
+  </a>
+
+  <a class="file-link" href="/Home/documents/storage/Regulations for the Badminton England Masters County Championships 2024-25.pdf" target="_blank">
+    Regulations — County Championships 2024–2025 (PDF)
+  </a>
+
+  <a class="file-link" href="/Home/documents/storage/Regulations for the Badminton England Masters County Challenge 2024-25.pdf" target="_blank">
+    Regulations — County Challenge 2024–2025 (PDF)
+  </a>
 
 </div>
+
+<footer>
+  © Notts Masters Badminton — Captains & Selectors Documents
+</footer>
+
+</body>
+</html>
