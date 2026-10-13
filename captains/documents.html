@@ -1,366 +1,54 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-<!-- Google Analytics (GA4) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2LZ8WDPHSL"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-2LZ8WDPHSL');
-</script>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Captains Documents | Notts Masters Badminton</title>
-
-<style>
-
-body{
-    margin:0;
-    font-family:system-ui,sans-serif;
-    background:#f5f5f5;
-    color:#222;
-}
-
-header{
-    background:#0a1a33;
-    color:white;
-    text-align:center;
-    padding:20px;
-}
-
-nav{
-    background:#13294b;
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    padding:10px 0;
-}
-
-nav a{
-    color:white;
-    text-decoration:none;
-    margin:8px 15px;
-    font-weight:600;
-}
-
-nav a:hover{
-    text-decoration:underline;
-}
-
-.container{
-    max-width:1100px;
-    margin:40px auto;
-    padding:0 20px 40px;
-}
-
-.auth-box{
-    max-width:400px;
-    margin:40px auto;
-    padding:25px;
-    background:white;
-    border-radius:12px;
-    box-shadow:0 6px 16px rgba(0,0,0,.12);
-    text-align:center;
-}
-
-.password-wrapper{
-    position:relative;
-    margin-bottom:15px;
-}
-
-.password-wrapper input{
-    width:100%;
-    padding:12px 40px 12px 10px;
-    border:1px solid #ccc;
-    border-radius:6px;
-    box-sizing:border-box;
-    font-size:1rem;
-}
-
-.toggle-password{
-    position:absolute;
-    right:10px;
-    top:50%;
-    transform:translateY(-50%);
-    cursor:pointer;
-}
-
-button{
-    width:100%;
-    padding:12px;
-    background:#1a73e8;
-    color:white;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
-    font-size:1rem;
-    font-weight:600;
-}
-
-button:hover{
-    background:#1558b4;
-}
-
-.error{
-    display:none;
-    margin-top:12px;
-    color:#c62828;
-}
-
-.logged-in-banner{
-    background:#e8f4ff;
-    color:#0a1a33;
-    padding:15px;
-    text-align:center;
-    border-radius:8px;
-    margin-bottom:25px;
-    font-weight:600;
-}
-
-.section{
-    background:white;
-    border-radius:12px;
-    padding:20px;
-    margin-bottom:25px;
-    box-shadow:0 4px 12px rgba(0,0,0,.08);
-}
-
-.section h3{
-    margin-top:0;
-    color:#0a1a33;
-}
-
-.file-link{
-    display:block;
-    margin:10px 0;
-    padding:12px 15px;
-    background:#e9eef7;
-    border-radius:8px;
-    text-decoration:none;
-    color:#0a1a33;
-    font-weight:600;
-    transition:.2s;
-}
-
-.file-link:hover{
-    background:#d7e4f6;
-    transform:translateY(-2px);
-}
-
-.back-button{
-    display:inline-block;
-    margin-top:15px;
-    padding:12px 20px;
-    background:#13294b;
-    color:white;
-    text-decoration:none;
-    border-radius:8px;
-    font-weight:600;
-}
-
-.back-button:hover{
-    background:#0a1a33;
-}
-
-footer{
-    background:#0a1a33;
-    color:white;
-    text-align:center;
-    padding:20px;
-}
-
-</style>
-
-</head>
-<body>
-
-<header>
-    <h1>Notts Masters Badminton</h1>
-    <p>Captains & Selectors Documents</p>
-</header>
-
-<div id="nav"></div>
-
-<script>
-fetch("/Home/nav.html")
-.then(response => response.text())
-.then(data => {
-    document.getElementById("nav").innerHTML = data;
-});
-</script>
-
-/Home/auth/password.jsscript>
-
 <div class="container">
 
-    <div id="authBox" class="auth-box">
-
-        <h2>Enter Password</h2>
-
-        <p>
-            This section is restricted to Captains & Selectors.
-        </p>
-
-        <div class="password-wrapper">
-            <input type="password" id="password" placeholder="Enter password">
-            <span id="togglePassword" class="toggle-password">👁️</span>
-        </div>
-
-        <button id="submitBtn">Unlock Documents</button>
-
-        <div id="error" class="error">
-            ❌ Incorrect password. Please try again.
-        </div>
-
+    <div class="logged-in-banner">
+        ✅ You are now logged in to the Captains & Selectors Area
     </div>
 
-    <div id="documentsContainer" style="display:none;">
+    <div class="section">
+        <h3>📋 Team Documents</h3>
 
-        <div class="logged-in-banner">
-            ✅ You are now logged in to the Captains & Selectors Area
-        </div>
-
-        <div class="section">
-            <h3>📋 Team Documents</h3>
-
-            <a class="file-link" href="/Home/captains/documents/storage/O        O35 Team Sheet
-            </a>
-
-            <a class="file-link" hrefstorage/O40-Team-Sheet.xlsx
-                O40 Team Sheet
-            </a>
-
-            <a class="file-link" href="/Home/captains/documents/storage/O45-Team-O45 Team Sheet
-            </a>
-
-            <a class="file-link" href="/Home/captains/documents/storage/O50-Team-Sheet.am Sheet
-            </a>
-
-            <a class="file-link" href="/Home/captains/documents/storage/O55-Team-Sheet.xlsx" target         </a>
-
-        </div>
-
-        <div class="section">
-            <h3>📚 Captains Resources</h3>
-
-            <a class="file-link" href="/Home/captains/documents/storage/Captains-Handbook.pdf" target="_blank">
- </a>
-
-            <a class="file-documents/storage/Selection-Guidelines.pdf
-                Selection Guidelines
-            </a>
-
-            /Home/captains/documents/storage/Travel-Expenses.xlsx
-                Travel Expenses Form
-            </a>
-
-        </div>
-
-        <div class="section">
-            <h3>🔗 Useful Links</h3>
-
-            <a class="file-link" href="https://be.tournamentsoftware.com/"Software
-            </a>
-
-            <a class="file-link" href="d.co.uk/
-                Badminton England
-            </a>
-
-        </div>
-
-        <a href="/Home/captainsml
-            ⬅ Back to Captains & Selectors Area
+        <a class="file-link" href="/Home/captains/documents/
+            O35 Team Sheet
         </a>
 
+        <a class="file-link" href="/Home/c40-Team-Sheet.xlsx
+            O40 Team Sheet
+        </a>
+
+        <a class="file-link" href="/Home/captains/documents/storage/O45-Team-Sheet.heet
+        </a>
+
+        <a class="file-link" href="/Home/captains/documents/storage/O50-Team-Sheet.xlsx" target </a>
+
+        <a class="file-link" href="/Home/captains/documents/storage/O55-Team-SheetSheet
+        </a>
     </div>
 
+    <div class="section">
+        <h3>📚 Captains Resources</h3>
+
+        <a class="file-link" href="/rage/Captains-Handbook.pdf
+            Captains Handbook
+        </a>
+
+        <a class="file-link" href="/Home/captains/documents/storage/Selection-Selection Guidelines
+        </a>
+
+        <a class="file-link" href="/Home/captains/documents/storage       Travel Expenses Form
+        </a>
+    </div>
+
+    <div class="section">
+        <h3>🔗 Useful Links</h3>
+
+        <a class="file-link" href="https://be.tournamentsoftware.com/" target="_blank">
+            Tournament Software
+        </a>
+
+        <a class="file-link" href="https://www.badmintonengland.co.uk/" target="_ </a>
+    </div>
+
+    <a href="/Home/captains/index.html" class="back-ains & Selectors Area
+    </a>
+
 </div>
-
-<footer>
-    © Notts Masters Badminton — Captains Documents
-</footer>
-
-<script>
-
-const PASSWORD_HASH = window.CAPTAINS_PASSWORD_HASH;
-const SESSION_KEY = "captainsAuth";
-
-const passwordInput = document.getElementById("password");
-const togglePassword = document.getElementById("togglePassword");
-const submitBtn = document.getElementById("submitBtn");
-const errorEl = document.getElementById("error");
-const authBox = document.getElementById("authBox");
-const documentsContainer = document.getElementById("documentsContainer");
-
-async function sha256(str){
-    const buf = await crypto.subtle.digest(
-        "SHA-256",
-        new TextEncoder().encode(str)
-    );
-
-    return [...new Uint8Array(buf)]
-    .map(b => b.toString(16).padStart(2, "0"))
-    .join("");
-}
-
-function showDocuments(){
-    authBox.style.display = "none";
-    documentsContainer.style.display = "block";
-}
-
-if(sessionStorage.getItem(SESSION_KEY) === PASSWORD_HASH){
-    showDocuments();
-}
-
-togglePassword.addEventListener("click", () => {
-
-    if(passwordInput.type === "password"){
-        passwordInput.type = "text";
-        togglePassword.textContent = "🙈";
-    }else{
-        passwordInput.type = "password";
-        togglePassword.textContent = "👁️";
-    }
-
-});
-
-async function unlock(){
-
-    const value = passwordInput.value.trim();
-    const hash = await sha256(value);
-
-    if(hash === PASSWORD_HASH){
-
-        sessionStorage.setItem(
-            SESSION_KEY,
-            PASSWORD_HASH
-        );
-
-        errorEl.style.display = "none";
-
-        showDocuments();
-
-    }else{
-
-        errorEl.style.display = "block";
-
-    }
-}
-
-submitBtn.addEventListener("click", unlock);
-
-passwordInput.addEventListener("keydown", e => {
-    if(e.key === "Enter"){
-        unlock();
-    }
-});
-
-</script>
-
-</body>
-</html>
