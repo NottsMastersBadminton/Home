@@ -94,7 +94,7 @@
       margin-top: 0;
     }
 
-    /* ⭐ Redesigned Facebook Section */
+    /* ⭐ Screenshot-based Facebook feed */
     .fb-wrapper {
       background: #f0f4fa;
       border-radius: 12px;
@@ -130,12 +130,35 @@
       color: #555;
     }
 
-    .fb-iframe {
+    .fb-screenshots {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .fb-shot img {
       width: 100%;
-      max-width: 340px;
-      height: 800px;
-      border: none;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    }
+
+    .fb-button {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .fb-button a {
+      background: #0a1a33;
+      color: white;
+      padding: 10px 18px;
       border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .fb-button a:hover {
+      background: #13294b;
     }
 
     .bottom-banner img {
@@ -176,11 +199,6 @@
 
       .match-card {
         width: 100% !important;
-        max-width: 100% !important;
-      }
-
-      .fb-iframe {
-        height: 450px !important;
         max-width: 100% !important;
       }
     }
@@ -265,7 +283,7 @@
     <div id="recent-results"></div>
   </div>
 
-  <!-- ⭐ Redesigned Facebook Section -->
+  <!-- ⭐ Screenshot-based Facebook Section -->
   <div class="section-card" id="facebook-updates">
     <h3>Facebook Updates</h3>
 
@@ -278,21 +296,25 @@
         </div>
       </div>
 
-      <iframe
-        src="https://www.facebook.com/plugins/page.php?
-        href=https%3A%2F%2Fwww.facebook.com%2FNottsBadmintonAssociationMasters
-        &tabs=timeline
-        &width=340
-        &height=800
-        &small_header=true
-        &adapt_container_width=true
-        &hide_cover=false
-        &show_facepile=true"
-        class="fb-iframe"
-        scrolling="no"
-        frameborder="0"
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-      </iframe>
+      <div class="fb-screenshots">
+        <div class="fb-shot">
+          <img src="/Home/documents/facebook/feed1.jpg" alt="Facebook Post Screenshot">
+        </div>
+
+        <div class="fb-shot">
+          <img src="/Home/documents/facebook/feed2.jpg" alt="Facebook Post Screenshot">
+        </div>
+
+        <div class="fb-shot">
+          <img src="/Home/documents/facebook/feed3.jpg" alt="Facebook Post Screenshot">
+        </div>
+      </div>
+
+      <div class="fb-button">
+        <a href="https://www.facebook.com/NottsBadmintonAssociationMasters" target="_blank">
+          View Full Feed on Facebook
+        </a>
+      </div>
     </div>
   </div>
 
