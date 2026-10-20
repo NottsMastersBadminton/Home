@@ -6,14 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="description" content="Nottinghamshire Masters Badminton – fixtures, results, teams, and events for Masters badminton players in Nottinghamshire.">
-<meta name="keywords" content="Notts Masters Badminton, Nottinghamshire badminton, Masters badminton, badminton teams, badminton fixtures">
-<meta name="author" content="Notts Masters Badminton">
-<meta property="og:title" content="Notts Masters Badminton">
-<meta property="og:description" content="Fixtures, results, teams and events for Masters badminton in Nottinghamshire.">
-<meta property="og:url" content="https://nottsmastersbadminton.github.io/Home/">
-<meta property="og:type" content="website">
+  <meta name="keywords" content="Notts Masters Badminton, Nottinghamshire badminton, Masters badminton, badminton teams, badminton fixtures">
+  <meta name="author" content="Notts Masters Badminton">
+  <meta property="og:title" content="Notts Masters Badminton">
+  <meta property="og:description" content="Fixtures, results, teams and events for Masters badminton in Nottinghamshire.">
+  <meta property="og:url" content="https://nottsmastersbadminton.github.io/Home/">
+  <meta property="og:type" content="website">
 
-  
   <style>
     body {
       margin: 0;
@@ -53,11 +52,6 @@
       margin: 40px auto;
       padding: 0 20px;
       text-align: center;
-    }
-
-    h2 {
-      margin-bottom: 20px;
-      color: #0a1a33;
     }
 
     .section-card {
@@ -100,9 +94,45 @@
       margin-top: 0;
     }
 
-    .fb-container iframe {
+    /* ⭐ Redesigned Facebook Section */
+    .fb-wrapper {
+      background: #f0f4fa;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .fb-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .fb-logo {
+      width: 40px;
+      height: 40px;
+      margin-right: 12px;
+    }
+
+    .fb-title {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .fb-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #0a1a33;
+    }
+
+    .fb-sub {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .fb-iframe {
       width: 100%;
-      max-width: 300px;
+      max-width: 340px;
       height: 800px;
       border: none;
       border-radius: 8px;
@@ -123,7 +153,7 @@
       font-size: 0.9rem;
     }
 
-    /* ⭐ FIXED MOBILE NAV — stays horizontal */
+    /* ⭐ Mobile */
     @media (max-width: 600px) {
       nav {
         flex-direction: row;
@@ -149,16 +179,15 @@
         max-width: 100% !important;
       }
 
-      .fb-container iframe {
-        width: 100% !important;
-        max-width: 100% !important;
+      .fb-iframe {
         height: 450px !important;
+        max-width: 100% !important;
       }
     }
   </style>
 </head>
 
-  <!-- Google Analytics (GA4) -->
+<!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2LZ8WDPHSL"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -166,7 +195,7 @@
   gtag('js', new Date());
   gtag('config', 'G-2LZ8WDPHSL');
 </script>
-  
+
 <body>
 
 <header>
@@ -236,33 +265,36 @@
     <div id="recent-results"></div>
   </div>
 
-  <div class="section-card">
-  <h3>Facebook Updates</h3>
+  <!-- ⭐ Redesigned Facebook Section -->
+  <div class="section-card" id="facebook-updates">
+    <h3>Facebook Updates</h3>
 
-  <div class="fb-container">
-    <iframe
-      src="https://www.facebook.com/plugins/page.php?
-      href=https%3A%2F%2Fwww.facebook.com%2FNottsBadmintonAssociationMasters
-      &tabs=timeline
-      &width=300
-      &height=800
-      &small_header=true
-      &adapt_container_width=true
-      &hide_cover=false
-      &show_facepile=true"
-      width="300"
-      height="800"
-      style="border:none;overflow:hidden"
-      scrolling="no"
-      frameborder="0"
-      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-    </iframe>
+    <div class="fb-wrapper">
+      <div class="fb-header">
+        <img src="/Home/documents/storage/fb-logo.png" alt="Facebook Logo" class="fb-logo">
+        <div class="fb-title">
+          <span class="fb-name">Notts Masters Badminton</span>
+          <span class="fb-sub">Latest posts & reels</span>
+        </div>
+      </div>
+
+      <iframe
+        src="https://www.facebook.com/plugins/page.php?
+        href=https%3A%2F%2Fwww.facebook.com%2FNottsBadmintonAssociationMasters
+        &tabs=timeline
+        &width=340
+        &height=800
+        &small_header=true
+        &adapt_container_width=true
+        &hide_cover=false
+        &show_facepile=true"
+        class="fb-iframe"
+        scrolling="no"
+        frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
   </div>
-</div>
-
-
-
-
 
 </div>
 
