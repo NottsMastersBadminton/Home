@@ -1,94 +1,25 @@
-@@ -1,242 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <!-- ⭐ GOOGLE ANALYTICS (GA4) ⭐ -->
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2LZ8WDPHSL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-2LZ8WDPHSL');
-  </script>
-
-  <!-- ⭐ FULL SEO SECTION ⭐ -->
-
   <meta charset="UTF-8" />
+  <title>Home — Notts Masters Badminton</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Notts Masters Badminton | Nottinghamshire Masters Badminton Club</title>
-  <meta name="description" content="Official site for Notts Masters Badminton. Fixtures, results, officials, documents and county Masters badminton information for Nottinghamshire." />
-  <meta name="keywords" content="Notts Masters Badminton, Nottinghamshire badminton, Masters badminton, county badminton, badminton fixtures, badminton results, badminton officials" />
-  <meta name="author" content="Notts Masters Badminton" />
-  <meta name="robots" content="index, follow" />
+  <meta name="description" content="Nottinghamshire Masters Badminton – fixtures, results, teams, and events for Masters badminton players in Nottinghamshire.">
+<meta name="keywords" content="Notts Masters Badminton, Nottinghamshire badminton, Masters badminton, badminton teams, badminton fixtures">
+<meta name="author" content="Notts Masters Badminton">
+<meta property="og:title" content="Notts Masters Badminton">
+<meta property="og:description" content="Fixtures, results, teams and events for Masters badminton in Nottinghamshire.">
+<meta property="og:url" content="https://nottsmastersbadminton.github.io/Home/">
+<meta property="og:type" content="website">
 
-  <!-- OpenGraph -->
-  <meta property="og:title" content="Notts Masters Badminton" />
-  <meta property="og:description" content="Fixtures, results, officials and documents for Nottinghamshire Masters badminton." />
-  <meta property="og:image" content="https://nottsmastersbadminton.github.io/Home/documents/storage/Banner.jpg" />
-  <meta property="og:url" content="https://nottsmastersbadminton.github.io/Home/" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Notts Masters Badminton" />
-  <meta name="twitter:description" content="Official Nottinghamshire Masters badminton site with fixtures, results and officials information." />
-  <meta name="twitter:image" content="https://nottsmastersbadminton.github.io/Home/documents/storage/Banner.jpg" />
-
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://nottsmastersbadminton.github.io/Home/" />
-
-  <!-- Favicon -->
-  <link rel="icon" href="/Home/favicon.png" type="image/png" />
-
-  <!-- Theme Colours -->
-  <meta name="theme-color" content="#06261C" />
-  <meta name="msapplication-navbutton-color" content="#06261C" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="#06261C" />
-
-  <!-- ⭐ UNIVERSAL FACEBOOK PARAMETER CLEANER ⭐ -->
-  <script>
-    (function() {
-      const params = new URLSearchParams(window.location.search);
-
-      if (params.has("fbclid")) {
-        params.delete("fbclid");
-
-        const cleanUrl =
-          window.location.origin +
-          window.location.pathname +
-          (params.toString() ? "?" + params.toString() : "");
-
-        window.history.replaceState({}, document.title, cleanUrl);
-      }
-    })();
-  </script>
-
-  <!-- Your existing CSS stays exactly where it is -->
+  
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-    }
-
     body {
+      margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #f5f5f5;
       color: #222;
-      overflow-x: hidden;
-    }
-
-    body > div {
-      margin: 0 !important;
-      padding: 0 !important;
-      max-width: 100% !important;
-    }
-
-    .page-wrapper {
-      max-width: 1000px;
-      margin: 0 auto;
     }
 
     header {
@@ -118,7 +49,7 @@
     }
 
     .container {
-      max-width: 100%;
+      max-width: 900px;
       margin: 40px auto;
       padding: 0 20px;
       text-align: center;
@@ -129,24 +60,52 @@
       color: #0a1a33;
     }
 
-    .fb-container {
-      width: 100%;
+    .section-card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .section-card h3 {
+      margin-top: 0;
       text-align: center;
+      color: #0a1a33;
+    }
+
+    .match-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .match-card {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: left;
+      border-left: 8px solid #0a1a33;
+      width: 240px;
+      max-width: 240px;
+      flex: 0 0 auto;
+      box-sizing: border-box;
+    }
+
+    .match-card h4 {
+      margin-top: 0;
     }
 
     .fb-container iframe {
-      display: inline-block;
       width: 100%;
       max-width: 300px;
       height: 800px;
       border: none;
-      overflow: hidden;
       border-radius: 8px;
-    }
-
-    .bottom-banner {
-      width: 100%;
-      margin-top: 40px;
     }
 
     .bottom-banner img {
@@ -163,32 +122,72 @@
       color: white;
       font-size: 0.9rem;
     }
+
+    /* ⭐ FIXED MOBILE NAV — stays horizontal */
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        margin: 8px 10px;
+      }
+
+      .container {
+        max-width: 100%;
+        padding: 0 10px;
+      }
+
+      .match-grid {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .match-card {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      .fb-container iframe {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 450px !important;
+      }
+    }
   </style>
 </head>
 
+  <!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2LZ8WDPHSL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2LZ8WDPHSL');
+</script>
+
 <body>
 
-<div class="page-wrapper">
+<header>
+  <h1>Notts Masters Badminton</h1>
+  <p>Home</p>
+</header>
 
-  <header>
-    <h1>Notts Masters Badminton</h1>
-    <p></p>
-  </header>
+<div id="nav"></div>
+<script>
+  fetch("/Home/nav.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("nav").innerHTML = data;
+    });
+</script>
 
-  <!-- Shared nav include -->
-  <div id="nav"></div>
-  <script>
-    fetch("/Home/nav.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("nav").innerHTML = data;
-      });
-  </script>
+<div class="container">
 
-  <!-- ⭐ COUNTDOWN TIMER BETWEEN NAV + ABOUT US ⭐ -->
-  <div id="season-timer" style="margin:30px auto 0; background:white; padding:25px; border-radius:12px; box-shadow:0 6px 16px rgba(0,0,0,0.12); text-align:center; max-width:90%;">
-    <h2>Season 2026–27</h2>
-    <div id="timer-text" style="font-size:1.6rem; font-weight:700; margin-top:10px;"></div>
+  <div class="section-card" id="season-timer">
+    <h3>Season 2026–27</h3>
+    <p id="timer-text" style="font-size:1.4rem; font-weight:700; text-align:center;"></p>
   </div>
 
   <script>
@@ -197,34 +196,48 @@
     function updateSeasonTimer() {
       const now = new Date();
       const diff = SEASON_START - now;
-      const timerText = document.getElementById("timer-text");
+      const el = document.getElementById("timer-text");
 
       if (diff <= 0) {
-        timerText.textContent = "Season has started!";
+        el.textContent = "Season has started!";
         return;
       }
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const days = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff / 3600000) % 24);
+      const minutes = Math.floor((diff / 60000) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
 
-      timerText.textContent =
-        `Starts in ${days}d ${hours}h ${minutes}m ${seconds}s`;
+      el.textContent = `Starts in ${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
 
     setInterval(updateSeasonTimer, 1000);
     updateSeasonTimer();
   </script>
-  <!-- ⭐ END TIMER ⭐ -->
 
-  <div class="container">
-    <h2>About Us</h2>
-    <p>Notts Masters Badminton: continuing a long county tradition of competitive age‑group play.
-      Fielding teams from O40s through to O70s and providing fixtures, results, documents, and captain resources.</p>
+  <div class="section-card">
+    <h3>About Us</h3>
+    <p>
+      Notts Masters Badminton: continuing a long county tradition of competitive age‑group play.
+      Fielding teams from O40s through to O70s and providing fixtures, results, documents, and captain resources.
+      <br><br>
+      Interested in joining the Nottinghamshire Masters teams? Reach out to Lee Truong via email
+      <a href="mailto:nottsmasters@gmail.com">nottsmasters@gmail.com</a>.
+    </p>
+  </div>
 
-    <h2>Follow Us on Facebook</h2>
+  <div class="section-card">
+    <h3>Upcoming Matches</h3>
+    <div id="upcoming-matches"></div>
+  </div>
 
+  <div class="section-card">
+    <h3>Recent Results</h3>
+    <div id="recent-results"></div>
+  </div>
+
+  <div class="section-card">
+    <h3>Follow Us on Facebook</h3>
     <div class="fb-container">
       <iframe 
         src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100077877812929&tabs=timeline&width=300&height=800&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true"
@@ -234,21 +247,108 @@
         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
       </iframe>
     </div>
-
   </div>
-
-  <!-- ⭐ Clickable bottom banner -->
-  <div class="bottom-banner">
-    <a href="/Home/">
-      <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Banner">
-    </a>
-  </div>
-
-  <footer>
-    © Notts Masters Badminton — Home
-  </footer>
 
 </div>
+
+<div class="bottom-banner">
+  <a href="/Home/">
+    <img src="/Home/documents/storage/Banner.jpg" alt="Notts Masters Banner">
+  </a>
+</div>
+
+<footer>
+  © Notts Masters Badminton — Home
+</footer>
+
+<script>
+  const DAYS_AHEAD = 14;
+  const RESULTS_LIMIT = 4;
+
+  const AGE_COLOURS = {
+    "O40s": "#0a1a33",
+    "O45s": "#2e8b57",
+    "O50s": "#ff8c00",
+    "O55s": "#800080",
+    "O60s": "#b22222",
+    "O65s": "#008b8b",
+    "O70s": "#daa520"
+  };
+
+  function parseUKDate(str) {
+    if (!str) return null;
+    const [d, t] = str.split(" ");
+    const [day, month, year] = d.split("/").map(Number);
+    const [hour, minute, second] = t.split(":").map(Number);
+    return new Date(year, month - 1, day, hour, minute, second);
+  }
+
+  function card(match) {
+    const colour = AGE_COLOURS[match.age] || "#333";
+
+    return `
+      <div class="match-card" style="border-left-color:${colour};">
+        <h4>${match.age} vs ${match.opposition}</h4>
+        <p><strong>Date:</strong> ${match.datetime.toLocaleString("en-GB", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit"
+        })}</p>
+        <p><strong>Location:</strong> ${match.location}</p>
+        <p><strong>Address:</strong> ${match.address}</p>
+        ${match.link ? `<p><a href="${match.link}" target="_blank">View on TournamentSoftware</a></p>` : ""}
+        ${match.result ? `<p><strong>Result:</strong> ${match.result}</p>` : ""}
+      </div>
+    `;
+  }
+
+  async function loadMatches() {
+    const url =
+      "https://docs.google.com/spreadsheets/d/16ALLKw2po0AvNRycDs8sDFjtdxKZDQSNvxJRvuTwsEU/gviz/tq?gid=0&tqx=out:json";
+
+    const res = await fetch(url);
+    const text = await res.text();
+
+    const json = JSON.parse(
+      text.substring(text.indexOf("{"), text.lastIndexOf("}") + 1)
+    );
+
+    const rows = json.table.rows.map(r => ({
+      age: r.c[0]?.v || "",
+      datetime: parseUKDate(r.c[1]?.f),
+      opposition: r.c[2]?.v || "",
+      location: r.c[3]?.v || "",
+      address: r.c[4]?.v || "",
+      link: r.c[5]?.v || "",
+      result: r.c[6]?.v || ""
+    }));
+
+    const now = new Date();
+    const cutoff = new Date();
+    cutoff.setDate(cutoff.getDate() + DAYS_AHEAD);
+
+    const upcoming = rows.filter(r => r.datetime && r.datetime > now && r.datetime <= cutoff);
+
+    const recent = rows
+      .filter(r => r.result && r.result.trim() !== "")
+      .sort((a, b) => b.datetime - a.datetime)
+      .slice(0, RESULTS_LIMIT);
+
+    document.getElementById("upcoming-matches").innerHTML =
+      upcoming.length
+        ? `<div class="match-grid">${upcoming.map(card).join("")}</div>`
+        : "<p>No upcoming matches.</p>";
+
+    document.getElementById("recent-results").innerHTML =
+      recent.length
+        ? `<div class="match-grid">${recent.map(card).join("")}</div>`
+        : "<p>No recent results.</p>";
+  }
+
+  loadMatches();
+</script>
 
 </body>
 </html>
