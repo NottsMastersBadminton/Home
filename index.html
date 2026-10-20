@@ -114,6 +114,7 @@
       font-size: 0.9rem;
     }
 
+    /* ⭐ FIXED MOBILE NAV — stays horizontal */
     @media (max-width: 600px) {
       nav {
         flex-direction: row;
@@ -139,9 +140,25 @@
         max-width: 100% !important;
       }
     }
+
+    /* ⭐ FIX COMMONNINJA WIDGET ON MOBILE */
+    .fb-widget-wrapper {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 10px 0;
+    }
+
+    @media (max-width: 600px) {
+      .fb-widget-wrapper {
+        max-width: 100%;
+        padding: 0;
+      }
+    }
   </style>
 </head>
 
+<!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2LZ8WDPHSL"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -219,12 +236,14 @@
     <div id="recent-results"></div>
   </div>
 
-  <!-- ⭐ UPDATED FACEBOOK FEED SECTION -->
+  <!-- ⭐ UPDATED FACEBOOK FEED SECTION (MOBILE-FIXED) -->
   <div class="section-card">
     <h3>Follow Us on Facebook</h3>
 
-    <script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
-    <div class="commonninja_component pid-3ca242b1-37b6-49a2-b649-2d423d0f7b73"></div>
+    <div class="fb-widget-wrapper">
+      <script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
+      <div class="commonninja_component pid-3ca242b1-37b6-49a2-b649-2d423d0f7b73"></div>
+    </div>
 
   </div>
 
