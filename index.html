@@ -28,7 +28,7 @@
       text-align: center;
     }
 
-    /* ⭐ NEW TICKER BAR */
+    /* ⭐ TICKER CSS (ticker.html supplies the content) */
     .ticker {
       width: 100%;
       background: #13294b;
@@ -175,13 +175,17 @@
   <p>Home</p>
 </header>
 
-<!-- ⭐ NEW TICKER BAR -->
-<div class="ticker">
-  <div class="ticker__content" id="ticker-text">
-    Season 2026–27 has started — fixtures now live — check the team pages!
-  </div>
-</div>
+<!-- ⭐ LOAD TICKER FROM SEPARATE FILE -->
+<div id="ticker"></div>
+<script>
+  fetch("/Home/ticker.html")
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById("ticker").innerHTML = html;
+    });
+</script>
 
+<!-- ⭐ LOAD NAV -->
 <div id="nav"></div>
 <script>
   fetch("/Home/nav.html")
