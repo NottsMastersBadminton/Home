@@ -1,25 +1,5 @@
 <div class="ticker">
-  <div class="ticker__content" id="ticker-text">
-    Season 2026–27 has started — fixtures now live — check the team pages!
+  <div class="ticker__content">
+    Season 2026–27 updates — Fixtures live — Captains meeting soon — Check team pages! ................
   </div>
 </div>
-
-<script>
-  const ticker = document.getElementById("ticker-text");
-  const SEASON_START = new Date("2026-10-25T12:00:00");
-
-  function updateTicker() {
-    const now = new Date();
-    const diff = SEASON_START - now;
-
-    if (diff <= 0) {
-      ticker.textContent = "Season has started — good luck to all teams!";
-      return;
-    }
-
-    const days = Math.floor(diff / 86400000);
-    ticker.textContent = `Season starts in ${days} days — fixtures now live`;
-  }
-
-  updateTicker();
-</script>
