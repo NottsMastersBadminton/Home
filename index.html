@@ -28,6 +28,29 @@
       text-align: center;
     }
 
+    /* ⭐ NEW TICKER BAR */
+    .ticker {
+      width: 100%;
+      background: #13294b;
+      color: #fff;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 8px 0;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .ticker__content {
+      display: inline-block;
+      padding-left: 100%;
+      animation: ticker-scroll 15s linear infinite;
+    }
+
+    @keyframes ticker-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
     nav {
       background: #13294b;
       display: flex;
@@ -152,6 +175,13 @@
   <p>Home</p>
 </header>
 
+<!-- ⭐ NEW TICKER BAR -->
+<div class="ticker">
+  <div class="ticker__content" id="ticker-text">
+    Season 2026–27 starts soon — fixtures now live — check your team pages!
+  </div>
+</div>
+
 <div id="nav"></div>
 <script>
   fetch("/Home/nav.html")
@@ -214,7 +244,6 @@
     <div id="recent-results"></div>
   </div>
 
-  <!-- ⭐ CLEAN FACEBOOK LINK SECTION -->
   <div class="section-card">
     <h3>Follow Us on Facebook</h3>
     <p style="text-align:center; font-size:1.1rem;">
