@@ -224,18 +224,6 @@
     updateSeasonTimer();
   </script>
 
-  <!-- ⭐ WEATHER WIDGET INSERTED HERE -->
-  <div class="section-card">
-    <h3>Local Weather</h3>
-    <a class="weatherwidget-io"
-       href="https://forecast7.com/en/52d95n1d15/nottingham/"
-       data-label_1="NOTTINGHAM"
-       data-label_2="WEATHER"
-       data-theme="original">
-       Nottingham Weather
-    </a>
-  </div>
-
   <div class="section-card">
     <h3>About Us</h3>
     <p>
@@ -279,6 +267,18 @@
         Visit Our Facebook Page
       </a>
     </div>
+  </div>
+
+  <!-- ⭐ WEATHER WIDGET MOVED TO BOTTOM -->
+  <div class="section-card">
+    <h3>Local Weather</h3>
+    <a class="weatherwidget-io"
+       href="https://forecast7.com/en/52d95n1d15/nottingham/"
+       data-label_1="NOTTINGHAM"
+       data-label_2="WEATHER"
+       data-theme="original">
+       Nottingham Weather
+    </a>
   </div>
 
 </div>
@@ -382,7 +382,7 @@
   loadMatches();
 </script>
 
-<!-- ⭐ WEATHER WIDGET SCRIPT -->
+<!-- ⭐ WEATHER WIDGET SCRIPT (must be last) -->
 <script>
 !function(d,s,id){
   var js,fjs=d.getElementsByTagName(s)[0];
