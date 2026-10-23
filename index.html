@@ -28,7 +28,6 @@
       text-align: center;
     }
 
-    /* ⭐ TICKER CSS (ticker.html supplies the content) */
     .ticker {
       width: 100%;
       background: #13294b;
@@ -175,7 +174,6 @@
   <p>Home</p>
 </header>
 
-<!-- ⭐ LOAD TICKER FROM SEPARATE FILE -->
 <div id="ticker"></div>
 <script>
   fetch("/Home/ticker.html")
@@ -185,7 +183,6 @@
     });
 </script>
 
-<!-- ⭐ LOAD NAV -->
 <div id="nav"></div>
 <script>
   fetch("/Home/nav.html")
@@ -226,6 +223,18 @@
     setInterval(updateSeasonTimer, 1000);
     updateSeasonTimer();
   </script>
+
+  <!-- ⭐ WEATHER WIDGET INSERTED HERE -->
+  <div class="section-card">
+    <h3>Local Weather</h3>
+    <a class="weatherwidget-io"
+       href="https://forecast7.com/en/52d95n1d15/nottingham/"
+       data-label_1="NOTTINGHAM"
+       data-label_2="WEATHER"
+       data-theme="original">
+       Nottingham Weather
+    </a>
+  </div>
 
   <div class="section-card">
     <h3>About Us</h3>
@@ -371,6 +380,18 @@
   }
 
   loadMatches();
+</script>
+
+<!-- ⭐ WEATHER WIDGET SCRIPT -->
+<script>
+!function(d,s,id){
+  var js,fjs=d.getElementsByTagName(s)[0];
+  if(!d.getElementById(id)){
+    js=d.createElement(s);js.id=id;
+    js.src='https://weatherwidget.io/js/widget.min.js';
+    fjs.parentNode.insertBefore(js,fjs);
+  }
+}(document,'script','weatherwidget-io-js');
 </script>
 
 </body>
