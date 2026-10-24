@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin — Update Ticker</title>
+  <style>
+    body {
+      font-family: system-ui;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 120px;
+      font-size: 1.1rem;
+      padding: 10px;
+    }
+    button {
+      padding: 12px 20px;
+      font-size: 1.1rem;
+      background: #0a1a33;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Admin — Update Ticker Message</h2>
+
+<p>Enter new ticker text below:</p>
+
+<textarea id="tickerText"></textarea>
+<br><br>
+<button onclick="updateTicker()">Update Ticker</button>
+
+<p id="status"></p>
+
+<script>
+async function updateTicker() {
+  const text = document.getElementById("tickerText").value;
+
+  const response = await fetch(
+    "https://api.github.com/repos/nottsmastersbadminton/nottsmastersbadminton.github.io/contents/Home/ticker.txt",
+    {
+      method: "PUT",
+      headers: {
+        "Authorization": "Bearer YOUR_GITHUB_TOKEN",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: "Update ticker",
+        content: btoa(text),
+        sha: await getSHA()
+      })
+    }
+  );
+
+  document.getElementById("status").innerText =
+    response.ok ? "Ticker updated!" : "Error updating ticker.";
+}
+
+async function getSHA() {
+  const res = await fetch(
+    "https://api.github.com/repos/nottsmastersbadminton/nottsmastersbadminton.github.io/contents/Home/ticker.txt"
+  );
+  const data = await res.json();
+  return data.sha;
+}
+</script>
+
+</body>
+</html>
