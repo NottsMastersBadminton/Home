@@ -346,10 +346,24 @@
     }));
 
     const now = new Date();
-    const cutoff = new Date();
-    cutoff.setDate(cutoff.getDate() + DAYS_AHEAD);
 
-    const upcoming = rows.filter(r => r.datetime && r.datetime > now && r.datetime <= cutoff);
+// Start of today
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+// End of the DAYS_AHEAD period
+const cutoff = new Date(today);
+cutoff.setDate(cutoff.getDate() + DAYS_AHEAD);
+cutoff.setHours(23, 59, 59, 999);
+
+const upcoming = rows
+  .filter(r =>
+    r.datetime &&
+    r.datetime >= today &&
+    r.datetime <= cutoff
+  )
+  .sort((a, b) => a.datetime - b.datetime);
+
 
     const recent = rows
       .filter(r => r.result && r.result.trim() !== "")
