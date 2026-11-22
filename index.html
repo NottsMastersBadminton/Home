@@ -347,22 +347,20 @@
 
     const now = new Date();
 
-// Start of today
-const today = new Date();
-today.setHours(0, 0, 0, 0);
-
-// End of the DAYS_AHEAD period
-const cutoff = new Date(today);
-cutoff.setDate(cutoff.getDate() + DAYS_AHEAD);
-cutoff.setHours(23, 59, 59, 999);
+const now = new Date();
 
 const upcoming = rows
-  .filter(r =>
-    r.datetime &&
-    r.datetime >= today &&
-    r.datetime <= cutoff
-  )
+  .filter(r => {
+    if (!r.datetime) return false;
+
+    // Hide match from 6pm on match day
+    const hideTime = new Date(r.datetime);
+    hideTime.setHours(18, 0, 0, 0);
+
+    return now < hideTime && r.datetime <= cutoff;
+  })
   .sort((a, b) => a.datetime - b.datetime);
+
 
 
     const recent = rows
