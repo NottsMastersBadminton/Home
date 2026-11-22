@@ -354,7 +354,7 @@ today.setHours(0, 0, 0, 0);
 // End of the DAYS_AHEAD period
 const cutoff = new Date(today);
 cutoff.setDate(cutoff.getDate() + DAYS_AHEAD);
-cutoff.setHours(23, 59, 59, 999);
+cutoff.setHours(18, 00, 00, 000);
 
 const upcoming = rows
   .filter(r =>
